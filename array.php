@@ -1,7 +1,6 @@
 <?php
+session_start();
 
-$url = $_SERVER['REQUEST_URI'];
-$key = 'index';
 $CATEGORIES = array(1 => "Rife", 2 => "Quantum", 3 => "Higher Quantum", 4 => "Inner Circle");
 
 $posturl = 'https://apiadmin.qienergy.ai/api/subcategories';
@@ -11,17 +10,12 @@ $res = curl_post($posturl, '', $header);
 // die;
 $SUBCATEGORIES = json_decode($res['res']);
 $SUBCATEGORIES = $SUBCATEGORIES->subcategories;
-$SITENAME = 'Qi Coil WebApp (BETsssA)';
-
-// $SUBCATEGORIES='https://apiadmin.qienergy.ai/api/subcategories';
-// $CATEGORIES='';ss
-// $playlist='https://apiadmin.qienergy.ai/api/add_frequency_to_playlist';
-session_start();
-ttt
+$SITENAME = 'Qi Coil WebApp (BETA)';
 
 
-//	if (strpos($url, $key) == false && $url != '/favicon.ico' && $url != '/') {
-if ($url == '/logout.php' || $url == '/post.php') {
+$url = $_SERVER['REQUEST_URI'];
+$key = 'index';
+if ($url == '/logout.php' || $url == '/post.php' || $url == '/register.php' || $url == '/forgot.php') {
     setcookie('backurl', '', time() + (7200), '/');
 } elseif (strpos($url, $key) == false && $url != '/favicon.ico' && $url != '/') {
     $cookie_name = "backurl";
