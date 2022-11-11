@@ -1013,6 +1013,7 @@ span.likes {
   .check_listing {
     /* float: left; */
     width: 100%;
+    display: grid;
   }
 
   .has-search {
