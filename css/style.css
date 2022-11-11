@@ -12,6 +12,21 @@ font-family: Montserrat;
 }
 
 #con_listing .btn-check:focus + .btn,
+#con_listing .btndrop {
+  border: none;
+  width: 100%;
+  text-align: left;
+  margin-top: 10px;
+  background: none;
+  color: #000;
+  text-decoration: none;
+}
+#con_listing .btndrop:after {
+  font-family: "Glyphicons Halflings";
+  content: "\e114";
+  float: right;
+  margin-left: 15px;
+}
 .btn:focus {
   outline: 0;
   box-shadow: none !important;
@@ -435,6 +450,7 @@ input[type="range"][orient="vertical"] {
   /*float: left;
   width: 25%;*/
   padding: 10px 0 10px 6px;
+  display: grid;
 }
 
 .has-search .form-control {
@@ -944,6 +960,7 @@ span.likes {
     display: none;
   }
   .check_listing {
+    width: 100%;
       margin-bottom: 20px;
 }
 .ad-mob-image{
@@ -952,6 +969,11 @@ span.likes {
 .check_listing {
  
   margin-bottom: 20px;
+}
+#con_listing .btndrop:after {
+  
+  content: "\e114";
+  
 }
   /* .single-testimonial-content {
   width:100%;
