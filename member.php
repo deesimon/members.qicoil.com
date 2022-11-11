@@ -57,7 +57,8 @@ if ($response[0]->fetch_flag != -1) {
             </div>
           </div>
           <div class="row">
-            <div class="col-md-12 table-responsive">
+            <div class="col-md-12">
+            <div class="table-responsive">
               <table class="table table-bordered table-striped table-hover">
                 <thead>
                   <tr>
@@ -76,7 +77,7 @@ if ($response[0]->fetch_flag != -1) {
                         <td scope="row" align="right">$<?php echo $v->amount; ?></td>
                         <td scope="row"><?php echo date('Y-m-d', strtotime($v->subscriptionDate)); ?></td>
                         <td scope="row"><?php echo date('Y-m-d', strtotime($v->expirationDate)); ?></td>
-                        <td scope="row"><button type="button" class="btn btn-danger">Cancel Membership</button></td>
+                        <td scope="row"><a href="question.php?id=<?php echo ($v->id);?>">Downgrade</a></td>
                       </tr>
                     <?php }
                   } else { ?>
@@ -86,6 +87,7 @@ if ($response[0]->fetch_flag != -1) {
                   <?php } ?>
                 </tbody>
               </table>
+                  </div>
               <div class="col sub-div">
                 <h4><a href="https://www.qicoil.com/pricing/">View all Membership Options</a></h4>
               </div>

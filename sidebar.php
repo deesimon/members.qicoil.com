@@ -3,7 +3,9 @@
     <div class="check_listing" style="display:inline-block">
     
  
-         <h5><b>Filter by Category</b></h5>
+         <!-- <h5><b>Filter by Category</b></h5> -->
+         <button type="button" class="btn-link collapsed btndrop" data-toggle="collapse" data-target="#demobtn"><b>Filter by Category</b></button>
+<div id="demobtn">
   <?
   // print_r($SUBCATEGORIES);
   // exit;
@@ -68,7 +70,7 @@
   ?>
 
   <h5><b> Filter by Membership</b></h5>
-  <label class="form-check-label  text-left">
+  <label class="form-check-label  text-left free">
     <input type="checkbox" class="form-check-input"  value="yes" 
     <?php if (strpos($_SERVER['REQUEST_URI'], 'starter-frequencies')) echo 'checked="checked"';?>>
     Free </label>
@@ -85,7 +87,7 @@
     Inner Circle </label>
 
 
-    <h5 style=" display: inline-block;"><b><a href="favourites.php" class="<?php echo (strpos($_SERVER['REQUEST_URI'], 'favourites') !== false ? 'active' : 'text-dark');?>">Favourite</a></b></h5>
+    <h5 style=" display: inline-block;"><b><a href="favourites.php" class="<?php echo (strpos($_SERVER['REQUEST_URI'], 'favourites') !== false ? 'active' : 'text-dark');?>">Favourites</a></b></h5>
 
   <h5><b>Playlists</b></h5>
   <?php
@@ -106,7 +108,7 @@
   }
   ?>
 
-    
+</div>  
 </div>
 
  <a href="https://qilifestore.com/collections/qi-coils/products/qi-coil-max-transformation-system" target="_blank" class="ad-mob-image">
@@ -118,7 +120,7 @@
 
 
 <script>
-  $('.form-check-label').click(function() {
+  $('.free').click(function() {
     window.location.href = 'https://members.qicoil.com/starter-frequencies.php';
     return false;
   });

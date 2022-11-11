@@ -77,10 +77,10 @@ $page = basename($_SERVER['REQUEST_URI'], '?' . $_SERVER['QUERY_STRING']);
                                 <a class="dropdown-item" href="inner_circle_link_payment.php">Inner Circle Subscription</a>
 
                             </div>-->
-                        </li>
+                        <!-- </li>
                         <li class="nav-item <?= ($activePage == 'tutorial') ? 'active' : ''; ?>">
                             <a class="nav-link" href="member.php">Member</a>
-                        </li>
+                        </li> -->
                         <!-- </li>  -->
                         <?php  if (isset($_SESSION['email'])) {
                         ?>
@@ -102,6 +102,9 @@ $page = basename($_SERVER['REQUEST_URI'], '?' . $_SERVER['QUERY_STRING']);
                                     <!-- <a class="dropdown-item" href="#">
                                         Photo
                                     </a> -->
+                                    <a class="dropdown-item" href="profile.php">
+                                     My Profile
+                                    </a>
                                     <a class="dropdown-item" href="changepassword.php">
                                     Change Password
                                     </a>

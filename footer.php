@@ -37,6 +37,37 @@ $(".favorite").click(function() {
            }
          });
        });
+       $(".btndrop").click(function() {
+	var Key = 'accordion-filter-category';
+	if ($(this).hasClass('collapsed')) {
+		var Val = 'expand';
+	}else{
+		var Val = 'collapsed';
+	}	
+	setCookie(Key, Val);
+});
+
+var accordionfilter = getCookie("accordion-filter-category");
+console.log(accordionfilter);
+if(accordionfilter == 'collapsed'){
+	$('#demobtn').removeClass('in');
+  $('#demobtn').addClass('collapse');
+}else{
+	$('#demobtn').addClass('in');
+}
+$(".btndrop").addClass(accordionfilter);
+
+function setCookie(Key, Val) {
+	var expires = new Date();
+	expires.setTime(expires.getTime() + (Val * 24 * 60 * 60 * 1000));
+	var daysToExpire = new Date(2147483647 * 1000).toUTCString();
+	document.cookie = Key + '=' + Val + ';expires=' + daysToExpire;
+}
+
+function getCookie(Key) {
+	var keyValue = document.cookie.match('(^|;) ?' + Key + '=([^;]*)(;|$)');
+	return keyValue ? keyValue[2] : null;
+}
 
 </script>
 
