@@ -946,7 +946,13 @@ span.likes {
   .check_listing {
       margin-bottom: 20px;
 }
-
+.ad-mob-image{
+  display: none;
+}
+.check_listing {
+ 
+  margin-bottom: 20px;
+}
   /* .single-testimonial-content {
   width:100%;
   /* text-align: center; */
