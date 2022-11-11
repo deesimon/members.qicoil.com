@@ -1,9 +1,7 @@
 <div class="col-sm-12 col-md-2">
     
     <div class="check_listing" style="display:inline-block">
-    
- 
-         <!-- <h5><b>Filter by Category</b></h5> -->
+    <!-- <h5><b>Filter by Category</b></h5> -->
          <button type="button" class="btn-link collapsed btndrop" data-toggle="collapse" data-target="#demobtn"><b>Filter by Category</b></button>
 <div id="demobtn">
   <?
