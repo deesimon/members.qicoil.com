@@ -291,7 +291,7 @@ function sortByKeyList($array, $seq)
             $('.response').append('<div class="col-xs-6 col-md-3 "><div class="new"><a href="inner_frequencies.php?id=' + ui.item.key + categories + '"><img src="' + img + '" height="126" width="126"> </a><span><div class="card-body"><h5 class="card-title"><b>' + ui.item.value + '</b> </h5></div></div></div>');
 
             $("#search").val('');
-            $(".featured-albums, .free-album, .sort-favorite").hide();
+            $(".featured-albums, .free-album, .sort-favorite, .pagination").hide();
           }
         }
       });

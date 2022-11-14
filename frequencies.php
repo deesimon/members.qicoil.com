@@ -309,6 +309,7 @@ function sortByKeyList($array, $seq)
             $('.response').html('');
             $('.response').append('<div class="col-xs-6 col-md-4 "><div class="new"><a href="inner_frequencies.php?id=' + ui.item.key + categories + '"><img src="' + img + '" height="126" width="126"> </a><div class="card-body"><h5 class="card-title"><b>' + ui.item.value + '</b> </h5></div></div></div>');
             $("#search").val('');
+            $(".pagination").hide();
           }
         }
       });
