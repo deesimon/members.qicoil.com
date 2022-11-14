@@ -258,7 +258,31 @@ if (!empty($_POST)) {
 		echo json_encode($return);
 		die;
 	}
-} else {
+	if ($_POST['update_name'] == 1) {
+		// print_r($_POST);
+		// die;
+		$name = $_POST['name'];
+		$url = "https://apiadmin.qienergy.ai/api/user/profile/updatename";
+		$post_data = http_build_query(array('name' => $name));
+		$header = array('Authorization: Bearer ' . $_SESSION['token'], 'Content-Type: application/x-www-form-urlencoded');
+		$res = curl_post($url, $post_data, $header);
+
+		$response = json_decode(($res['res']));
+		// print_r($response);//die;
+		$flag = $response->user[0]->fetch_flag;
+		$msg = $response->user[0]->rsp_msg;
+		if ($flag == 1) {
+			$_SESSION['success'] = $msg;
+			$_SESSION['name'] = $name;
+		} else {
+			$_SESSION['err'] = $msg;
+		}
+		header("Location:profile.php");
+		die;
+	}
+
+} 
+else {
 	header("Location:index.php");
 	die;
 }
