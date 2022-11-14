@@ -66,7 +66,7 @@
     echo '</div>';
   }
   ?>
-
+<div class="mt-5">
   <h5><b> Filter by Membership</b></h5>
 
   <div>
@@ -74,22 +74,22 @@
     <input type="checkbox" class="form-check-input"  value="yes" 
     <?php if (strpos($_SERVER['REQUEST_URI'], 'starter-frequencies')) echo 'checked="checked"';?>>
     Free </label>
-</div>
-<div>
+
     <label class="form-check-label  premium" style="font-weight: normal">
     <input type="checkbox" class="form-check-input"  value="yes" 
     <?php if(!strpos($_SERVER['REQUEST_URI'], 'starter-frequencies') && ($_GET['category'] == 1 || $_GET['category'] == 2 || $_GET['category'] == 3)) echo 'checked="checked"';?>>
     Premium </label>
-</div>
-<div>
+
     <label class="form-check-label inner_circle" style="font-weight: normal">
     <input type="checkbox" class="form-check-input"  value="yes" 
     <?php if(strpos($_SERVER['REQUEST_URI'], 'frequencies') && $_GET['category'] == 4) echo 'checked="checked"';?>>
     Inner Circle </label>
 </div>
 
+<div>
     <h5 style=" display: inline-block;"><b><a href="favourites.php" class="<?php echo (strpos($_SERVER['REQUEST_URI'], 'favourites') !== false ? 'active' : 'text-dark');?>">Favourites</a></b></h5>
-
+</div>
+<div>
   <h5><b>Playlists</b></h5>
   <?php
   if (isset($_SESSION['id'])) {
@@ -108,6 +108,7 @@
     }
   }
   ?>
+  </div>
 
 </div>  
 </div>
