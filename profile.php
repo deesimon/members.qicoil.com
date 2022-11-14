@@ -42,11 +42,12 @@ $email=$_SESSION['email'];
             <div class="row">
           <div class="col-md-12">
           <?php if (!empty($_SESSION['success'])) {
-              echo '<p class="col-lg-6 btn-success">' . $_SESSION['success'] . '</p>';
+              echo '<p class="col-lg-6" style="background-color: #5cb85c;
+             >' . $_SESSION['success'] . '</p>';
               unset($_SESSION['success']);
             }
             if (!empty($_SESSION['err'])) {
-              echo '<p class="col-lg-6 btn-danger">' . $_SESSION['err'] . '</p>';
+              echo '<p class="col-lg-6" style="background-color: #e92424;">' . $_SESSION['err'] . '</p>';
               unset($_SESSION['err']);
             }
             ?>
