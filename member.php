@@ -13,7 +13,7 @@ if (!isset($_SESSION['email'])) {
 $members = array();
 $header = array('Authorization: Bearer ' . $_SESSION['token'], 'Content-Type: application/x-www-form-urlencoded');
 $data = array('userid' => $_SESSION['id']);
-$url = 'https://apiadmin.qienergy.ai/api/member_account';
+$url = MEMBER_SUBSCRIPTION;
 $post_data = http_build_query($data);
 $res = curl_post($url, $post_data, $header);
 $response = json_decode($res['res']);

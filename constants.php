@@ -15,35 +15,6 @@ define('STRIPE_SECRET_KEY', 'sk_live_51Iay8cK3DPNzo53BkARmWFw7ZnKOfIsmdOhXpDL6yI
 define('STRIPE_PUBLISHER_KEY', 'pk_live_51Iay8cK3DPNzo53BCGwEQnXpFGDgAV171AIowlPksFiA8l54zpuJ3qtAclfnDm2T7duS8WHGIMJz7M4UUDPeYQI100VjSDskLK');
 
 
-
-define('FREQUENCIES_URL','https://apiadmin.qienergy.ai/api/frequencies');
-define('FREE_ALBUMS_URL','https://apiadmin.qienergy.ai/api/free_albums');
-define('MP3_URL','https://apiadmin.qienergy.ai/api/mp3');
-define('GETPLAYLIST_URL','https://apiadmin.qienergy.ai/api/getplaylist');
-define('FAVORITE_URL','https://apiadmin.qienergy.ai/api/favorite/get');
-define('ALBUMS_URL','https://apiadmin.qienergy.ai/api/albums');
-define('FIRST_MP3_URL','https://www.qicoilapi.ingeniusstudios.com/storage/app/public/uploads/');
-define('REGISTER_URL', 'https://apiadmin.qienergy.ai/api/register');
-define('PAYMENT_ADD_URL','https://apiadmin.qienergy.ai/api/payment_add');
-define('FEATURED_ALBUMS_URL','https://apiadmin.qienergy.ai/api/featured_albums');
-define('LOGIN_URL','https://apiadmin.qienergy.ai/api/login');
-define('FORGOT_PW_URL', 'https://apiadmin.qienergy.ai/api/forgot_pw');
-define('CHANGE_PW_URL', 'https://apiadmin.qienergy.ai/api/change_pw');
-define('PROFILE_UPDATEPASSWORD_URL','https://apiadmin.qienergy.ai/api/user/profile/updatepassword');
-define('SAVEPLAYLIST_URL', 'https://apiadmin.qienergy.ai/api/saveplaylist');
-define('ADD_FREQUENCY_TO_PLAYLIST_URL','https://apiadmin.qienergy.ai/api/add_frequency_to_playlist');
-define('REMOVE_FREQUENCY_TO_PLAYLIST_URL','https://apiadmin.qienergy.ai/api/remove_frequency_to_playlist' );
-define('FAVORITE_SAVE_URL','https://apiadmin.qienergy.ai/api/favorite/save');
-define('CUSTOMERS_URL','https://api.stripe.com/v1/customers');
-define('SUBSCRIPTIONS_URL', 'https://api.stripe.com/v1/subscriptions');
-define('PAYMENT_METHODS_URL', 'https://api.stripe.com/v1/payment_methods');
-define('PAYMENT_INTENTS_URL', 'https://api.stripe.com/v1/payment_intents/');
-
-
-
-
-
-
 // Test IDs And API Keys ########################################################
 
 // define('STRIPE_MODE', '1');
@@ -63,3 +34,30 @@ define('RIFE_PAYMENT_URL', 'payment.php?type=1');
 define('QUANTUM_PAYMENT_URL', 'payment.php?type=2');
 define('HIGHER_QUANTUM_PAYMENT_URL', 'payment.php?type=3');
 define('INNER_CIRCLE_PAYMENT_URL', 'payment.php?type=4');
+
+
+
+define('FREQUENCIES_URL','https://apiadmin.qienergy.ai/api/frequencies');
+define('FREE_ALBUMS_URL','https://apiadmin.qienergy.ai/api/free_albums');
+define('MP3_URL','https://apiadmin.qienergy.ai/api/mp3');
+define('GETPLAYLIST_URL','https://apiadmin.qienergy.ai/api/getplaylist');
+define('FAVORITE_URL','https://apiadmin.qienergy.ai/api/favorite/get');
+define('ALBUMS_URL','https://apiadmin.qienergy.ai/api/albums');
+define('FIRST_MP3_URL','https://www.qicoilapi.ingeniusstudios.com/storage/app/public/uploads/');
+define('REGISTER_URL', 'https://apiadmin.qienergy.ai/api/register');
+define('PAYMENT_ADD_URL','https://apiadmin.qienergy.ai/api/payment_add');
+define('FEATURED_ALBUMS_URL','https://apiadmin.qienergy.ai/api/featured_albums');
+define('LOGIN_URL','https://apiadmin.qienergy.ai/api/login');
+define('FORGOT_PW_URL', 'https://apiadmin.qienergy.ai/api/forgot_pw');
+define('CHANGE_PW_URL', 'https://apiadmin.qienergy.ai/api/change_pw');
+define('PROFILE_UPDATEPASSWORD_URL','https://apiadmin.qienergy.ai/api/user/profile/updatepassword');
+define('SAVEPLAYLIST_URL', 'https://apiadmin.qienergy.ai/api/saveplaylist');
+define('REMOVE_PLAYLIST_URL', 'https://apiadmin.qienergy.ai/api/remove_playlist');
+define('ADD_FREQUENCY_TO_PLAYLIST_URL','https://apiadmin.qienergy.ai/api/add_frequency_to_playlist');
+define('REMOVE_FREQUENCY_TO_PLAYLIST_URL','https://apiadmin.qienergy.ai/api/remove_frequency_to_playlist' );
+define('FAVORITE_SAVE_URL','https://apiadmin.qienergy.ai/api/favorite/save');
+define('CUSTOMERS_URL','https://api.stripe.com/v1/customers');
+define('SUBSCRIPTIONS_URL', 'https://api.stripe.com/v1/subscriptions');
+define('PAYMENT_METHODS_URL', 'https://api.stripe.com/v1/payment_methods');
+define('PAYMENT_INTENTS_URL', 'https://api.stripe.com/v1/payment_intents/');
+define('MEMBER_SUBSCRIPTION', 'https://apiadmin.qienergy.ai/api/member_account');

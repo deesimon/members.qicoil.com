@@ -200,6 +200,18 @@ if (!empty($_POST)) {
 			} else {
 				$return = array('success' => false);
 			}
+		} elseif ($_POST['method'] == 'remove_playlist') {
+			$url = REMOVE_PLAYLIST_URL;
+			$post_data = http_build_query(array('playlist_id' => $_POST['playlist_id']));
+			$header = array('Content-Type: application/x-www-form-urlencoded', 'Authorization: Bearer ' . $_SESSION['token']);
+			$res = curl_post($url, $post_data, $header);
+			$response = json_decode($res['res']);
+			// print_r($res);die;
+			if ($response->playlist[0]->fetch_flag == 1) {
+				$return = array('success' => true, 'msg' => $response->playlist[0]->rsp_msg);
+			} else {
+				$return = array('success' => false, 'msg' => $response->playlist[0]->rsp_msg);
+			}
 		} elseif ($_POST['method'] == 'add_frequency') {
 			$url=ADD_FREQUENCY_TO_PLAYLIST_URL;
 			$post_data = http_build_query(array('playlist_id' => $_POST['playlist_id'], 'frequency_id' => $_POST['frequency_id']));

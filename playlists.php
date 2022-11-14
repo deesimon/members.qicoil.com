@@ -14,6 +14,8 @@ $res = curl_post($url, '', $header);
   // print_r($res);die;
 $response = json_decode($res['res']);
 $playlist = $response->playlist;
+$fetch_flag = $playlist->fetch_flag;
+if ($fetch_flag != -1) {
 $playlist_name = $playlist->name;
 if (!empty($playlist->frequency_id)) {
   $mp3s_ids = explode(',', $playlist->frequency_id);
@@ -50,6 +52,9 @@ if (!empty($playlist->frequency_id)) {
   // print_r($mp3s);
   // die;
   $first_mp3=FIRST_MP3_URL. $mp3s[0]['audio_folder'] . '/' . $mp3s[0]['filename'];
+}
+} else {
+  $not_found = true;
 }
 
 ?>
@@ -98,16 +103,20 @@ if (!empty($playlist->frequency_id)) {
         <div class="col-md-12">
           <div class="col-md-6 col-sm-6">
             <div class="col-md-1"><a href="<?php echo (!empty($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'frequencies.php'); ?>"> <img src="images/left.png" class="left_aerrow_bg"> </a> </div>
-            <div class="col-md-11">
-              <div class="col-md-12">
+            <?php if ($not_found == true) { ?>
+              <div class="col-md-9">
+                <h5>Playlist Not Found</h5>
+              </div>
+            <?php } else { ?>
+              <div class="col-md-9">
                 <h5><?php echo $playlist_name; ?></h5>
               </div>
-              <div class="col-md-8">
+              <div class="col-md-2">
+                <a href="#" id="remove-playlist"> Delete <i class="fa fa-trash"></i>
+                </a>
               </div>
-              <div class=" col-md-8"></div>
+            <?php } ?>
             </div>
-            <!-- <div class=" col-md-12 border_bottom"> </div> -->
-          </div>
 
           <div class="col-md-6 col-xs-12 p-0 stand">
             <div class="col-md-10 col-xs-12 p-0">
@@ -386,6 +395,34 @@ if (!empty($playlist->frequency_id)) {
                 ele.parents('.hz').remove();
               } else {
                 alert('Frequency not removed, something wrong');
+              }
+            }
+          });
+        }
+      }
+    });
+
+    $("#remove-playlist").click(function(event) {
+      event.preventDefault();
+      var ele = $(this);
+      var playlist_id = '<?php echo $_GET['id']; ?>';
+      if (playlist_id) {
+        if (confirm("Are you sure you want to delete playlist!")) {
+          $.ajax({
+            url: 'post.php',
+            type: 'POST',
+            data: {
+              playlist: 1,
+              method: 'remove_playlist',
+              playlist_id: playlist_id,
+            },
+            dataType: 'json',
+            success: function(res) {
+              // console.log(res);
+              if (res.success == true) {
+                window.location.href = 'starter-frequencies.php';
+              } else {
+                alert('Playlist not removed, something wrong');
               }
             }
           });
