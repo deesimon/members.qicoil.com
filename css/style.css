@@ -450,7 +450,7 @@ input[type="range"][orient="vertical"] {
   color: #000;
   /*float: left;
   width: 25%;*/
-  margin: 10px 0 10px 6px;
+  padding: 10px 0 10px 6px;
   display: grid;
 }
 

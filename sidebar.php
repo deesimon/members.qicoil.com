@@ -69,21 +69,28 @@
 <div class="mt-5">
   <h5><b> Filter by Membership</b></h5>
 
+  <div class="form-check free">
+                 <input class="form-check-input" type="checkbox" value="yes" id="defaultCheck1 "
+                 <?php if (strpos($_SERVER['REQUEST_URI'], 'starter-frequencies')) echo 'checked="checked"';?>>
+                 <label class="form-check-label" for="defaultCheck1"  style="font-weight: normal">
+                 Free
+                </label>
+             </div>
+            <div class="form-check premium">
+                 <input class="form-check-input" type="checkbox" value="yes" id="defaultCheck1"
+                 <?php if(!strpos($_SERVER['REQUEST_URI'], 'starter-frequencies') && ($_GET['category'] == 1 || $_GET['category'] == 2 || $_GET['category'] == 3)) echo 'checked="checked"';?>>
+                 <label class="form-check-label" for="defaultCheck1"style="font-weight: normal">
+                 Premium
+                </label>
+             </div>
+           <div class="form-check inner_circle">
+                 <input class="form-check-input" type="checkbox" value="yes" id="defaultCheck1"
+                 <?php if(strpos($_SERVER['REQUEST_URI'], 'frequencies') && $_GET['category'] == 4) echo 'checked="checked"';?>>
+                 <label class="form-check-label" for="defaultCheck1" style="font-weight: normal">
+                 Inner Circle 
+                </label>
+            </div>
   
-  <label class="form-check-label  text-left free" style="font-weight: normal">
-    <input type="checkbox" class="form-check-input"  value="yes" 
-    <?php if (strpos($_SERVER['REQUEST_URI'], 'starter-frequencies')) echo 'checked="checked"';?>>
-    Free </label>
-
-    <label class="form-check-label  premium" style="font-weight: normal">
-    <input type="checkbox" class="form-check-input"  value="yes" 
-    <?php if(!strpos($_SERVER['REQUEST_URI'], 'starter-frequencies') && ($_GET['category'] == 1 || $_GET['category'] == 2 || $_GET['category'] == 3)) echo 'checked="checked"';?>>
-    Premium </label>
-
-    <label class="form-check-label inner_circle" style="font-weight: normal">
-    <input type="checkbox" class="form-check-input"  value="yes" 
-    <?php if(strpos($_SERVER['REQUEST_URI'], 'frequencies') && $_GET['category'] == 4) echo 'checked="checked"';?>>
-    Inner Circle </label>
 </div>
 
 <div>
