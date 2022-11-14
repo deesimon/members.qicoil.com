@@ -54,6 +54,7 @@ body {
   background: none;
   color: #000;
   text-decoration: none;
+  padding: 0;
 }
 #con_listing .btndrop:after {
   font-family: "Glyphicons Halflings";
