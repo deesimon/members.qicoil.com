@@ -202,7 +202,7 @@ function sortByKeyList($array, $seq)
           <?php } ?>
 
           <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-12 bottom-banner">
             <a href="https://qilifestore.com/collections/qi-coils/products/qi-coil-max-transformation-system" target="_blank" class="ad-mob-image-horizontal">
               <img src="https://members.qicoil.com/images/qc-max-admob-horizontal.jpg" alt="qi-coil-max-transformation-system" class="img_banner" />
             </a>
