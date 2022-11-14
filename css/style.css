@@ -577,14 +577,14 @@ input[type="range"][orient="vertical"] {
 #inner_detail.vol_bg {
   background-color: #ecf5f4;
 }
-#inner_detail i.fa {
+/* #inner_detail i.fa {
   background: rgb(138, 138, 138);
 
   border-radius: 2px;
   font-size: 16px;
   color: #fff;
   padding: 10px;
-}
+} */
 #inner_detail .volume {
   float: right;
   background-color: #ecf5f4;
