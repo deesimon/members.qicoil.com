@@ -1,7 +1,7 @@
 <?php
 //ini_set('display_errors', 1);
 //ini_set('display_startup_errors', 1);
-error_reporting(2);
+error_reporting(1);
 include('array.php');
 include('constants.php');
 // session_start();
@@ -9,7 +9,8 @@ if (!isset($_SESSION['email'])) {
   header('Location:index.php');
   exit;
 }
-
+$name=$_SESSION['name'];
+$email=$_SESSION['email'];
 ?>
 
 <!DOCTYPE html>
@@ -35,23 +36,34 @@ if (!isset($_SESSION['email'])) {
             <div class="col-md-12">
                 <!-- <h5>TDY Marketing</h5> -->
               <h3 class="main-title"><b>Profile</b></h3>
-
+              </div>
             </div>
-            
-          </div>
 
+            <div class="row">
+          <div class="col-md-12">
+          <?php if (!empty($_SESSION['success'])) {
+              echo '<p class="col-lg-6 btn-success">' . $_SESSION['success'] . '</p>';
+              unset($_SESSION['success']);
+            }
+            if (!empty($_SESSION['err'])) {
+              echo '<p class="col-lg-6 btn-danger">' . $_SESSION['err'] . '</p>';
+              unset($_SESSION['err']);
+            }
+            ?>
+  </div>
+  </div>
          
    <div class="row">
     <div class="col-xs-6 col-md-6">
     <form>
     <div class="form-group">
     <label for="exampleInputPassword1">First Name</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="First Name">
+    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="First Name"  value="<?php echo $name?>">
   </div>
 
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" value="<?php echo $email?>">
     <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
   </div>
   
