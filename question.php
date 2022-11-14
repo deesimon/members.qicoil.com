@@ -53,7 +53,7 @@ if (!isset($_SESSION['email'])) {
             </div>
             <div>
             <a href="starter-frequencies.php" class="btn btn-primary btn-md  " role="button" aria-pressed="true">Keep My current Plan</a><br>
-            <small><a href="currant.php" class="" role="button" aria-pressed="true">Contiue WIth Downgrade</a></small>
+            <small><a href="current.php" class="" role="button" aria-pressed="true">Contiue WIth Downgrade</a></small>
           </div>
 
             <!-- <a href="starter-frequencies.php" class="btn btn-primary btn-md active " role="button" aria-pressed="true">Keep My current Plan</a>
