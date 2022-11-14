@@ -1328,6 +1328,7 @@ span.likes {
     width: 100%;
   }
   .drop #sort {width: 100%;}
+  
 }
 
 @media (max-width: 320px) {
