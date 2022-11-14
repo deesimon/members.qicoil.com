@@ -2,7 +2,7 @@
     
     <div class="check_listing" >
     <!-- <h5><b>Filter by Category</b></h5> -->
-         <button type="button" class="btn-link collapsed btndrop" data-toggle="collapse" data-target="#demobtn"><b>Filter by Category</b></button>
+         <button type="button" class="btn-link collapsed btndrop" data-toggle="collapse" data-target="#demobtn"><h5><b>Filter by Category</b></h5></button>
 <div id="demobtn">
   <?
   // print_r($SUBCATEGORIES);
@@ -69,7 +69,7 @@
 <div class="mt-5">
   <h5><b> Filter by Membership</b></h5>
 
-  <div>
+  
   <label class="form-check-label  text-left free" style="font-weight: normal">
     <input type="checkbox" class="form-check-input"  value="yes" 
     <?php if (strpos($_SERVER['REQUEST_URI'], 'starter-frequencies')) echo 'checked="checked"';?>>
