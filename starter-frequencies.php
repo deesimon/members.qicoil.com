@@ -100,7 +100,7 @@ function sortByKeyList($array, $seq)
     <div class="row">
       <div class="col-lg-12">
         <?php include 'sidebar.php'; ?>
-        <div class="col-md-9 serch_box1">
+        <div class="col-md-10 serch_box1">
           <div class="row">
             <div class="col-md-4">
               <h3 class="main-title">Free Frequencies</h3>
@@ -202,9 +202,11 @@ function sortByKeyList($array, $seq)
           <?php } ?>
 
           <div class="row">
+          <div class="col-md-12">
             <a href="https://qilifestore.com/collections/qi-coils/products/qi-coil-max-transformation-system" target="_blank" class="ad-mob-image-horizontal">
               <img src="https://members.qicoil.com/images/qc-max-admob-horizontal.jpg" alt="qi-coil-max-transformation-system" class="img_banner" />
             </a>
+                    </div>
           </div>
 
         </div>

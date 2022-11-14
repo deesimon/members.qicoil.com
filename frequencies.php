@@ -133,7 +133,7 @@ function sortByKeyList($array, $seq)
     <div class="row">
       <div class="col-lg-12">
         <?php include 'sidebar.php'; ?>
-        <div class="col-md-9 serch_box1">
+        <div class="col-md-10 serch_box1">
           <div class="row">
             <div class="col-md-4">
               <h3 class="main-title"><?php echo ((!empty($_GET['subcategory']) ? ucfirst($subcategory) : ucfirst($CATEGORIES[$_GET['category']]))); ?> Frequencies</h3>
@@ -186,11 +186,14 @@ function sortByKeyList($array, $seq)
           </div>
 
           <?php if (empty($response)) { ?>
+            <div class="row">
             <div class="col-md-12">
               <h5>No Record Found</h5>
-            </div>
+              </div>
+              </div>
           <?php } ?>
           <?php if (($_GET['category'] == '1' || empty($_GET['category'])) && empty($_GET['id'])) { ?>
+            <div class="row">
             <div class="col-md-12">
               <nav aria-label="Page navigation example">
                 <ul class="pagination">
@@ -212,12 +215,17 @@ function sortByKeyList($array, $seq)
                   <?php } ?>
                 </ul>
               </nav>
+                    </div>
             </div>
           <?php } ?>
 
+          <div class="row">
+          <div class="col-md-12">
           <a href="https://qilifestore.com/collections/qi-coils/products/qi-coil-max-transformation-system" target="_blank" class="ad-mob-image-horizontal">
             <img src="https://members.qicoil.com/images/qc-max-admob-horizontal.jpg" alt="qi-coil-max-transformation-system"/>
           </a>
+          </div>
+      </div>
         </div>
       </div>
     </div>

@@ -68,22 +68,25 @@
   ?>
 
   <h5><b> Filter by Membership</b></h5>
-  <label class="form-check-label  text-left free">
+
+  <div>
+  <label class="form-check-label  text-left free" style="font-weight: normal">
     <input type="checkbox" class="form-check-input"  value="yes" 
     <?php if (strpos($_SERVER['REQUEST_URI'], 'starter-frequencies')) echo 'checked="checked"';?>>
     Free </label>
-
-    <label class="form-check-label  premium">
+</div>
+<div>
+    <label class="form-check-label  premium" style="font-weight: normal">
     <input type="checkbox" class="form-check-input"  value="yes" 
     <?php if(!strpos($_SERVER['REQUEST_URI'], 'starter-frequencies') && ($_GET['category'] == 1 || $_GET['category'] == 2 || $_GET['category'] == 3)) echo 'checked="checked"';?>>
     Premium </label>
-
-
-    <label class="form-check-label inner_circle">
+</div>
+<div>
+    <label class="form-check-label inner_circle" style="font-weight: normal">
     <input type="checkbox" class="form-check-input"  value="yes" 
     <?php if(strpos($_SERVER['REQUEST_URI'], 'frequencies') && $_GET['category'] == 4) echo 'checked="checked"';?>>
     Inner Circle </label>
-
+</div>
 
     <h5 style=" display: inline-block;"><b><a href="favourites.php" class="<?php echo (strpos($_SERVER['REQUEST_URI'], 'favourites') !== false ? 'active' : 'text-dark');?>">Favourites</a></b></h5>
 
