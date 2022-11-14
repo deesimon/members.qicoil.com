@@ -1054,13 +1054,13 @@ include('footer.php');
         <h5 class="modal-title" id="PlaylistModalLabel">Create New Playlist</h5>
       </div>
       <div class="modal-body">
-        <form id="playlist_form">
+        <div id="playlist_form">
           <div class="form-group">
             <label for="playlist_name" class="col-form-label">Playlist Name:</label>
             <input type="text" name="playlist_name" class="form-control" id="playlist_name">
             <span class="error hide">Please enter playlist name</span>
           </div>
-        </form>
+    </div>
         <p style="color:#059f83">*You will have to again add frequency after creating playlist.</p>
       </div>
       <div class="modal-footer">
