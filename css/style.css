@@ -1324,6 +1324,9 @@ span.likes {
   .has-search {
     width: 100%;
   }
+  .drop{
+    width: 100%;
+  }
   .drop #sort {width: 100%;}
 }
 
