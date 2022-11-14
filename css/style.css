@@ -1115,6 +1115,9 @@ span.likes {
   .drop{
     width: 50%;
   }
+  .ad-mob-image-horizontal img {
+    width: 100%;
+}
 }
 
 @media (max-width: 600px) {
