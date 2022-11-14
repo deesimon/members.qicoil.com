@@ -131,7 +131,7 @@ function sortByKeyList($array, $seq)
 <body id="con_listing">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-lg-12">
+      
         <?php include 'sidebar.php'; ?>
         <div class="col-md-10 serch_box1">
           <div class="row">
@@ -228,7 +228,7 @@ function sortByKeyList($array, $seq)
       </div>
         </div>
       </div>
-    </div>
+ 
   </div>
   </div>
   </div>

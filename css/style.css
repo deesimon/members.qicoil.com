@@ -1090,7 +1090,7 @@ span.likes {
     display: table;
   }
 
-  ..response .col-md-4,.free-album .col-md-3,.featured-albums .col-md-3, .bottom-banner {
+  .response .col-md-4,.free-album .col-md-3,.featured-albums .col-md-3, .bottom-banner {
     padding: 5px;
   }
 
@@ -1327,7 +1327,7 @@ span.likes {
   .drop{
     width: 100%;
   }
-  .drop #sort {width: 100%;}
+ 
   
 }
 
