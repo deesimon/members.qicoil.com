@@ -31,7 +31,10 @@ $email=$_SESSION['email'];
     <div class="row">
       <div class="col-lg-12">
         <?php include 'sidebar.php'; ?>
-        <div class="col-md-9" style="background-color: white;">
+        <div class="col-md-10">
+        <div style="background: white; padding: 10px 0 10px 18px;">
+          <div class="row">
+
           <div class="row">
             <div class="col-md-12">
                 <!-- <h5>TDY Marketing</h5> -->
