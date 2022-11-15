@@ -38,7 +38,7 @@
       <div class="row">
 
         <div class="col-md-12">
-          <h2 class="text-center"> QUANTUM & RIFE FREQUENCY WEBAPP (BETA) </h2>
+          <h2 class="text-center"> QUANTUMs & RIFE FREQUENCY WEBAPP (BETA) </h2>
         </div>
         <div class="d-flex justify-content-center" id="get_stared">
 
