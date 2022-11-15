@@ -1,0 +1,18 @@
+on: push
+name:  Deploy website on push1
+jobs:
+  web-deploy:
+    name:  Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: Get latest codes
+      uses: actions/checkout@v2
+    
+    - name: Sync files
+      uses: SamKirkland/FTP-Deploy-Action@4.2.0
+      with:
+        server: 192.254.186.14
+        username: k9dog
+        password: p#W88X!j
+        server-dir: members.qicoil.com/
+        log-level: verbose
