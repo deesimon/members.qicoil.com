@@ -890,6 +890,9 @@ span.likes {
 .play_box .pp {
   padding-left: 0px;
 }
+.dropspace{
+  margin-bottom: 4px;
+}
 #sort {
   display: inline-block;
   width: 70%;
