@@ -101,8 +101,8 @@ if (!empty($playlist->frequency_id)) {
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-          <div class="col-xs-12 col-md-6 col-sm-6">
-            <div class="col-xs-3 col-md-1"><a href="<?php echo (!empty($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'frequencies.php'); ?>"> <img src="images/left.png" class="left_aerrow_bg"> </a> </div>
+          <div class="col-xs-12 col-md-6 col-sm-6 px-0 pb-4">
+            <div class="col-xs-3 col-md-1 px-0"><a href="<?php echo (!empty($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'frequencies.php'); ?>"> <img src="images/left.png" class="left_aerrow_bg"> </a> </div>
             <?php if ($not_found == true) { ?>
               <div class="col-md-9">
                 <h5>Playlist Not Found</h5>
