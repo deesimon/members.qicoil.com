@@ -1334,14 +1334,13 @@ span.likes {
     font-size: 15px;
     
   } 
-  @media (max-width: 420px) {
-    .card-body h5 {
-      font-size: 11px;
-     
-    }
-  }
  
-  
+}
+@media (max-width: 420px) {
+  .card-body h5 {
+    font-size: 11px;
+   
+  }
 }
 
 @media (max-width: 320px) {
