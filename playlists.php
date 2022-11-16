@@ -102,13 +102,13 @@ if (!empty($playlist->frequency_id)) {
       <div class="row">
         <div class="col-md-12">
           <div class="col-xs-12 col-md-6 col-sm-6 px-0 pb-4">
-            <div class="col-xs-3 col-md-1 px-0"><a href="<?php echo (!empty($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'frequencies.php'); ?>"> <img src="images/left.png" class="left_aerrow_bg"> </a> </div>
+            <div class="col-xs-2 col-md-1 px-0"><a href="<?php echo (!empty($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'frequencies.php'); ?>"> <img src="images/left.png" class="left_aerrow_bg"> </a> </div>
             <?php if ($not_found == true) { ?>
               <div class="col-md-9">
                 <h5>Playlist Not Found</h5>
               </div>
             <?php } else { ?>
-              <div class="col-xs-5 col-md-9 px-0">
+              <div class="col-xs-6 col-md-9 px-0">
                 <h5><?php echo $playlist_name; ?></h5>
               </div>
               <div class="col-xs-4 col-md-2">
