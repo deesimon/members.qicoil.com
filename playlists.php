@@ -108,7 +108,7 @@ if (!empty($playlist->frequency_id)) {
                 <h5>Playlist Not Found</h5>
               </div>
             <?php } else { ?>
-              <div class="col-xs-5 col-md-9">
+              <div class="col-xs-5 col-md-9 px-0">
                 <h5><?php echo $playlist_name; ?></h5>
               </div>
               <div class="col-xs-4 col-md-2">
