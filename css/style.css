@@ -1330,6 +1330,11 @@ span.likes {
   .drop{
     width: 100%;
   }
+  .card-body h5 {
+    font-size: 11px;
+    text-align: center;
+    font-weight: bold;
+  } 
  
   
 }
