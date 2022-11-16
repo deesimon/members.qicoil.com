@@ -57,7 +57,7 @@ $email=$_SESSION['email'];
   </div>
          
    <div class="row">
-    <div class="col-xs-6 col-md-6">
+    <div class="col-xs-10 col-md-6">
     <form action="post.php" method="post">
     <input type="hidden" name="update_name" value="1">
     <div class="form-group">
@@ -75,7 +75,7 @@ $email=$_SESSION['email'];
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 <div class="row">
-<div class="col-xs-6 col-md-12">
+<div class="col-xs-12 col-md-12">
 <form id="change_pw" method="post" action="post.php">
 <!-- 
 <label for="exampleInputPassword1">Change Password</label>
