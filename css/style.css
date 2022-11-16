@@ -890,9 +890,9 @@ span.likes {
 .play_box .pp {
   padding-left: 0px;
 }
-.dropspace{
-  margin-bottom: 4px;
-}
+#demo2 a:last-child {
+  margin-bottom: 20px;
+   }
 #sort {
   display: inline-block;
   width: 70%;
@@ -1331,10 +1331,15 @@ span.likes {
     width: 100%;
   }
   .card-body h5 {
-    font-size: 11px;
-    text-align: center;
-    font-weight: bold;
+    font-size: 15px;
+    
   } 
+  @media (max-width: 420px) {
+    .card-body h5 {
+      font-size: 11px;
+     
+    }
+  }
  
   
 }

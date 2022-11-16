@@ -59,7 +59,7 @@
         //   echo '<a class="' . $class . '" href="frequencies.php?category=' . $v->categoryId . '&subcategory=' . $v->id . '">' . $v->name . '</a>';
         // }
         if ($v->id != 1) {
-          echo '<a class="' . $class . 'dropspace" href="frequencies.php?category=' . $v->categoryId . '&subcategory=' . $v->id . '">' . $v->name . '</a>';
+          echo '<a class="' . $class . '" href="frequencies.php?category=' . $v->categoryId . '&subcategory=' . $v->id . '">' . $v->name . '</a>';
         }
       }
     }
