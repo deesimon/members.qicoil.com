@@ -17,15 +17,22 @@ function subscription($name, $email = null, $cardDetails, $prduct_id = null)
     $exYear = $cardDetails['exYear'];
     $exMonth = $cardDetails['exMonth'];
 
-    $customer_url=CUSTOMERS_URL;
-    $cc_data = array("email" => $email, "name" => $name);
-    // print_r($cc_data);
-    // die;
+    $customer_url = CUSTOMERS_URL;
+    $cc_data = array("email" => $email);
     $cc_post_data = http_build_query($cc_data);
-    $cc_res = curl_post($customer_url, $cc_post_data, $header);
+    $cc_res = curl_post($customer_url . '?' . $cc_post_data, '', $header);
     $CC_Json = json_decode($cc_res['res']);
-    //print_r($CC_Json);die;
-    $customer_id = $CC_Json->id;
+    $customer_retrive_data = $CC_Json->data;
+    if (!empty($customer_retrive_data)) {
+        $customer_id = $customer_retrive_data[0]->id;
+    } else {
+        $cc_data = array("email" => $email, "name" => $name);
+        $cc_post_data = http_build_query($cc_data);
+        $cc_res = curl_post($customer_url, $cc_post_data, $header);
+        $CC_Json = json_decode($cc_res['res']);
+        $customer_id = $CC_Json->id;
+    }
+
     if (!empty($customer_id)) {
 
         $sub_url=SUBSCRIPTIONS_URL;
