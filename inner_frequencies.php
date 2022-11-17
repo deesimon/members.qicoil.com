@@ -221,7 +221,7 @@ foreach ($response->favorite as $v) {
 
                   <?php } ?>
                 </div>
-                <div class="col-md-8"><?php echo $description ?></div>
+                <div class="col-md-8"> <?php  echo nl2br($description)?></div>
 
               </div>
               <div class="col-md-12 border_bottom"> </div>
