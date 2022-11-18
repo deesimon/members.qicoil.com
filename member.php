@@ -21,8 +21,8 @@ $response = $response->members;
 if ($response[0]->fetch_flag != -1) {
   $members = $response;
 }
-// print_r($members);
-// die;
+ //print_r($response);
+ //die;
 
 ?>
 
@@ -58,37 +58,73 @@ if ($response[0]->fetch_flag != -1) {
           </div>
           <div class="row">
             <div class="col-md-12">
-            <div class="table-responsive">
-              <table class="table table-bordered table-striped table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col">Membership Name</th>
-                    <th scope="col" align="right">Price</th>
-                    <th scope="col">Subscriptions Date</th>
-                    <th scope="col">Renewal Date</th>
-                    <th scope="col"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php if (!empty($members)) {
-                    foreach ($members as $v) { ?>
-                      <tr>
-                        <td scope="row"><?php echo $GLOBALS['CATEGORIES'][$v->categoryId] . ' - ' . ucfirst($v->planType); ?></td>
-                        <td scope="row" align="right">$<?php echo $v->amount; ?></td>
-                        <td scope="row"><?php echo date('Y-m-d', strtotime($v->subscriptionDate)); ?></td>
-                        <td scope="row"><?php echo date('Y-m-d', strtotime($v->expirationDate)); ?></td>
-                        <td scope="row"><a href="question.php?id=<?php echo ($v->id);?>">Downgrade</a></td>
-                      </tr>
-                    <?php }
-                  } else { ?>
+              <div class="table-responsive">
+                <table class="table table-bordered table-striped table-hover">
+                  <thead>
                     <tr>
-                      <td scope="row" colspan="5">You do not have an active membership.</td>
+                      <th scope="col">Membership Name</th>
+                      <th scope="col" align="right">Price</th>
+                      <th scope="col">Subscriptions Date</th>
+                      <th scope="col">Renewal Date</th>
+                      <th scope="col"></th>
                     </tr>
-                  <?php } ?>
-                </tbody>
-              </table>
-                  </div>
-              <div class="col sub-div">
+                  </thead>
+                  <tbody>
+                    <?php if (!empty($members)) {
+                      foreach ($members as $v) {
+                        if($v->cancelStatus ==0){
+                        // print_r($v);die; ?>
+                        <tr>
+                          <td scope="row"><?php echo $GLOBALS['CATEGORIES'][$v->categoryId] . ' - ' . ucfirst($v->planType); ?></td>
+                          <td scope="row" align="right">$<?php echo $v->amount; ?></td>
+                          <td scope="row"><?php echo date('Y-m-d', strtotime($v->subscriptionDate)); ?></td>
+                          <td scope="row"><?php echo date('Y-m-d', strtotime($v->expirationDate)); ?></td>
+                          <td scope="row"><a href="question.php?id=<?php echo ($v->id); ?>">Downgrade</a></td>
+                        </tr>
+                      <?php }
+                      }
+                    } else { ?>
+                      <tr>
+                        <td scope="row" colspan="5">You do not have an active membership.</td>
+                      </tr>
+                    <?php } ?>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-md-12">
+              <h2 class="main-title"><b>Cancel Subscriptions</b></h2>
+            </div>
+            
+              <table class="table table-bordered table-striped table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">Membership Name</th>
+                      <th scope="col" align="right">Price</th>
+                      <th scope="col">Subscriptions Date</th>
+                      
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php if (!empty($members)) {
+                      foreach ($members as $v) {
+                        if($v->cancelStatus ==1){
+                        // print_r($v);die; ?>
+                        <tr>
+                          <td scope="row"><?php echo $GLOBALS['CATEGORIES'][$v->categoryId] . ' - ' . ucfirst($v->planType); ?></td>
+                          <td scope="row" align="right">$<?php echo $v->amount; ?></td>
+                          <td scope="row"><?php echo date('Y-m-d', strtotime($v->subscriptionDate)); ?></td>
+                         
+                        </tr>
+                      <?php }
+                      }
+                    } else { ?>
+                      <tr>
+                        <td scope="row" colspan="5">You do not have an active membership.</td>
+                      </tr>
+                    <?php } ?>
+                  </tbody>
+                </table>
+                <div class="col sub-div">
                 <h4><a href="https://www.qicoil.com/pricing/">View all Membership Options</a></h4>
               </div>
             </div>

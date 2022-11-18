@@ -54,7 +54,7 @@ if(isset($_GET['id'])&&isset($_GET['cancel'])&&$_GET['cancel']==1){
             <div class="row">
             <div class="col-xs-6 col-md-6">
             <form>
-            <h5 class="main-title "><b>why are you downgradding your loom print?</b></h5>
+            <h5 class="main-title "><b>why are you downgrading your loom print?</b></h5>
             <h5> check any and all reasons</h5>
             <div>
             <div class="form-check">

@@ -52,8 +52,8 @@ $id=$_GET['id'];
                </ul>
             </div>
             <div>
-            <a href="starter-frequencies.php" class="btn btn-primary btn-md  " role="button" aria-pressed="true">Keep My current Plan</a><br>
-            <small><a href="current.php?id=<?php echo ($id); ?>" class="" role="button" aria-pressed="true">Contiue WIth Downgrade</a></small>
+            <a href="starter-frequencies.php" class="btn btn-primary btn-md  " role="button" aria-pressed="true">Keep My Current Plan</a><br>
+            <small><a href="current.php?id=<?php echo ($id); ?>" class="" role="button" aria-pressed="true">Continue WIth Downgrade</a></small>
           </div>
 
             <!-- <a href="starter-frequencies.php" class="btn btn-primary btn-md active " role="button" aria-pressed="true">Keep My current Plan</a>
