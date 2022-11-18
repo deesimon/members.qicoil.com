@@ -92,7 +92,7 @@ if ($response[0]->fetch_flag != -1) {
                 </table>
               </div>
               <div class="col-md-12">
-              <h2 class="main-title"><b>Cancel Subscriptions</b></h2>
+              <h2 class="main-title"><b>Cancelled Subscriptions</b></h2>
             </div>
             
               <table class="table table-bordered table-striped table-hover">
