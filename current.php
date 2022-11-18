@@ -10,6 +10,21 @@ if (!isset($_SESSION['email'])) {
   exit;
 }
 
+if(isset($_GET['id'])&&isset($_GET['cancel'])&&$_GET['cancel']==1){
+  $userid = $_SESSION['id'];
+  $subscriptionid = $_GET['id'];
+  $header = array('Authorization: Bearer ' . $_SESSION['token'], 'Content-Type: application/x-www-form-urlencoded');
+  $data = array('userid' => $_SESSION['id'],'subscriptionid' => $_GET['id']);
+  $url='https://apiadmin.qienergy.ai/api/cancel_subscription';
+  $post_data = http_build_query($data);
+  $res = curl_post($url, $post_data, $header);
+  $response = json_decode($res['res']);
+  // print_r($response);die;
+  header('location:member.php');
+  die;
+  }
+  
+
 ?>
 
 <!DOCTYPE html>
@@ -89,7 +104,7 @@ if (!isset($_SESSION['email'])) {
        </div>
     
 </form>
-<button type="submit" class="btn btn-primary btn-sm">Complete downgrade</button>
+<a href="current.php?id=<?php echo $_GET['id']; ?>&cancel=1" class="btn btn-primary btn-sm">Complete downgrade</a>
     <a href="question.php" class="btn btn-primary btn-sm " role="button" aria-pressed="true">Back to prev</a>
 </div>
 </div>
