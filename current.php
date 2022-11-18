@@ -1,7 +1,7 @@
 <?php
 //ini_set('display_errors', 1);
 //ini_set('display_startup_errors', 1);
-error_reporting(2);
+error_reporting(1);
 include('array.php');
 include('constants.php');
 // session_start();
@@ -15,7 +15,7 @@ if(isset($_GET['id'])&&isset($_GET['cancel'])&&$_GET['cancel']==1){
   $subscriptionid = $_GET['id'];
   $header = array('Authorization: Bearer ' . $_SESSION['token'], 'Content-Type: application/x-www-form-urlencoded');
   $data = array('userid' => $_SESSION['id'],'subscriptionid' => $_GET['id']);
-  $url='https://apiadmin.qienergy.ai/api/cancel_subscription';
+  $url= CANCEL_SUBSCRIPTION;
   $post_data = http_build_query($data);
   $res = curl_post($url, $post_data, $header);
   $response = json_decode($res['res']);
