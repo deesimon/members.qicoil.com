@@ -69,7 +69,7 @@ die;
             <div class="row">
             <div class="col-xs-6 col-md-6">
             <form>
-            <h5 class="main-title "><b>Why are you downgrading your loom print?</b></h5>
+            <h4 class="main-title "><b>Why are you downgrading your loom print?</b></h4>
             <h5> check any and all reasons</h5>
             <div>
             <div class="form-check">

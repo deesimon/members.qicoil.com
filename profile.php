@@ -61,7 +61,7 @@ $email=$_SESSION['email'];
     <form action="post.php" method="post">
     <input type="hidden" name="update_name" value="1">
     <div class="form-group">
-    <label for="exampleInputPassword1">First Name</label>
+    <label for="exampleInputPassword1">Name</label>
     <input type="text" name="name" class="form-control" id="exampleInputPassword1" placeholder="First Name"  value="<?php echo $name?>">
   </div>
 
