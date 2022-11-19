@@ -1,7 +1,7 @@
 <?php
 //ini_set('display_errors', 1);
 //ini_set('display_startup_errors', 1);
-error_reporting(2);
+error_reporting(1);
 include('array.php');
 include('constants.php');
 // session_start();
@@ -24,6 +24,7 @@ $id=$_GET['id'];
     font-weight: normal;
     padding-right: 10px;
 }
+
   </style>
 </head>
 <?php include 'header.php'; ?>
@@ -33,7 +34,7 @@ $id=$_GET['id'];
     <div class="row">
       <div class="col-lg-12">
         <?php include 'sidebar.php'; ?>
-        <div class="col-md-10" style="background-color: white;">
+        <div class="col-md-10 p-4" style="background-color: white;">
           <div class="row">
             <div class="col-md-12">
                 <!-- <h5>TDY Marketing</h5> -->
@@ -51,14 +52,12 @@ $id=$_GET['id'];
                 <li> <i class="fa fa-close closebtn"></i>822+ Quantum Frequencies</li>
                </ul>
             </div>
+            
             <div>
-            <a href="starter-frequencies.php" class="btn btn-primary btn-md  " role="button" aria-pressed="true">Keep My Current Plan</a><br>
+            <p><a href="starter-frequencies.php" class="btn btn-primary btn-md  " role="button" aria-pressed="true">Keep My Current Plan</a></p>
             <small><a href="current.php?id=<?php echo ($id); ?>" class="" role="button" aria-pressed="true">Continue WIth Downgrade</a></small>
           </div>
-
-            <!-- <a href="starter-frequencies.php" class="btn btn-primary btn-md active " role="button" aria-pressed="true">Keep My current Plan</a>
-        <a href="currant.php" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Contiue WIth Downgrade</a> -->
-
+        
          </div>
       
        </div>

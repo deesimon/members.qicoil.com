@@ -11,31 +11,46 @@ if (!isset($_SESSION['email'])) {
 }
 
 if(isset($_GET['id'])&&isset($_GET['cancel'])&&$_GET['cancel']==1){
-  $userid = $_SESSION['id'];
-  $subscriptionid = $_GET['id'];
-  $header = array('Authorization: Bearer ' . $_SESSION['token'], 'Content-Type: application/x-www-form-urlencoded');
-  $data = array('userid' => $_SESSION['id'],'subscriptionid' => $_GET['id']);
-  $url= CANCEL_SUBSCRIPTION;
-  $post_data = http_build_query($data);
-  $res = curl_post($url, $post_data, $header);
-  $response = json_decode($res['res']);
-  // print_r($response);die;
-  header('location:member.php');
-  die;
+$userid = $_SESSION['id'];
+$subscriptionid = $_GET['id'];
+$header = array('Authorization: Bearer ' . $_SESSION['token'], 'Content-Type: application/x-www-form-urlencoded');
+$data = array('userid' => $_SESSION['id'],'subscriptionid' => $_GET['id']);
+$url='https://apiadmin.qienergy.ai/api/cancel_subscription';
+$post_data = http_build_query($data);
+$res = curl_post($url, $post_data, $header);
+$response = json_decode($res['res']);
+  //print_r($response);die;
+  $subscription = $response->subscription;
+  $flag = $subscription[0]->fetch_flag;
+  $msg = $subscription[0]->rsp_msg;
+  if ($flag == 1) {
+    $_SESSION['success'] = $msg;
+  } else {
+    $_SESSION['err'] = 'That subscriptions cancellation is not valid';
   }
   
+
+header('location:member.php');
+die;
+}
+
+
+
+
+
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Profile  - <?php echo $GLOBALS['SITENAME'] ?></title>
+<title>Current  - <?php echo $GLOBALS['SITENAME'] ?></title>
   <?php include 'head.php'; ?>
   <style>
     .form123{
         background-color: white;
     }
+    
     </style>
 </head>
 <?php include 'header.php'; ?>
@@ -45,7 +60,7 @@ if(isset($_GET['id'])&&isset($_GET['cancel'])&&$_GET['cancel']==1){
     <div class="row">
       <div class="col-lg-12">
         <?php include 'sidebar.php'; ?>
-        <div class="col-md-10" style="background-color: white;">
+        <div class="col-md-10 p-4" style="background-color: white;">
           <div class="row">
             <div class="col-md-12">
              
@@ -54,7 +69,7 @@ if(isset($_GET['id'])&&isset($_GET['cancel'])&&$_GET['cancel']==1){
             <div class="row">
             <div class="col-xs-6 col-md-6">
             <form>
-            <h5 class="main-title "><b>why are you downgrading your loom print?</b></h5>
+            <h5 class="main-title "><b>Why are you downgrading your loom print?</b></h5>
             <h5> check any and all reasons</h5>
             <div>
             <div class="form-check">
@@ -98,7 +113,7 @@ if(isset($_GET['id'])&&isset($_GET['cancel'])&&$_GET['cancel']==1){
                  <label class="form-check-label" for="defaultCheck1">
                  Another reason
            </div>
-               
+               <br>
             </div>
          </div> 
        </div>
