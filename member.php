@@ -22,9 +22,8 @@ if ($response[0]->fetch_flag != -1) {
   $members = $response;
 }
 $totalmembership=count($members);
-//  print_r($members);
-//  die;
-
+ //print_r($response);
+ //die;
 
 ?>
 
@@ -40,16 +39,16 @@ $totalmembership=count($members);
     }
     .suc{
     
-  padding: 0px 100px 11px 1px;
-  text-align: center;
-  color: #059f83;
-
-    }
-    .error {
-      padding: 0px 100px 10px 1px;
-  text-align: center;
-    color: red;
-}
+    padding: 0px 100px 11px 1px;
+    text-align: center;
+    color: #059f83;
+  
+      }
+      .error {
+        padding: 0px 100px 10px 1px;
+    text-align: center;
+      color: red;
+  }
     .sub-div {
       padding: 7px;
       background: white;
@@ -65,7 +64,7 @@ $totalmembership=count($members);
         <?php include 'sidebar.php'; ?>
         <div class="col-sm-12 col-md-10">
           <div class="row">
-            <div class="col-md-12">
+             <div class="col-md-12">
             <?php if (!empty($_SESSION['success'])) {
               echo '<h4 class="col-lg-12 suc">' . $_SESSION['success'] . '</h4>';
               unset($_SESSION['success']);
@@ -76,7 +75,7 @@ $totalmembership=count($members);
             }
             ?>
             </div>
-             <div class="col-md-12">
+            <div class="col-md-12">
               <h2 class="main-title"><b>My Subscriptions</b></h2>
             </div>
           </div>
@@ -95,11 +94,9 @@ $totalmembership=count($members);
                   </thead>
                   <tbody>
                     <?php if (!empty($members)) {
-                      
-                      $i=0;
                       foreach ($members as $v) {
                         if($v->cancelStatus ==0){
-                        //  print_r($v);die; ?>
+                        // print_r($v);die; ?>
                         <tr>
                           <td scope="row"><?php echo $GLOBALS['CATEGORIES'][$v->categoryId] . ' - ' . ucfirst($v->planType); ?></td>
                           <td scope="row" align="right">$<?php echo $v->amount; ?></td>
@@ -107,11 +104,7 @@ $totalmembership=count($members);
                           <td scope="row"><?php echo date('Y-m-d', strtotime($v->expirationDate)); ?></td>
                           <td scope="row"><a href="question.php?id=<?php echo ($v->id); ?>">Downgrade</a></td>
                         </tr>
-                      <?php }elseif($totalmembership ==$i){ ?>
-                        <tr>
-                        <td scope="row" colspan="5">You do not have an active membership.</td>
-                      </tr>
-                        <?php }
+                      <?php }
                       }
                     } else { ?>
                       <tr>
@@ -139,7 +132,7 @@ $totalmembership=count($members);
                     <?php if (!empty($members)) {
                       foreach ($members as $v) {
                         if($v->cancelStatus ==1){
-                         //print_r($v);die; ?>
+                        // print_r($v);die; ?>
                         <tr>
                           <td scope="row"><?php echo $GLOBALS['CATEGORIES'][$v->categoryId] . ' - ' . ucfirst($v->planType); ?></td>
                           <td scope="row" align="right">$<?php echo $v->amount; ?></td>
@@ -150,7 +143,7 @@ $totalmembership=count($members);
                       }
                     } else { ?>
                       <tr>
-                        <td scope="row" colspan="5">You do not have a cancelled membership.</td>
+                        <td scope="row" colspan="5">You do not have an active membership.</td>
                       </tr>
                     <?php } ?>
                   </tbody>
