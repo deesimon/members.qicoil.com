@@ -101,6 +101,7 @@ if ($response[0]->fetch_flag != -1) {
                       <th scope="col">Membership Name</th>
                       <th scope="col" align="right">Price</th>
                       <th scope="col">Subscriptions Date</th>
+                      <th scope="col">Cancelled Subscriptions Date</th>
                       
                     </tr>
                   </thead>
@@ -113,7 +114,7 @@ if ($response[0]->fetch_flag != -1) {
                           <td scope="row"><?php echo $GLOBALS['CATEGORIES'][$v->categoryId] . ' - ' . ucfirst($v->planType); ?></td>
                           <td scope="row" align="right">$<?php echo $v->amount; ?></td>
                           <td scope="row"><?php echo date('Y-m-d', strtotime($v->subscriptionDate)); ?></td>
-                         
+                          <td scope="row"><?php echo date('Y-m-d', strtotime($v->cancelDate));?></td>
                         </tr>
                       <?php }
                       }
