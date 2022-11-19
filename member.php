@@ -101,7 +101,7 @@ if ($response[0]->fetch_flag != -1) {
                       <th scope="col">Membership Name</th>
                       <th scope="col" align="right">Price</th>
                       <th scope="col">Subscriptions Date</th>
-                      <th scope="col">Cancelled Subscriptions Date</th>
+                      <th scope="col">Cancelled Date</th>
                       
                     </tr>
                   </thead>
