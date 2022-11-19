@@ -107,7 +107,7 @@ $totalmembership=count($members);
                           <td scope="row"><?php echo date('Y-m-d', strtotime($v->expirationDate)); ?></td>
                           <td scope="row"><a href="question.php?id=<?php echo ($v->id); ?>">Downgrade</a></td>
                         </tr>
-                      <?php }elseif($$totalmembership ==$i){ ?>
+                      <?php }elseif($totalmembership ==$i){ ?>
                         <tr>
                         <td scope="row" colspan="5">You do not have an active membership.</td>
                       </tr>
