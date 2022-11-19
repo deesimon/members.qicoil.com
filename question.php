@@ -43,7 +43,7 @@ $id=$_GET['id'];
           </div>
           <div class="row">
             <div class="col-xs-6 col-md-6">
-            <h5 class="main-title "><b>You'all also no longer be  able to use three features</b></h5>
+            <h4 class="main-title "><b>You'all also no longer be  able to use three features</b></h4>
             <div>
                 <ul>
                
