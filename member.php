@@ -111,7 +111,7 @@ $totalmembership=count($members);
                         <tr>
                         <td scope="row" colspan="5">You do not have an active membership.</td>
                       </tr>
-                        <?php }
+                        <?php }$i++;
                       }
                     } else { ?>
                       <tr>
