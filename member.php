@@ -95,9 +95,11 @@ $totalmembership=count($members);
                   </thead>
                   <tbody>
                     <?php if (!empty($members)) {
+                      
+                      $i=0;
                       foreach ($members as $v) {
                         if($v->cancelStatus ==0){
-                        // print_r($v);die; ?>
+                        //  print_r($v);die; ?>
                         <tr>
                           <td scope="row"><?php echo $GLOBALS['CATEGORIES'][$v->categoryId] . ' - ' . ucfirst($v->planType); ?></td>
                           <td scope="row" align="right">$<?php echo $v->amount; ?></td>
@@ -105,7 +107,11 @@ $totalmembership=count($members);
                           <td scope="row"><?php echo date('Y-m-d', strtotime($v->expirationDate)); ?></td>
                           <td scope="row"><a href="question.php?id=<?php echo ($v->id); ?>">Downgrade</a></td>
                         </tr>
-                      <?php }
+                      <?php }elseif($totalmembership ==$i){ ?>
+                        <tr>
+                        <td scope="row" colspan="5">You do not have an active membership.</td>
+                      </tr>
+                        <?php }
                       }
                     } else { ?>
                       <tr>
@@ -130,7 +136,7 @@ $totalmembership=count($members);
                       <th scope="col" align="right">Price</th>
                       <th scope="col">Subscriptions Date</th>
                       <th scope="col">Cancelled Date</th>
-                      
+                  
                     </tr>
                   </thead>
                   <tbody>
@@ -143,6 +149,7 @@ $totalmembership=count($members);
                           <td scope="row" align="right">$<?php echo $v->amount; ?></td>
                           <td scope="row"><?php echo date('Y-m-d', strtotime($v->subscriptionDate)); ?></td>
                           <td scope="row"><?php echo date('Y-m-d', strtotime($v->cancelDate));?></td>
+                          
                         </tr>
                       <?php }
                       }
