@@ -74,12 +74,13 @@ $totalmembership=count($members);
               unset($_SESSION['err']);
             }
             ?>
-            </div>
-            <div class="col-md-12">
-              <h2 class="main-title"><b>My Subscriptions</b></h2>
-            </div>
+            
+          
           </div>
           <div class="row">
+          <div class="col-md-12">
+              <h2 class="main-title"><b>My Subscriptions</b></h2>
+            </div>
             <div class="col-md-12">
               <div class="table-responsive">
                 <table class="table table-bordered table-striped table-hover">
@@ -114,9 +115,13 @@ $totalmembership=count($members);
                   </tbody>
                 </table>
               </div> 
+           </div>
+                    </div>
+                 <div class="row">
               <div class="col-md-12">
               <h2 class="main-title"><b>Cancelled Subscriptions</b></h2>
             </div>
+            <div class="col-md-12">
             <div class="table-responsive">
               <table class="table table-bordered table-striped table-hover">
                   <thead>
@@ -148,6 +153,7 @@ $totalmembership=count($members);
                     <?php } ?>
                   </tbody>
                 </table>
+                    </div>
                     </div>
                 <div class="col sub-div">
                 <h4><a href="https://www.qicoil.com/pricing/">View all Membership Options</a></h4>
