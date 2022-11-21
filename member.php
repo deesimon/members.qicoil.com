@@ -113,11 +113,11 @@ $totalmembership=count($members);
                     <?php } ?>
                   </tbody>
                 </table>
-              </div>
+              
               <div class="col-md-12">
               <h2 class="main-title"><b>Cancelled Subscriptions</b></h2>
             </div>
-            <div class="table-responsive">
+          
                 <table class="table table-bordered table-striped table-hover">
                   <thead>
                     <tr>
