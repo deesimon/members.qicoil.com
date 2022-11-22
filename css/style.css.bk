@@ -50,6 +50,7 @@ body {
   border: none;
   width: 100%;
   text-align: left;
+  margin-top: 10px;
   background: none;
   color: #000;
   text-decoration: none;
@@ -435,13 +436,12 @@ input[type="range"][orient="vertical"] {
 
 .nav-link.pro_shape {
   background: #059f83;
-    border-radius: 100%;
-    padding: 8px !important;
-    color: #fff !important;
-    text-transform: uppercase;
-    text-align: center;
-    aspect-ratio: 1;
-    font-size: 10px;
+  border-radius: 52px;
+  color: #fff !important;
+  text-transform: uppercase;
+  text-align: center;
+  height: 50px;
+  width: 46px;
 }
 
 .check_listing {
@@ -452,7 +452,6 @@ input[type="range"][orient="vertical"] {
   width: 25%;*/
   padding: 10px 0 10px 6px;
   display: grid;
-  margin-top:52px;
 }
 
 .has-search .form-control {
@@ -647,7 +646,8 @@ input[type="range"][orient="vertical"] {
 }
 
 .card-body {
-  padding: 10px;
+  padding: 11px 0 0 0 !important;
+  text-align: left !important;
 }
 
 .top_dis {
@@ -754,7 +754,6 @@ input[type="range"][orient="vertical"] {
   font-size: 17px;
   text-align: center;
   font-weight: bold;
-  line-height:1.2;
 }
 .new span {
   vertical-align: top;
@@ -764,12 +763,10 @@ span.likes {
   vertical-align: top;
 }
 
-.logo a {
-  display: block;
-  max-width: 135px;
-  width: 100%;
+.logo {
+  text-align: center;
+  padding-top: 18px;
 }
-
 .creditcard_badges {
   padding: 15px 0;
 }
@@ -1116,8 +1113,12 @@ span.likes {
   .single-testimonial-before-checkout {
     font-size: 11px;
   }
-
-
+  .has-search {
+    width: 50%;
+  }
+  .drop{
+    width: 50%;
+  }
   .ad-mob-image-horizontal img {
     width: 100%;
 }
@@ -1135,7 +1136,9 @@ span.likes {
     width: 100%;
   }
 
- 
+  .has-search {
+    width: 50%;
+  }
   .pro_sell {
     text-align: center;
   }
@@ -1412,148 +1415,3 @@ span.likes {
     width: max-content;
   }
 }
-
-/**NEW updates 18-11-2022**/
-
-#con_listing .btndrop {
-    padding-right: 6px;
-}
-
-#con_listing .btndrop:after {
-   content: "\e114";
-   transition: all .3s ease-in
-}
-
-.btn-link:after{
-    transition: all .3s ease-in
-    
-}
-
-button.collapsed:after{
-    transform: rotate(180deg);
-}
-
-
-.ad-mob-image{
-    margin-top:1em;
-    display: block;
-    max-width:260px;
-    width:100%;
-}
-
-.ad-mob-image-horizontal{
-    display: block;
-    max-width: 728px;
-    width:100%;
-}
-
-.ad-mob-image-horizontal img{
-    border-radius:5px;
-    width:100%;
-}
-
-.new a{
-    display:block;
-    max-width:175px;
-    width:100%;
-    margin:0 auto;
-}
-
-.new a img{
-    width:100%;
-    height:auto;
-}
-
-.sun{
-    width: 100%;
-    max-width: 250px;
-    margin-right: 3%;
-    height: auto;
-}
-
-.ad-mob-image img{
-    border-radius:5px;
-}
-
-.freq-title{
-    font-size:1.75em;
-}
-
-.navbar {
-    margin-bottom: 0;
-}
-
-#header .row {
-    align-items: center;
-}
-
-
-.drop {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.drop label {
-    flex: 0 1 15%;
-    margin-bottom: 0;
-}
-
-.drop select {
-    flex: 0 1 85%;
-}
-
-/* Footer SECTION */
-footer{
-  margin-top: 1em;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  background: #222;
-  color: #9f9f9f;
-  text-align: center;
-}
-
-footer a{
-  color:#ac7210;
-  transition: 0.3s all ease-in-out;
-}
-footer a:hover{
-  color:#d29022;
-}
-
-footer p{
-  font-size: 13px;
-  margin-bottom: 4px;
-}
-
-/* END Footer SECTION */
-
-@media screen and (min-width: 767px){
-    
-    .navbar-nav {
-    align-items: center;
-}
-    
-    .main-menu,
-    .main-menu .navbar-collapse{
-        padding-right: 0;
-    }
-    
-    
-    .container-fluid {
-    padding-left: 5% !important;
-    padding-right: 5% !important;
-    }
-    
-}
-
-@media screen and (max-width: 960px){
-    
-.ad-mob-image{
-    display:none;
-}
-    
-}
-
-
-

@@ -35,7 +35,7 @@ $page = basename($_SERVER['REQUEST_URI'], '?' . $_SERVER['QUERY_STRING']);
                 </div>
             </div>
 
-            <nav class="navbar navbar-expand-lg navbar-light  col-8" id="#topheader">
+            <nav class="navbar navbar-expand-lg navbar-light  col-9 main-menu" id="#topheader">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>

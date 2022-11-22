@@ -157,10 +157,7 @@ function sortByKeyList($array, $seq)
 
                     </a>
 
-                    <?php if (isset($_SESSION['email'])) { ?>
-                      <span data-album="<?php echo $v->id; ?>" data-favorite="<?php echo ($favorite_or_not[$v->id] == 1 ? 1 : 0); ?>" class="favorite <?php echo ($favorite_or_not[$v->id] == 1 ? 'yes' : 'no'); ?>"></span>
-
-                    <?php } ?>
+               
                     <div class="card-body">
                       <h5 class="card-title">
                         <b><?php echo $v->title; ?> </b>
@@ -185,10 +182,7 @@ function sortByKeyList($array, $seq)
                       <img src="<?php echo (!empty($v->audio_folder) ? 'https://www.qicoilapi.ingeniusstudios.com/storage/app/public/uploads/' . $v->audio_folder . '/' . $v->image : 'images/freaquecy.png'); ?>" width="126" height="126" />
 
                     </a>
-                    <?php if (isset($_SESSION['email'])) { ?>
-                      <span data-album="<?php echo $v->id; ?>" data-favorite="<?php echo ($favorite_or_not[$v->id] == 1 ? 1 : 0); ?>" class="favorite <?php echo ($favorite_or_not[$v->id] == 1 ? 'yes' : 'no'); ?>"></span>
-
-                    <?php   } ?>
+              
 
                     <div class="card-body">
                       <h5 class="card-title">

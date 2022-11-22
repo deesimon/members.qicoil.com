@@ -211,17 +211,17 @@ foreach ($response->favorite as $v) {
               <div class="col-md-1"><a href="<?php echo (!empty($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'frequencies.php'); ?>"> <img src="images/left.png" class="left_aerrow_bg"> </a> </div>
               <div class="col-md-12">
                 <div class="col-md-12">
-                  <h5><?php echo $title ?></h5>
+                  <h1 class="freq-title"><?php echo $title ?></h1>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-5">
                   <img src="<?php echo (!empty($image) ? 'https://www.qicoilapi.ingeniusstudios.com/storage/app/public/uploads/' . $image : 'images/freaquecy.png'); ?>" width="126" height="126" class="sun">
                   <?php if (isset($_SESSION['email'])) {  ?>
                     <span data-album="<?php echo $_GET['id']; ?>" data-favorite="<?php echo ($favorite_or_not[$_GET['id']] == 1 ? 1 : 0); ?>" class="favorite <?php echo ($favorite_or_not[$_GET['id']] == 1 ? 'yes' : 'no'); ?>" style=" vertical-align: top; "></span>
 
                   <?php } ?>
                 </div>
-                <div class="col-md-8"> <?php  echo nl2br($description)?></div>
+                <div class="col-md-7"> <?php  echo nl2br($description)?></div>
 
               </div>
               <div class="col-md-12 border_bottom"> </div>

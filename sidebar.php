@@ -2,7 +2,7 @@
     
     <div class="check_listing" >
     <!-- <h5><b>Filter by Category</b></h5> -->
-         <button type="button" class="btn-link collapsed btndrop" data-toggle="collapse" data-target="#demobtn"><b style="font-size: 15px;">Filter by Category</b></button>
+         <button id="filter-by-category" type="button" class="btn-link collapsed btndrop" data-toggle="collapse" aria-expanded="false" data-target="#demobtn"><b style="font-size: 15px;">Filter by Category</b></button>
 <div id="demobtn">
   <?
   // print_r($SUBCATEGORIES);
@@ -129,6 +129,7 @@
 
 
 <script>
+
   $('.free').click(function() {
     window.location.href = 'https://members.qicoil.com/starter-frequencies.php';
     return false;

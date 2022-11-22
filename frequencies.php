@@ -161,15 +161,13 @@ function sortByKeyList($array, $seq)
             foreach ($frequencies as $v) { //print_r($v);die;
               $i++;
             ?>
-              <div class="col-xs-6 col-md-4 ">
+              <div class="col-xs-6 col-md-3 ">
                 <div class="new">
                   <a href="inner_frequencies.php?id=<?php echo $v->id;
                                                     if (!empty($_GET['category'])) echo '&category=' . $_GET['category']; ?>">
 
                     <img src="<?php echo (!empty($v->audio_folder) ? 'https://www.qicoilapi.ingeniusstudios.com/storage/app/public/uploads/' . $v->audio_folder . '/' . $v->image : 'images/freaquecy.png'); ?>" width="126" height="126"> </a>
-                  <?php if (isset($_SESSION['email'])) { ?>
-                    <span data-album="<?php echo $v->id; ?>" data-favorite="<?php echo ($favorite_or_not[$v->id] == 1 ? 1 : 0); ?>" class="favorite <?php echo ($favorite_or_not[$v->id] == 1 ? 'yes' : 'no'); ?>"></span>
-                  <?php   } ?>
+                
                   <div class="card-body">
                     <h5 class="card-title"><b>
                         <?php
