@@ -434,7 +434,7 @@ if (!empty($_POST)) {
           ele.find('.spinner-border').css('display', 'inline-block');
 
           $.ajax({
-            url: "97monthly_1997lifetime_higherQuantum.php",
+            url: "97monthly_1997lifetime_higherquantum.php",
             type: "POST",
             data: data,
             dataType: 'json',
