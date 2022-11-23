@@ -409,7 +409,7 @@ if (!empty($_POST)) {
           ele.find('.spinner-border').css('display', 'inline-block');
 
           $.ajax({
-            url: "1997lifetime_HigherQuantum.php",
+            url: "1997lifetime_higherquantum.php",
             type: "POST",
             data: data,
             dataType: 'json',

@@ -434,7 +434,7 @@ if (!empty($_POST)) {
           ele.find('.spinner-border').css('display', 'inline-block');
 
           $.ajax({
-            url: "297monthly_2997lifetime_vip.php",
+            url: "297monthly_2997lifetimevip.php",
             type: "POST",
             data: data,
             dataType: 'json',
