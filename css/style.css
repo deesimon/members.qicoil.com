@@ -892,7 +892,8 @@ span.likes {
   padding: 0px;
 }
 .play_box .pp {
-  padding-left: 0px;
+  padding-left: 0;
+  padding-right: 0;
 }
 #demo2 a:last-child {
   margin-bottom: 20px;
@@ -1425,11 +1426,23 @@ span.likes {
 .freq-container{
   margin-top: 1em;
   padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.freq-container__image{
+  flex:0 1 40%;
+}
+
+.freq-container__desc{
+  flex:0 1 60%;
 }
 
 .freq-container--title{
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1em;
 }
 
 .freq-title{
