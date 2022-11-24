@@ -209,15 +209,15 @@ foreach ($response->favorite as $v) {
           <div class="col-md-12">
             <div class="col-md-6 col-sm-6">
               <div class="col-md-1"><a href="<?php echo (!empty($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'frequencies.php'); ?>"> <img src="images/left.png" class="left_aerrow_bg"> </a> </div>
-              <div class="col-md-12">
+              <div class="col-md-12 freq-container">
               
-                <div class="col-md-5">
+                <div class="col-md-4 freq-container__image">
                   <img src="<?php echo (!empty($image) ? 'https://www.qicoilapi.ingeniusstudios.com/storage/app/public/uploads/' . $image : 'images/freaquecy.png'); ?>" width="126" height="126" class="sun">
                   
                 </div>
                 
-                <div class="col-md-7">
-                <div class="freq-title-container"><h1 class="freq-title"><?php echo $title ?></h1>
+                <div class="col-md-8 freq-container__desc">
+                <div class="freq-container--title"><h1 class="freq-title"><?php echo $title ?></h1>
                 <?php if (isset($_SESSION['email'])) {  ?>
                     <span data-album="<?php echo $_GET['id']; ?>" data-favorite="<?php echo ($favorite_or_not[$_GET['id']] == 1 ? 1 : 0); ?>" class="inner-player-fave favorite <?php echo ($favorite_or_not[$_GET['id']] == 1 ? 'yes' : 'no'); ?>" style=" vertical-align: top; "></span>
                   <?php } ?>
