@@ -981,9 +981,26 @@ span.likes {
   float: right;
   margin-left: 15px;
 }
-  /* .single-testimonial-content {
-  width:100%;
-  /* text-align: center; */
+
+
+.navbar-brand{
+  display: block;
+  flex: 0 1 50%;
+  text-align: center;
+  height: auto;
+  padding: 0;
+}
+
+.navbar-collapse{
+  flex: 0 1 100%;
+  text-align: center;
+}
+
+.navbar-toggler{
+  flex: 0 1 44%;
+  text-align: right;
+}
+
 }
 */ .single-testimonial-image img {
   width: 62%;
@@ -1416,6 +1433,11 @@ span.likes {
 }
 
 /**NEW updates 18-11-2022**/
+
+.main-menu .navbar-brand {
+ display: block;
+ height: auto
+}
 
 #con_listing .btndrop {
     padding-right: 6px;
