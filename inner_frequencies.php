@@ -208,7 +208,7 @@ foreach ($response->favorite as $v) {
         <div class="row">
           <div class="col-md-12">
           <div class="col-md-6">
-          <div class="col-md-1"><a href="<?php echo (!empty($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'frequencies.php'); ?>"> <img src="images/left.png" class="left_aerrow_bg"> </a> </div>
+          <a class="left_aerrow_bg" href="<?php echo (!empty($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'frequencies.php'); ?>"> <img src="images/left.png"> </a>
           </div>
           <div class="col-md-6">
           <div class="form-group has-search  offset-1" style="width:100%"> <span class="fa fa-search form-control-feedback"></span>
