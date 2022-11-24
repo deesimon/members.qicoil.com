@@ -1622,8 +1622,21 @@ footer p{
 
 @media screen and (max-width: 860px){
 
+  .back-arrow-container{
+    flex: 0 1 20%;
+    margin-right: 5%;
+  }
+
+  .search-container {
+    flex: 0 1 75%;
+  }
+
   .mobile-flex-wrap{
     flex-wrap: wrap;
+  }
+
+  .freq-container {
+    margin-bottom: 2em;
   }
 
   .frequency-container {
@@ -1632,6 +1645,7 @@ footer p{
   }
   .play-container {
     flex: 0 1 100%;
+    margin-bottom: 2em;
   }
 
 }
