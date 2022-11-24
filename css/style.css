@@ -926,20 +926,6 @@ span.likes {
     padding: 0px;
   }
 
-  /* .container-fluid .row .navbar {
-    margin: 0;
-    min-height: 0;
-    padding: 0;
-    justify-content: end;
-  } 
-
-  .navbar-light .navbar-toggler {
-    /* border-color: #d29022 !important;
-    background-color: #fff; 
-    height: 5vh;
-    width: 5vh;
-  }
-  */
   .navbar-light .navbar-toggler-icon {
     background-image: url(../images/gold-hamaburger-icon.png);
     margin-left: 11px;
@@ -1066,12 +1052,7 @@ span.likes {
     margin-top: 10px;
   }
 
-  .container-fluid .row .navbar {
-    margin: 0;
-    min-height: 0;
-    padding: 0;
-    justify-content: end;
-  }
+
 
   .navbar-light .navbar-toggler {
     /* border-color: #d29022 !important;
@@ -1182,12 +1163,6 @@ span.likes {
     margin: 0px 0px;
   }
 
-  .container-fluid .row .navbar {
-    margin: 0;
-    min-height: 0;
-    padding: 0;
-    justify-content: end;
-  }
 
   .navbar-light .navbar-toggler {
     /* border-color: #d29022 !important;
@@ -1258,12 +1233,6 @@ span.likes {
     margin: 0;
   }
 
-  .container-fluid .row .navbar {
-    margin: 0;
-    min-height: 0;
-    padding: 0;
-    justify-content: end;
-  }
 
   .navbar-light .navbar-toggler {
     /* border-color: #d29022 !important;
