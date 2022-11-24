@@ -892,6 +892,7 @@ span.likes {
   padding: 0px;
 }
 .play_box .pp {
+  margin-top: 1em;
   padding-left: 0;
   padding-right: 0;
 }
