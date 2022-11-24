@@ -1408,7 +1408,10 @@ span.likes {
   justify-content: space-between;
 }
 
-.custom-container div{
+.back-arrow-container,
+.search-container,
+.frequency-container,
+.play-container{
   flex: 0 1 50%;
 }
 
