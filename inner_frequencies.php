@@ -946,9 +946,7 @@ foreach ($response->favorite as $v) {
       audio.play();
     }
   </script>
-<?php 
-include('footer.php');
-  ?>
+
 </body>
 </html>
 <!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> -->
