@@ -281,7 +281,7 @@ foreach ($response->favorite as $v) {
                       </div>
                     </div>
             
-                    <canvas id="canvas" width="400"> </canvas>
+                    <!-- <canvas id="canvas" width="400"> </canvas> -->
                   </div>
                   <div class="pp">
                     <ul class="list_voice">
