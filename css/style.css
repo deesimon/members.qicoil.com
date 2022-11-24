@@ -508,7 +508,7 @@ input[type="range"][orient="vertical"] {
   border-radius: 7px;
   padding: 2em;
   vertical-align: middle;
-  width: 100%;
+  width: 100%; 
 
 }
 #inner_detail .white_bg {
@@ -525,7 +525,6 @@ input[type="range"][orient="vertical"] {
   border-radius: 7px;
   padding: 9px 0 15px 0;
   border:solid rgb(250, 250, 250);
-  max-width: 400px;
   width: 100%;
   background-color: #fff;
   margin-bottom: 12px;
