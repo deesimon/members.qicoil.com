@@ -221,10 +221,7 @@ foreach ($response->favorite as $v) {
           </div>
           </div>
 
-          <div class="custom-container">
-
-         
-
+          <div class="custom-container mobile-flex-wrap">
           
             <div class="frequency-container">
               

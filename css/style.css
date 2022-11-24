@@ -824,7 +824,7 @@ span.likes {
 .favorite {
   display: inline-block;
   cursor: pointer;
-  width: 32px;
+  width: 24px;
   height: 20px;
   background: url(../images/favorites.png) no-repeat;
 }
@@ -1424,7 +1424,6 @@ span.likes {
 
 
 .freq-container{
-  margin-top: 1em;
   padding: 0;
   display: flex;
   justify-content: space-between;
@@ -1593,10 +1592,16 @@ footer p{
 }
 
 @media screen and (max-width: 960px){
+
+  .custom-container{
+    margin-top: 1em;
+  }
     
 .ad-mob-image{
     display:none;
 }
+
+
 
 .freq-container{
   flex-wrap: wrap;
@@ -1615,4 +1620,18 @@ footer p{
 }
 
 
+@media screen and (max-width: 860px){
 
+  .mobile-flex-wrap{
+    flex-wrap: wrap;
+  }
+
+  .frequency-container {
+    flex: 0 1 100%;
+    margin-right: 0;
+  }
+  .play-container {
+    flex: 0 1 100%;
+  }
+
+}
