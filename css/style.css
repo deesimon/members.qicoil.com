@@ -675,6 +675,8 @@ input[type="range"][orient="vertical"] {
   padding: 7px;
   border: 1px solid #595959;
   border-radius: 5px;
+  max-width: 40px;
+  width: 100%;
 }
 #inner_detail p {
   color: #222222;
@@ -1409,8 +1411,12 @@ span.likes {
 }
 
 .back-arrow-container,
+.frequency-container{
+  flex: 0 1 45%;
+  margin-right: 5%;
+}
+
 .search-container,
-.frequency-container,
 .play-container{
   flex: 0 1 50%;
 }
@@ -1428,6 +1434,7 @@ span.likes {
 
 .freq-title{
   margin-top: 0;
+  margin-bottom: 0;
 }
 
 .freq-container__image{
@@ -1491,8 +1498,7 @@ button.collapsed:after{
 
 .sun{
     width: 100%;
-    max-width: 250px;
-    margin-right: 3%;
+    margin-right: 2%;
     height: auto;
 }
 
