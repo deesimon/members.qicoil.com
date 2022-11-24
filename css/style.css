@@ -998,6 +998,20 @@ span.likes {
   text-align: right;
 }
 
+.freq-container{
+  flex-wrap: wrap;
+}
+
+.freq-container__image{
+  flex:0 1 100%;
+}
+
+.freq-container__desc{
+  flex:0 1 100%;
+  margin-top: 1em;
+  margin-left: 0;
+}
+
 }
 */ .single-testimonial-image img {
   width: 62%;
@@ -1435,7 +1449,8 @@ span.likes {
 }
 
 .freq-container__desc{
-  flex:0 1 60%;
+  flex:0 1 57%;
+  margin-left: 3%;
 }
 
 .freq-container--title{

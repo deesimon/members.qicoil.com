@@ -248,9 +248,9 @@ foreach ($response->favorite as $v) {
               
             </div>
             <div class="play-container">                          
-                <div class="play_box col-md-12">
-                  <div class="white_bg1 col-md-12 col-sm-12" id="back_bg">
-                    <div class="col-md-12 pt-5 mt-3 col-xs-12 b_btn">
+                <div class="play_box">
+                  <div class="white_bg1" id="back_bg">
+                    <div class="b_btn">
                       <button type="button" class="stopbtn" id="stopBtn" <?php echo $disabled; ?>><img src=" images/left_btn.png"></button>
                       <button type="button" class="plybtn" onClick="playNote()" id="play" <?php echo $disabled; ?>> <img src="images/middle.png"></button>
                       <button type="button" id="pause"><img src="images/mute.png" <?php echo $disabled; ?>></button>
@@ -283,7 +283,7 @@ foreach ($response->favorite as $v) {
             
                     <canvas id="canvas" width="400"> </canvas>
                   </div>
-                  <div class=" col-md-12 col-sm-12 pp">
+                  <div class="pp">
                     <ul class="list_voice">
                       <?php
                       $i = 1;
