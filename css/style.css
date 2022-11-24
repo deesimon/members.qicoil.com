@@ -1622,6 +1622,10 @@ footer p{
 
 @media screen and (max-width: 860px){
 
+  .freq-container--title {
+    align-items: flex-start;
+  }
+
   .back-arrow-container{
     flex: 0 1 20%;
     margin-right: 5%;
