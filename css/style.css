@@ -1622,6 +1622,14 @@ footer p{
 
 @media screen and (max-width: 860px){
 
+  .left_aerrow_bg {
+    margin-top: 0.375rem;
+}
+
+.list_voice li a {
+  font-size: 13px;
+}
+
   .freq-container--title {
     align-items: flex-start;
   }
