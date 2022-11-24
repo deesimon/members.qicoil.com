@@ -209,6 +209,13 @@ foreach ($response->favorite as $v) {
           <div class="col-md-12">
 
           <div class="custom-container">
+
+          </div>
+
+          <div class="custom-container">
+
+          </div>
+
           <div class="back-arrow-container">
           <a class="left_aerrow_bg" href="<?php echo (!empty($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'frequencies.php'); ?>"> <img src="images/left.png"> </a>
           </div>
@@ -219,10 +226,7 @@ foreach ($response->favorite as $v) {
                   </form>
                 </div>
           </div>
-          </div>
-
-          <div class="custom-container">
-          <div class="frequency-container">
+            <div class="frequency-container">
               
               <div class="col-md-12 freq-container">
               
@@ -243,7 +247,7 @@ foreach ($response->favorite as $v) {
               </div>
               
             </div>
-          <div class="play-container">                          
+            <div class="play-container">                          
                 <div class="play_box col-md-12">
                   <div class="white_bg1 col-md-12 col-sm-12" id="back_bg">
                     <div class="col-md-12 pt-5 mt-3 col-xs-12 b_btn">
@@ -322,11 +326,6 @@ foreach ($response->favorite as $v) {
                 
               </div>
             </div>
-          </div>
-
-          
-         
-           
           </div>
         </div>
     </section>
