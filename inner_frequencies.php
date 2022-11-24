@@ -265,7 +265,15 @@ foreach ($response->favorite as $v) {
 
                       </div>
                     </div>
-                    
+                    <div class="col-md-2 col-xs-2 pt-5">
+                      <div class="volume">
+                        <div class="vol_up"><img src="images/ic_volume_up_24.png"></div>
+                        <div class="vol_line">
+                          <input type="range" orient="vertical" min="0" max="10" value="5" <?php echo $disabled; ?> />
+                        </div>
+                        <div class="vol_stop"><img src="images/ic_volume_mute_.png"></div>
+                      </div>
+                    </div>
                     <canvas id="canvas" width="400"> </canvas>
                   </div>
                   <div class=" col-md-10 col-sm-10 offset-1 pp">
