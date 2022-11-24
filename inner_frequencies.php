@@ -207,8 +207,18 @@ foreach ($response->favorite as $v) {
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-12">
+          <div class="col-md-6 col-sm-6">
+          <div class="col-md-1"><a href="<?php echo (!empty($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'frequencies.php'); ?>"> <img src="images/left.png" class="left_aerrow_bg"> </a> </div>
+          </div>
+          <div class="col-md-6 col-sm-6">
+          <div class="form-group has-search  offset-1" style="width:100%"> <span class="fa fa-search form-control-feedback"></span>
+                  <form method="get" action="rife_frequencies_list.php">
+                    <input type="text" name="keyword" class="form-control col-md-12" placeholder="Search" id="search">
+                  </form>
+                </div>
+          </div>
             <div class="col-md-6 col-sm-6">
-              <div class="col-md-1"><a href="<?php echo (!empty($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'frequencies.php'); ?>"> <img src="images/left.png" class="left_aerrow_bg"> </a> </div>
+              
               <div class="col-md-12 freq-container">
               
                 <div class="col-md-4 freq-container__image">
@@ -226,15 +236,9 @@ foreach ($response->favorite as $v) {
                 </div>
 
               </div>
-              <div class="col-md-12 border_bottom"> </div>
+              
             </div>
-            <div class="col-md-6 col-xs-12 p-0 stand">
-              <div class="col-md-10 col-xs-12 p-0">
-                <div class="form-group has-search  offset-1" style="width:100%"> <span class="fa fa-search form-control-feedback"></span>
-                  <form method="get" action="rife_frequencies_list.php">
-                    <input type="text" name="keyword" class="form-control col-md-12" placeholder="Search" id="search">
-                  </form>
-                </div>
+            <div class="col-md-6 col-sm-6 p-0 stand">                          
                 <div class="play_box col-md-12">
                   <div class="white_bg1 col-md-12 col-sm-12" id="back_bg">
                     <div class="col-md-12 pt-5 mt-3 col-xs-12 b_btn">
@@ -310,7 +314,7 @@ foreach ($response->favorite as $v) {
                       } ?>
                     </ul>
                   </div>
-                </div>
+                
               </div>
             </div>
           </div>
