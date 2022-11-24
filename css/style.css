@@ -1403,8 +1403,19 @@ span.likes {
 
 /**NEW updates 18-11-2022**/
 
+.custom-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.custom-container div{
+  flex: 0 1 50%;
+}
+
+
 .freq-container{
   margin-top: 1em;
+  padding: 0;
 }
 
 .freq-container--title{
