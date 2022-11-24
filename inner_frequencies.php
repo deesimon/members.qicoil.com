@@ -223,7 +223,7 @@ foreach ($response->favorite as $v) {
 
           <div class="custom-container">
 
-          </div>
+         
 
           
             <div class="frequency-container">
@@ -326,7 +326,7 @@ foreach ($response->favorite as $v) {
                 
               </div>
             </div>
-
+            </div>
               <!-- end container -->
 
           </div>
