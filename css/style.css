@@ -982,6 +982,14 @@ span.likes {
   margin-left: 15px;
 }
 
+.main-menu{
+  justify-content: space-around;
+  padding: 0 10px;
+}
+
+.sticky-top {
+  margin-bottom: 0;
+}
 
 .navbar-brand{
   display: block;
