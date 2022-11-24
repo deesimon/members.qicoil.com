@@ -552,9 +552,9 @@ input[type="range"][orient="vertical"] {
   background-repeat: no-repeat;
 }
 
-#con_listing nav {
+/* #con_listing nav {
   float: left;
-}
+} */
 
 #inner_detail label.fre_number_text {
   font-weight: 700;
@@ -926,24 +926,30 @@ span.likes {
     padding: 0px;
   }
 
-  .container-fluid .row .navbar {
+  /* .container-fluid .row .navbar {
     margin: 0;
     min-height: 0;
     padding: 0;
     justify-content: end;
-  }
+  } 
 
   .navbar-light .navbar-toggler {
     /* border-color: #d29022 !important;
-    background-color: #fff; */
+    background-color: #fff; 
     height: 5vh;
     width: 5vh;
   }
+  */
   .navbar-light .navbar-toggler-icon {
     background-image: url(../images/gold-hamaburger-icon.png);
     margin-left: 11px;
     margin-top: 1px;
   }
+
+  #header .navbar-nav {
+    width: 100%;
+    float: none;
+}
 
   #index .row {
     margin-left: 320px;
@@ -1276,10 +1282,7 @@ span.likes {
     margin-left: 14px;
     margin-top: -10px;
   }
-  .navbar-nav .open .dropdown-menu {
-    background-color: white !important;
-    font-size: 11px;
-  }
+
 
   .single-testimonial-image {
     margin-right: 12px;
