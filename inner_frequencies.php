@@ -217,8 +217,7 @@ foreach ($response->favorite as $v) {
                 <div class="col-md-5">
                   <img src="<?php echo (!empty($image) ? 'https://www.qicoilapi.ingeniusstudios.com/storage/app/public/uploads/' . $image : 'images/freaquecy.png'); ?>" width="126" height="126" class="sun">
                   <?php if (isset($_SESSION['email'])) {  ?>
-                    <span data-album="<?php echo $_GET['id']; ?>" data-favorite="<?php echo ($favorite_or_not[$_GET['id']] == 1 ? 1 : 0); ?>" class="favorite <?php echo ($favorite_or_not[$_GET['id']] == 1 ? 'yes' : 'no'); ?>" style=" vertical-align: top; "></span>
-
+                    <span data-album="<?php echo $_GET['id']; ?>" data-favorite="<?php echo ($favorite_or_not[$_GET['id']] == 1 ? 1 : 0); ?>" class="inner-player-fave favorite <?php echo ($favorite_or_not[$_GET['id']] == 1 ? 'yes' : 'no'); ?>" style=" vertical-align: top; "></span>
                   <?php } ?>
                 </div>
                 <div class="col-md-7"> <?php  echo nl2br($description)?></div>
@@ -234,8 +233,8 @@ foreach ($response->favorite as $v) {
                   </form>
                 </div>
                 <div class="play_box col-md-12">
-                  <div class="white_bg1 col-md-10 col-sm-10 offset-1" id="back_bg">
-                    <div class="col-md-10 pt-5 button_left mt-3 col-xs-9 b_btn">
+                  <div class="white_bg1 col-md-12 col-sm-12" id="back_bg">
+                    <div class="col-md-12 pt-5 mt-3 col-xs-12 b_btn">
                       <button type="button" class="stopbtn" id="stopBtn" <?php echo $disabled; ?>><img src=" images/left_btn.png"></button>
                       <button type="button" class="plybtn" onClick="playNote()" id="play" <?php echo $disabled; ?>> <img src="images/middle.png"></button>
                       <button type="button" id="pause"><img src="images/mute.png" <?php echo $disabled; ?>></button>
@@ -265,18 +264,10 @@ foreach ($response->favorite as $v) {
 
                       </div>
                     </div>
-                    <div class="col-md-2 col-xs-3 pt-5">
-                      <div class="volume">
-                        <div class="vol_up"><img src="images/ic_volume_up_24.png"></div>
-                        <div class="vol_line">
-                          <input type="range" orient="vertical" min="0" max="10" value="5" <?php echo $disabled; ?> />
-                        </div>
-                        <div class="vol_stop"><img src="images/ic_volume_mute_.png"></div>
-                      </div>
-                    </div>
+            
                     <canvas id="canvas" width="400"> </canvas>
                   </div>
-                  <div class=" col-md-10 col-sm-10 offset-1 pp">
+                  <div class=" col-md-12 col-sm-12 pp">
                     <ul class="list_voice">
                       <?php
                       $i = 1;
@@ -954,6 +945,7 @@ foreach ($response->favorite as $v) {
       audio.play();
     }
   </script>
+
 </body>
 </html>
 <!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> -->
@@ -1082,3 +1074,76 @@ foreach ($response->favorite as $v) {
     </div>
   </div>
 </div>
+
+
+<script>
+$(".favorite").click(function() {
+      var ele = $(this);
+       var albumid = ele.attr('data-album');
+         var favorite = ele.attr('data-favorite');
+         if (favorite == 0) {
+           var is_favorite = 1;
+          ele.removeClass('no');
+          ele.addClass('yes');
+         } else {
+          var is_favorite = 0;
+          ele.removeClass('yes');
+          ele.addClass('no');
+         }
+
+        $.ajax({
+          url: 'post.php',
+         type: 'POST',
+          data: {
+            favorite: 1,
+            albumid: albumid,
+            is_favorite: is_favorite
+           },
+           dataType: 'json',
+          success: function(res) {
+           if (res.success == true) {
+               ele.attr('data-favorite', is_favorite);
+               if (is_favorite == 1) {
+                 // ele.removeClass('no');
+                 // ele.addClass('yes');
+               } else {
+                 // ele.removeClass('yes');
+                 // ele.addClass('no');
+               }
+             }
+           }
+         });
+       });
+       $(".btndrop").click(function() {
+	var Key = 'accordion-filter-category';
+	if ($(this).hasClass('collapsed')) {
+		var Val = 'expand';
+	}else{
+		var Val = 'collapsed';
+	}	
+	setCookie(Key, Val);
+});
+
+var accordionfilter = getCookie("accordion-filter-category");
+console.log(accordionfilter);
+if(accordionfilter == 'collapsed'){
+	$('#demobtn').removeClass('in');
+  $('#demobtn').addClass('collapse');
+}else{
+	$('#demobtn').addClass('in');
+}
+$(".btndrop").addClass(accordionfilter);
+
+function setCookie(Key, Val) {
+	var expires = new Date();
+	expires.setTime(expires.getTime() + (Val * 24 * 60 * 60 * 1000));
+	var daysToExpire = new Date(2147483647 * 1000).toUTCString();
+	document.cookie = Key + '=' + Val + ';expires=' + daysToExpire;
+}
+
+function getCookie(Key) {
+	var keyValue = document.cookie.match('(^|;) ?' + Key + '=([^;]*)(;|$)');
+	return keyValue ? keyValue[2] : null;
+}
+
+</script>
