@@ -1054,12 +1054,7 @@ span.likes {
 
 
 
-  .navbar-light .navbar-toggler {
-    /* border-color: #d29022 !important;
-    background-color: #fff; */
-    height: 5vh;
-    width: 5vh;
-  }
+
   .navbar-light .navbar-toggler-icon {
     background-image: url(../images/gold-hamaburger-icon.png);
     margin-left: 11px;
@@ -1073,10 +1068,7 @@ span.likes {
   #index .row .col-xl-3 .card {
     margin-bottom: 30px;
   }
-  .logo {
-    margin-left: 19px;
-    margin-top: -10px;
-  }
+
   .navbar-nav .open .dropdown-menu {
     background-color: white !important;
     font-size: 11px;
