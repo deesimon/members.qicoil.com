@@ -255,7 +255,7 @@ foreach ($response->favorite as $v) {
                     <button type="button" class="repeateoff" id="repeateoff_btn" data-status='' <?php echo $disabled; ?>><img src="images/repeat-off.png"></button> -->
                       <span class="repeate off" id="repeateBtn" data-status=0 <?php echo $disabled; ?>></span>
                       <span data-shuffle="0" class="shuffle_btn off"></span>
-                      <div class="col-md-12 pt-3">
+                      <div class="pt-3">
                         <?php if (empty($_GET['category']) || $_GET['category'] == 1) { ?>
                           <input type="hidden" class="fre_number" value="<?php echo $frequencies[0]; ?>" name="fre" id="fre" readonly />
                           <label class="fre_number_text"><?php echo $frequencies[0]; ?> Hz</label>
