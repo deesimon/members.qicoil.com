@@ -1498,6 +1498,8 @@ button.collapsed:after{
     display:block;
     width:100%;
     margin:0 auto;
+max-width: 175px;
+	
 }
 
 .new a img{
