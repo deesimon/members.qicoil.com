@@ -167,9 +167,27 @@ foreach ($response->favorite as $v) {
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
+
+
+        <div class="custom-container">
+          <div class="back-arrow-container">
+          <a href="frequencies.php"> <img src="images/left.png" class="left_aerrow_bg"> </a>
+          </div>
+          <div class="search-container">
+          <div class="form-group has-search  offset-1" style="width:100%; float: right"> <span class="fa fa-search form-control-feedback"></span>
+                <form method="get" action="rife_frequencies_list.php">
+                  <input type="text" name="keyword" class="form-control col-md-12" placeholder="Search" id="search">
+                </form>
+           </div>
+          </div>
+          </div>
+
+
+
+
+
           <div class="col-md-6 col-sm-6">
-            <div class="col-md-1"><a href="frequencies.php"> <img src="images/left.png" class="left_aerrow_bg"> </a> </div>
-            <div class="col-md-11">
+                     <div class="col-md-11">
               <div class="col-md-12">
                 <h5><?php echo $title ?></h5>
               </div>
@@ -191,11 +209,7 @@ foreach ($response->favorite as $v) {
 
           <div class="col-md-6 col-xs-12 p-0 stand">
             <div class="col-md-10 col-xs-12 p-0">
-              <div class="form-group has-search  offset-1" style="width:100%; float: right"> <span class="fa fa-search form-control-feedback"></span>
-                <form method="get" action="rife_frequencies_list.php">
-                  <input type="text" name="keyword" class="form-control col-md-12" placeholder="Search" id="search">
-                </form>
-              </div>
+              
               <div class="play_box col-md-12">
                 <div class="white_bg1 col-md-10 col-sm-10 offset-1 <?php echo $lock_class_name; ?>" id="back_bg" onClick="payment_redirect_function()" >
                   <div class="col-md-10 pt-5 button_left mt-3 col-xs-9">
