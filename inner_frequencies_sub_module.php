@@ -269,7 +269,7 @@ foreach ($response->favorite as $v) {
 
   <style type="text/css">
     .music_list_wrap{
-      background-color: #b59126c7;
+      background-color: #059f83;
       color: #fff;
       padding: 15px;
       font-weight: bold;
