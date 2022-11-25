@@ -180,7 +180,34 @@ foreach ($response->favorite as $v) {
                 </form>
            </div>
           </div>
-          </div>
+        </div>
+        <div class="custom-container mobile-flex-wrap">
+
+        <div class="frequency-container">
+              
+              <div class="col-md-12 freq-container">
+              
+                <div class="freq-container__image">
+                  <img src="<?php echo (!empty($image) ? 'https://www.qicoilapi.ingeniusstudios.com/storage/app/public/uploads/' . $image : 'images/freaquecy.png'); ?>" width="126" height="126" class="sun">
+                </div>
+                
+                <div class="freq-container__desc">
+                <div class="freq-container--title"><h1 class="freq-title"><?php echo $title ?></h1>
+                <?php if (isset($_SESSION['email'])) {  ?>
+                  <span data-album="<?php echo $_GET['id']; ?>" data-favorite="<?php echo ($favorite_or_not[$_GET['id']] == 1 ? 1 : 0); ?>" class="favorite <?php echo ($favorite_or_not[$_GET['id']] == 1 ? 'yes' : 'no'); ?>" style=" vertical-align: top; "></span>
+                <?php } ?>
+                </div>
+                <?php  echo nl2br($description)?>
+                </div>
+
+              </div>
+              
+            </div>
+
+        </div>
+
+
+          
 
 
 
@@ -189,7 +216,7 @@ foreach ($response->favorite as $v) {
           <div class="col-md-6 col-sm-6">
                      <div class="col-md-11">
               <div class="col-md-12">
-                <h5><?php echo $title ?></h5>
+        
               </div>
 
               <div class="col-md-8">
@@ -199,9 +226,7 @@ foreach ($response->favorite as $v) {
                 <?php } ?>
               </div>
 
-              <div class=" col-md-8"><?php 
-                                          //echo $description 
-                                      ?></div>
+            
 
             </div>
             <div class=" col-md-12 border_bottom"> </div>
