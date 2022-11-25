@@ -317,14 +317,10 @@ foreach ($response->favorite as $v) {
               </div>
               
             </div>
-            <div class="col-md-6 col-xs-12 p-0 stand">
-              <div class="col-md-10 col-xs-12 p-0">
-                <div class="form-group has-search  offset-1" style="width:100%"> <span class="fa fa-search form-control-feedback"></span>
-                  <form method="get" action="rife_frequencies_list.php">
-                    <input type="text" name="keyword" class="form-control col-md-12" placeholder="Search" id="search">
-                  </form>
-                </div>
-                <div class="play_box col-md-12">
+            <div class="play-container">
+           
+                
+                <div class="play_box">
 
                     <?php if(!empty($disabled)){ ?>
 
@@ -334,12 +330,12 @@ foreach ($response->favorite as $v) {
                    <?php  }
 
                    else{ ?>
-                     <div class="white_bg1 col-md-10 col-sm-10 offset-1" id="back_bg">
+                     <div class="white_bg1" id="back_bg">
                   <?php 
                          }
                      ?>
 
-                    <div class="col-md-10 pt-5 button_left mt-3 col-xs-9 b_btn">
+                    <div class="b_btn">
                       <button type="button" class="stopbtn" id="stopBtn" <?php echo $disabled; ?>><img src=" images/left_btn.png"></button>
                       <button type="button" class="plybtn" onClick="playNote()" id="play" <?php echo $disabled; ?>> <img src="images/middle.png"></button>
                       <button type="button" id="pause"><img src="images/mute.png" <?php echo $disabled; ?>></button>
@@ -369,16 +365,8 @@ foreach ($response->favorite as $v) {
 
                       </div>
                     </div>
-                    <div class="col-md-2 col-xs-3 pt-5">
-                      <div class="volume">
-                        <div class="vol_up"><img src="images/ic_volume_up_24.png"></div>
-                        <div class="vol_line">
-                          <input type="range" orient="vertical" min="0" max="10" value="5" <?php echo $disabled; ?> />
-                        </div>
-                        <div class="vol_stop"><img src="images/ic_volume_mute_.png"></div>
-                      </div>
-                    </div>
-                    <canvas id="canvas" width="400"> </canvas>
+                   
+                  
 
                          
                     <?php
@@ -398,7 +386,7 @@ foreach ($response->favorite as $v) {
                      ?>    
 
 
-                  <div class=" col-md-10 col-sm-10 offset-1 pp">
+                  <div class="pp">
                     <div class='music_list_wrap'>                    
                     <ul class="list_voice">
                       <?php
@@ -440,7 +428,7 @@ foreach ($response->favorite as $v) {
                     </ul>
                   </div>
                 
-              </div>
+             
             </div>
             </div>
               <!-- end container -->
@@ -1119,9 +1107,7 @@ foreach ($response->favorite as $v) {
 
 
 
-<?php 
-include('footer.php');
-  ?>
+
 </body>
 </html>
 <!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> -->
