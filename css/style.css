@@ -1556,11 +1556,11 @@ footer{
 }
 
 footer a{
-  color:#ac7210;
+  color:#D2B96D;
   transition: 0.3s all ease-in-out;
 }
 footer a:hover{
-  color:#D2B96D;
+  color:#a38b41;
 }
 
 footer p{
