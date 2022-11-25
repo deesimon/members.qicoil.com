@@ -324,7 +324,7 @@ foreach ($response->favorite as $v) {
 
                     <?php if(!empty($disabled)){ ?>
 
-                       <a href="<?php echo $payment_url; ?>" >
+                       <a class="a-lock" href="<?php echo $payment_url; ?>" >
                      <div class="white_bg1 <?php echo  !empty($disabled)?'lock2':'' ?>" id="back_bg">
 
                    <?php  }

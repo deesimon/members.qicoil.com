@@ -1545,6 +1545,10 @@ max-width: 175px;
     flex: 0 1 85%;
 }
 
+a.lock:hover{
+  text-decoration: none;
+}
+
 /* Footer SECTION */
 footer{
   margin-top: 1em;
