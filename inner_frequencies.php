@@ -298,7 +298,7 @@ foreach ($response->favorite as $v) {
           
             <div class="frequency-container">
               
-              <div class="col-md-12 freq-container">
+              <div class="freq-container">
               
                 <div class="freq-container__image">
                   <img src="<?php echo (!empty($image) ? 'https://www.qicoilapi.ingeniusstudios.com/storage/app/public/uploads/' . $image : 'images/freaquecy.png'); ?>" width="126" height="126" class="sun">

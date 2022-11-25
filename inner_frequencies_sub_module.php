@@ -185,8 +185,7 @@ foreach ($response->favorite as $v) {
 
         <div class="frequency-container">
               
-              <div class="col-md-12 freq-container">
-              
+              <div class="freq-container">
                 <div class="freq-container__image">
                   <img src="<?php echo (!empty($image) ? 'https://www.qicoilapi.ingeniusstudios.com/storage/app/public/uploads/' . $image : 'images/freaquecy.png'); ?>" width="126" height="126" class="sun">
                 </div>
@@ -204,38 +203,7 @@ foreach ($response->favorite as $v) {
               
             </div>
 
-        </div>
-
-
-          
-
-
-
-
-
-          <div class="col-md-6 col-sm-6">
-                     <div class="col-md-11">
-              <div class="col-md-12">
-        
-              </div>
-
-              <div class="col-md-8">
-                <img src="<?php echo (!empty($image) ? 'https://www.qicoilapi.ingeniusstudios.com/storage/app/public/uploads/' . $image : 'images/freaquecy.png'); ?>" width="126" height="126" class="sun">
-                <?php if (isset($_SESSION['email'])) {  ?>
-                  <span data-album="<?php echo $_GET['id']; ?>" data-favorite="<?php echo ($favorite_or_not[$_GET['id']] == 1 ? 1 : 0); ?>" class="favorite <?php echo ($favorite_or_not[$_GET['id']] == 1 ? 'yes' : 'no'); ?>" style=" vertical-align: top; "></span>
-                <?php } ?>
-              </div>
-
-            
-
-            </div>
-            <div class=" col-md-12 border_bottom"> </div>
-          </div>
-
-          <div class="col-md-6 col-xs-12 p-0 stand">
-            <div class="col-md-10 col-xs-12 p-0">
-              
-              <div class="play_box col-md-12">
+            <div class="play_box col-md-12">
                 <div class="white_bg1 col-md-10 col-sm-10 offset-1 <?php echo $lock_class_name; ?>" id="back_bg" onClick="payment_redirect_function()" >
                   <div class="col-md-10 pt-5 button_left mt-3 col-xs-9">
                     <a href="https://members.qicoil.com/payment.php?type=<?php echo $_GET['category']; ?>"><button type="button" class="stopbtn" id="stopBtn" <?php echo $disabled; ?>><img src=" images/left_btn.png"></button></a> 
@@ -290,6 +258,18 @@ foreach ($response->favorite as $v) {
                 </div>
                 </div>
               </div>
+
+        </div>   
+
+
+
+
+
+       
+          <div class="col-md-6 col-xs-12 p-0 stand">
+            <div class="col-md-10 col-xs-12 p-0">
+              
+   
             </div>
           </div>
         </div>
