@@ -1,6 +1,3 @@
-* {
-  box-sizing: border-box;
-}
 @font-face{
 font-family: Montserrat;
   src: url(../font/Montserrat/Montserrat-Regular.ttf);
@@ -166,7 +163,7 @@ input[type="range"][orient="vertical"] {
 }
 .btn.dropdown-toggle.nav-link {
   font-weight: bold;
-  color: #d29022 !important;
+  color: #D2B96D !important;
 }
 
 #payment .flex-container {
@@ -300,7 +297,7 @@ input[type="range"][orient="vertical"] {
 }
 
 .nav-link {
-  color: #d29022 !important;
+  color: #D2B96D !important;
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
   font-size:14px;
@@ -1161,7 +1158,7 @@ span.likes {
 
 
   .navbar-light .navbar-toggler {
-    /* border-color: #d29022 !important;
+    /* border-color: #D2B96D !important;
     background-color: #fff; */
     height: 5vh;
     width: 5vh;
@@ -1231,7 +1228,7 @@ span.likes {
 
 
   .navbar-light .navbar-toggler {
-    /* border-color: #d29022 !important;
+    /* border-color: #D2B96D !important;
     background-color: #fff; */
     height: 5vh;
     width: 5vh;
@@ -1563,7 +1560,7 @@ footer a{
   transition: 0.3s all ease-in-out;
 }
 footer a:hover{
-  color:#d29022;
+  color:#D2B96D;
 }
 
 footer p{
