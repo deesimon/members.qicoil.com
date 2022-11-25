@@ -348,7 +348,7 @@ foreach ($response->favorite as $v) {
                           <input type="hidden" class="fre_number" value="<?php echo $frequencies[0]; ?>" name="fre" id="fre" readonly />
                           <label class="fre_number_text"><?php echo $frequencies[0]; ?> Hz</label>
                           <div class="progress">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" id="progress_bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
                           </div>
                           <span id="duration"></span>
                         <?php } else { ?>
@@ -602,131 +602,168 @@ foreach ($response->favorite as $v) {
     </script>
   <?php } else { ?>
 
+
+
     <script>
-      // create web audio api context
-      //var AudioContexts;
-      var audioCtx = new(window.AudioContext || window.webkitAudioContext)();
-      var os = '';
-      var counter = 10;
-      var timeout = '';
-      var timeDisplay = document.getElementById("timer");
-      var susres = document.getElementById("pause");
-      //susres.setAttribute("disabled", "disabled");
-      function playNote() {
-        // alert(1)
-        //create Oscillator node
-        //susres.removeAttribute("disabled");
-        var oscillator = os = audioCtx.createOscillator();
-        var frequency = document.getElementById('fre').value;
-        oscillator.type = 'sine';
-        //oscillator.type = 'sine';
-        oscillator.frequency.value = frequency; // value in hertz
-        //oscillator.frequency.setValueAtTime(440, audioCtx.currentTime); // value in hertz
-        oscillator.connect(audioCtx.destination);
-        oscillator.start();
-        var duration = 180000;
-        timeout = setTimeout(
-          function() {
-            oscillator.stop();
-            var fre = '';
-            var shuffle = $('.shuffle_btn').attr('data-shuffle');
-            var repeate = $('.repeate').attr('data-status');
-            if (repeate == 2) {
-              $('.list_voice li').each(function() {
-                if ($(this).find('h3').hasClass("intro")) {
-                  fre = $(this).find('h3').attr('data-fre');
+
+
+            var seconds = 1;
+            var countdownTimer;
+            var width_per = 0; 
+            const TotalDuration_val = '03:00';
+            var three_min_seconds = '';
+            var frequency;
+            var audioCtx = new(window.AudioContext || window.webkitAudioContext)();  
+            const gainNode = audioCtx.createGain();
+            var progress_bar = document.getElementById("progress_bar");      
+            var timeDisplay = document.getElementById("duration");
+            // var susres = document.getElementById("pause");
+
+
+            
+
+            //DisplayTimer();
+            function secondPassed(){  
+                var minutes = Math.round((seconds - 30)/60),
+                remainingSeconds = seconds % 60;
+                if (remainingSeconds < 10) {
+                    remainingSeconds = "0" + remainingSeconds;
                 }
-              });
-            } else if (shuffle == 1) {
-              var ran = random_mp3('rife');
-              fre = $('.list_voice li[data-random="' + ran + '"]').find('h3').attr('data-fre');
-              // console.log(ran+'---'+fre);
-              $('.list_voice li').find('h3').removeClass("intro");
-              $('.list_voice li[data-random="' + ran + '"]').find('h3').addClass("intro");
-            } else {
-              $('.list_voice li').each(function() {
-                if ($(this).find('h3').hasClass("intro")) {
-                  fre = $(this).next('li').find('h3').attr('data-fre');
-                  $(this).find('h3').removeClass("intro");
-                  $(this).next('li').find('h3').addClass("intro");
-                  // timeDisplay.textContent = '';
-                  // displayTime();
-                  if (typeof fre === "undefined") {
-                    if (repeate == 1) {
-                      fre = '<?php echo $frequencies[0]; ?>';
-                      $(this).parents('ul').find('li:first').find('h3').addClass("intro");
+                $('#duration').html('0'+minutes + ":" + remainingSeconds +' / '+ TotalDuration_val);  
+
+                seconds++;
+                width_per = seconds/1.8026 ; 
+                progress_bar.style = 'width: '+width_per+'%';                                     
+                three_min_seconds = seconds;
+                // console.log('Three minutes',three_min_seconds);
+                // console.log('Total seconds',seconds);
+
+                if(three_min_seconds > 180){
+                    clearInterval(countdownTimer);
+                    stopNote();
+                    ChangeLI();    
+                    seconds = 1;
+                }
+            }
+
+        
+
+            function playNote(seconds=1){     
+              var oscillator = os = audioCtx.createOscillator();
+              frequency = document.getElementById('fre').value;
+              oscillator.type = 'sine';
+              oscillator.frequency.value = frequency; // value in hertz
+              // oscillator.connect(audioCtx.destination);
+              oscillator.connect(gainNode);
+              gainNode.connect(audioCtx.destination);
+              oscillator.start();
+              countdownTimer = setInterval('secondPassed(seconds)', 1000);
+            }
+
+            function stopNote() {
+              os.stop();
+            }
+
+            function ChangeLI() {        
+                var fre = '';
+                var shuffle = $('.shuffle_btn').attr('data-shuffle');
+                var repeate = $('.repeate').attr('data-status');
+                if (repeate == 2) {
+                  $('.list_voice li').each(function() {
+                    if ($(this).find('h3').hasClass("intro")) {
+                      fre = $(this).find('h3').attr('data-fre');
                     }
-                  }
-                  return false;
+                  });
+                } else if (shuffle == 1) {
+                  var ran = random_mp3('rife');
+                  fre = $('.list_voice li[data-random="' + ran + '"]').find('h3').attr('data-fre');
+                  // console.log(ran+'---'+fre);
+                  $('.list_voice li').find('h3').removeClass("intro");
+                  $('.list_voice li[data-random="' + ran + '"]').find('h3').addClass("intro");
+                } else {
+                  $('.list_voice li').each(function() {
+                    if ($(this).find('h3').hasClass("intro")) {
+                      fre = $(this).next('li').find('h3').attr('data-fre');
+                      $(this).find('h3').removeClass("intro");
+                      $(this).next('li').find('h3').addClass("intro");
+                      // timeDisplay.textContent = '';
+                      // displayTime();
+                      if (typeof fre === "undefined") {
+                        if (repeate == 1) {
+                          fre = '<?php echo $frequencies[0]; ?>';
+                          $(this).parents('ul').find('li:first').find('h3').addClass("intro");
+                        }
+                      }
+                      return false;
+                    }
+                  });
                 }
-              });
-            }
-            // console.log(fre);
-            if (typeof fre === "undefined") {
-              $("#fre").val('<?php echo $frequencies[0]; ?>');
-              $(".fre_number_text").text('<?php echo $frequencies[0]; ?> Hz');
-              $('.list_voice').find('li:first').find('h3').addClass("intro");
-              $("#pause").trigger("click");
-            } else {
-              $("#fre").val(fre);
-              $(".fre_number_text").text(fre + ' Hz');
-              $(".plybtn").trigger("click");
-              //clearTimeout(timeout);
-            }
-          }, duration);
+                // console.log(fre);
+                if (typeof fre === "undefined") {
+                  $("#fre").val('<?php echo $frequencies[0]; ?>');
+                  $(".fre_number_text").text('<?php echo $frequencies[0]; ?> Hz');
+                  $('.list_voice').find('li:first').find('h3').addClass("intro");
+                  $("#pause").trigger("click");
+                } else {
+                  $("#fre").val(fre);
+                  $(".fre_number_text").text(fre + ' Hz');
+                  $(".plybtn").trigger("click");
+                  //clearTimeout(timeout);
+                }
 
-      }
-      function stopNote() {
-        os.stop();
-      }
-      function resume() {
-        //susres.onclick = function () {
-        if (audioCtx.state === "running") {
-          audioCtx.suspend().then(function() {
-            // susres.textContent = "Resume Audio";
-          });
-        } else if (audioCtx.state === "suspended") {
-          audioCtx.resume().then(function() {
-            //susres.textContent = "Suspend Audio";
-          });
-        }
-        //};
-      }
-      function displayTime() {
-        if (audioCtx && audioCtx.state !== "closed") {
-          timeDisplay.textContent = audioCtx.currentTime.toFixed(2) + ' Seconds';
-        } else {
-          timeDisplay.textContent = "Frequency not started";
-        }
-        requestAnimationFrame(displayTime);
-      }
-      var playTimeout;
+            }
 
-      $("#duration").on("play", function(e) {
-        playTimeout = setTimeout(function() {
-          $("duration").pause();
-          $("duration").setCurrentTime(0); // Restarts video
-        }, 180000); // 3 minutes in ms
-      });
-      $("#duration").on("pause", function(e) {
-        clearTimeout(playTimeout);
-      });
-      //playNote("502",10000);
+
+            function resume() {
+              //susres.onclick = function () {
+
+                console.log('Current audioCtxstate is : ',audioCtx.state);
+
+              if (audioCtx.state === "running") {
+                audioCtx.resume().then(function() {
+                  //susres.textContent = "Suspend Audio";
+                });
+              } else if (audioCtx.state === "suspended") {
+                audioCtx.suspend().then(function() {
+                  // susres.textContent = "Resume Audio";
+                });
+              }
+              //};
+            }
+
+      function handleVolumeChange(volume) {
+        gainNode.gain.setValueAtTime(volume, audioCtx.currentTime);
+      }
+
+
     </script>
     <script>
       $(document).ready(function() {
         $(".list_voice li h3").click(function() {
-          $("#pause").trigger("click");
+          if(audioCtx.state === "running"){
+            if(countdownTimer){stopNote()
+              clearTimeout(playNote);
+              clearTimeout(countdownTimer);
+              seconds =1;
+            };
+            
+          }
+
+          // $("#pause").trigger("click");
           $('#canvas').show();
           $(this).parents('.list_voice').find('h3').removeClass("intro");
           $(this).addClass("intro");
+
           $("#fre").val($(this).attr('data-fre'));
           $(".fre_number_text").text($(this).attr('data-fre') + 'Hz');
           $("#pause").hide();
           $("#play").show();
+          $("#plybtn").trigger("click");
+
         });
 
         $("#play").click(function() {
+
           $(this).hide();
           $("#pause").show();
           // $(this).onload = init();
@@ -735,17 +772,21 @@ foreach ($response->favorite as $v) {
           // $("#back_bg").addClass("white_bg_active");
         });
         $("#pause").click(function() {
-          clearTimeout(timeout);
-          //resume();
+          // clearTimeout(timeout);
+          clearTimeout(countdownTimer)
           stopNote();
+          resume();          
           $(this).hide();
           $("#play").show();
           $('#canvas').hide();
           $("#back_bg").removeClass("white_bg_active");
         });
-        $("#stopBtn").click(function() {
-          clearTimeout(timeout);
 
+        // alert
+        $("#stopBtn").click(function() {
+          // clearTimeout(timeout);
+          seconds =1;
+          clearTimeout(countdownTimer)
           $("#fre").val('<?php echo $frequencies[0]; ?>');
           $(".fre_number_text").text('<?php echo $frequencies[0]; ?>Hz');
           $('.list_voice').find('li').find('h3').removeClass("intro");
@@ -758,6 +799,12 @@ foreach ($response->favorite as $v) {
           //$("#pause").trigger("click");
           return false;
         });
+
+        // $(".list_voice h3").on('click',function(){
+        //     seconds = 1;
+        // });
+
+
       });
     </script>
     <script type="text/javascript">
