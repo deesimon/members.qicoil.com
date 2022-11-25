@@ -1497,9 +1497,7 @@ button.collapsed:after{
 .new a{
     display:block;
     width:100%;
-    margin:0 auto;
-max-width: 175px;
-	
+    margin:0 auto;	
 }
 
 .new a img{
@@ -1545,8 +1543,15 @@ max-width: 175px;
     flex: 0 1 85%;
 }
 
+
 a.lock:hover{
   text-decoration: none;
+}
+
+.lock {
+  max-width: 175px;
+  width: 100%;
+  margin:0 auto;
 }
 
 /* Footer SECTION */
