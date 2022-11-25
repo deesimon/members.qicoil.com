@@ -3,11 +3,53 @@ error_reporting(0);
 include('array.php');
 include('constants.php');
 // session_start();
+
+//code start for index page and player redirection
+$free_frequencies_ids = [];
+
+if (!isset($_SESSION['email'])){
+  $url = 'https://apiadmin.qienergy.ai/api/free_albums';
+  $res = curl_post($url, '', $header);
+  $response = json_decode($res['res'],true);
+
+     foreach($response['free_albums'] as $key){
+         array_push($free_frequencies_ids, $key['id']);
+     }
+
+  if(in_array($_GET['id'],$free_frequencies_ids)) {
+    header('Location:index.php');
+    exit;
+  }
+  elseif(isset($_REQUEST['category'])){
+    if (empty($_GET['category']) || $_GET['category'] == 1) {
+        $payment_url = RIFE_PAYMENT_URL;
+      
+    } else {
+      if ($_GET['category'] == 2) {
+        $payment_url = QUANTUM_PAYMENT_URL;
+      } elseif ($_GET['category'] == 3) {
+        $payment_url = HIGHER_QUANTUM_PAYMENT_URL;
+      } else {
+        $payment_url = INNER_CIRCLE_PAYMENT_URL;
+      }
+    }
+    require('inner_frequencies_sub_module.php');
+    exit;
+    // // echo $_REQUEST['category'];
+    //   // $redirect_url = "inner_frequencies.php?id={$_REQUEST['id']}&category={$_REQUEST['category']}";
+    //   // header('Location:'.$_SERVER['PHP_SELF'].'?id='.$_REQUEST['id'].'&category='.$_REQUEST['category']);
+    // header('Location:https://www.google.com');
+    // exit;
+  }
+
+}
+//code end for index page and player redirection
+
 if (empty($_GET['category'])) $_GET['category'] = 1;
 //if (in_array($_GET['id'], $free_albums)) {
 //} else {
 if (!isset($_SESSION['email'])) {
-  header('Location:register.php');
+  header('Location:index.php');
   exit;
 }
 //}
@@ -30,8 +72,10 @@ foreach ($response->free_albums as $v) {
   $free_albums[] = $v->id;
 }
 
+
 if ($_GET['id'] != '5964') {
   if (in_array($_GET['id'], $free_albums)) {
+    // $payment_url = 'register.php';
     $disabled = '';
   } else {
     $disabled = 'disabled';
@@ -49,28 +93,28 @@ if ($_GET['id'] != '5964') {
       } else {
         $payment_url = INNER_CIRCLE_PAYMENT_URL;
       }
-      if (in_array($_GET['id'], $_SESSION['album_ids'])) {
-        $disabled = '';
-        $payment_url = '';
-      }
+    }
+    if (in_array($_GET['id'], $_SESSION['album_ids'])) {
+      $disabled = '';
+      $payment_url = '';
     }
   }
 }
+
+
+
 if (!isset($_SESSION['email'])) {
   if ($_GET['id'] != '5964' && in_array($_GET['id'], $free_albums)) {
     $payment_url = 'register.php';
   }
-  // else{
-  //   $payment_url = '';
-  // }
 }
 //  echo $payment_url;
 //  die;
 
-if (!empty($payment_url) && $disabled != '') {
-  header('Location:' . $payment_url);
-  exit;
-}
+// if (!empty($payment_url) && $disabled != '') {
+//   header('Location:' . $payment_url);
+//   exit;
+// }
 
 //print_r($_SESSION);
 $frequencies = $mp3s = array();
@@ -193,6 +237,35 @@ foreach ($response->favorite as $v) {
     .context-menu-container .dropdown-menu>li:hover {
       background-color: #c4c4c4;
     }
+
+        /*css for lock*/
+         .lock2{
+             position: relative;
+         }
+         .lock2:before {
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0px;
+        left: 0px;
+        background-color: #100d0d6e;
+    }
+
+         .lock2:after {
+        content: '\f023 ';
+        font-family: 'FontAwesome';
+        position: absolute;
+        color: #fff;
+        left: 50%;
+        top: 50%;
+        font-size: 40px;
+        transform: translate(-50%, -50%);
+         }
+
+         /* css for lock end */
+
+
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
 </head>
@@ -234,7 +307,20 @@ foreach ($response->favorite as $v) {
                   </form>
                 </div>
                 <div class="play_box col-md-12">
-                  <div class="white_bg1 col-md-10 col-sm-10 offset-1" id="back_bg">
+
+                    <?php if(!empty($disabled)){ ?>
+
+                       <a href="<?php echo $payment_url; ?>" >
+                     <div class="white_bg1 col-md-10 col-sm-10 offset-1 <?php echo  !empty($disabled)?'lock2':'' ?>" id="back_bg">
+
+                   <?php  }
+
+                   else{ ?>
+                     <div class="white_bg1 col-md-10 col-sm-10 offset-1" id="back_bg">
+                  <?php 
+                         }
+                     ?>
+
                     <div class="col-md-10 pt-5 button_left mt-3 col-xs-9 b_btn">
                       <button type="button" class="stopbtn" id="stopBtn" <?php echo $disabled; ?>><img src=" images/left_btn.png"></button>
                       <button type="button" class="plybtn" onClick="playNote()" id="play" <?php echo $disabled; ?>> <img src="images/middle.png"></button>
@@ -275,8 +361,27 @@ foreach ($response->favorite as $v) {
                       </div>
                     </div>
                     <canvas id="canvas" width="400"> </canvas>
-                  </div>
+
+                         
+                    <?php
+                           if(!empty($disabled)){
+                     ?>
+                     
+                         </div>
+                         </a>        
+
+                    <?php 
+                          } else{
+                     ?>      
+                           </div>
+                       
+                     <?php    } 
+
+                     ?>    
+
+
                   <div class=" col-md-10 col-sm-10 offset-1 pp">
+                    <div class='music_list_wrap'>                    
                     <ul class="list_voice">
                       <?php
                       $i = 1;
@@ -321,6 +426,7 @@ foreach ($response->favorite as $v) {
             </div>
           </div>
         </div>
+      </div>
     </section>
   <?php } ?>
   <?php if (!empty($disabled)) { ?>
@@ -954,6 +1060,44 @@ foreach ($response->favorite as $v) {
       audio.play();
     }
   </script>
+  <!-- Anjani Code start -->
+  <?php
+  if (!empty($disabled)) {
+  ?>
+  <script type="text/javascript">
+    let data = document.querySelector(".music_list_wrap");
+    let child = document.querySelector(".music_list_wrap ul");
+    let newelement = '<a href="<?php echo $payment_url; ?>">UNLOCK </a>';
+    data.removeChild(child);
+    data.insertAdjacentHTML('afterbegin', newelement);
+  </script>
+
+  <style type="text/css">
+      .music_list_wrap{
+        background-color: #b59126c7;
+        color: #fff;
+        padding: 15px;
+        font-weight: bold;
+      }
+
+      .music_list_wrap a{
+        text-decoration: none;
+        color: #e5e5e5;
+        display: block;
+      }
+
+
+  </style>
+
+
+  <?php
+  }
+
+  ?>
+  <!-- Anjani Code end -->
+
+
+
 <?php 
 include('footer.php');
   ?>

@@ -744,11 +744,10 @@ input[type="range"][orient="vertical"] {
 .new {
   background-color: #fff;
   border: 1px solid #eee;
-  padding: 10px;
+  padding: 1.5em;
   text-align: center;
   margin-bottom: 20px;
   /* display: table; */
-  height: 95%;
 }
 .card-body h5 {
   font-size: 17px;
@@ -1454,7 +1453,6 @@ button.collapsed:after{
 
 .new a{
     display:block;
-    max-width:175px;
     width:100%;
     margin:0 auto;
 }
@@ -1538,8 +1536,7 @@ footer p{
     .main-menu .navbar-collapse{
         padding-right: 0;
     }
-    
-    
+       
     .container-fluid {
     padding-left: 5% !important;
     padding-right: 5% !important;

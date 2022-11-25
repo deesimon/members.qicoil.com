@@ -4,7 +4,7 @@
     <!-- <h5><b>Filter by Category</b></h5> -->
          <button id="filter-by-category" type="button" class="btn-link collapsed btndrop" data-toggle="collapse" aria-expanded="false" data-target="#demobtn"><b style="font-size: 15px;">Filter by Category</b></button>
 <div id="demobtn">
-  <?
+  <?php
   // print_r($SUBCATEGORIES);
   // exit;
   //foreach($SUBCATEGORIES as $v){ 

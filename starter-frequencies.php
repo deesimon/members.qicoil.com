@@ -3,6 +3,15 @@
 error_reporting(0);
 include('array.php');
 include('constants.php');
+
+if(!empty($_SESSION)){
+  if(!in_array(4,$_SESSION['category_ids'])){
+    $lock_class_name = 'lock';
+  }
+}else{
+  $lock_class_name = 'lock';
+}
+
 $favorites = $favorite_or_not = array();
 if (isset($_SESSION['email'])) {
   $header = array('Authorization: Bearer ' . $_SESSION['token'], 'Content-Type: application/x-www-form-urlencoded');
@@ -177,12 +186,16 @@ function sortByKeyList($array, $seq)
               </div>
               <?php foreach ($featured_albums as $v) { ?>
                 <div class="col-xs-6 col-md-3">
+                <a href="inner_frequencies.php?id=<?php echo $v->id . '&category=' . $v->categoryId; ?>">
                   <div class="new">
+                  <div class="<?php echo $lock_class_name; ?>">
+                    <span>
                     <a href="inner_frequencies.php?id=<?php echo $v->id . '&category=' . $v->categoryId; ?>">
                       <img src="<?php echo (!empty($v->audio_folder) ? 'https://www.qicoilapi.ingeniusstudios.com/storage/app/public/uploads/' . $v->audio_folder . '/' . $v->image : 'images/freaquecy.png'); ?>" width="126" height="126" />
 
                     </a>
-              
+                   </span>
+                  </div>
 
                     <div class="card-body">
                       <h5 class="card-title">
@@ -190,6 +203,8 @@ function sortByKeyList($array, $seq)
                       </h5>
                     </div>
                   </div>
+                  </a>
+
                 </div>
               <?php } ?>
             </div>
@@ -334,6 +349,79 @@ function sortByKeyList($array, $seq)
       return url;
     }
   </script>
+
+
+<?php
+if(!empty($_SESSION)){
+  if(!in_array(4,$_SESSION['category_ids'])){
+?>
+   <style type="text/css">
+
+    .lock{
+    position: relative;
+        }
+
+    .lock span:before {
+    position: absolute;
+    height: 175px;
+    width: 175px;
+    top: 0px;
+    left: 0px;
+}
+
+
+   .lock span:after {
+    content: '\f023 ';
+    font-family: 'FontAwesome';
+    position: absolute;
+    color: #fff;
+    right: 20px;
+    bottom: 0;
+    z-index: 1;
+    font-size: 25px;
+     }
+
+   </style>
+<?php
+  }
+}else{
+
+?>
+  <style type="text/css">
+
+   
+.lock{
+    position: relative;
+        }
+
+    .lock span:before {
+    position: absolute;
+    height: 175px;
+    width: 175px;
+    top: 0px;
+    left: 0px;
+}
+
+
+   .lock span:after {
+    content: '\f023 ';
+    font-family: 'FontAwesome';
+    position: absolute;
+    color: #fff;
+    right: 20px;
+    bottom: 0;
+    z-index: 1;
+    font-size: 25px;
+     }
+
+
+</style>
+<?php }
+
+
+?>
+
+
 
   <?php
   include('footer.php');

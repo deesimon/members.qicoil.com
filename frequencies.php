@@ -6,6 +6,25 @@ include('array.php');
 include('constants.php');
 // session_start();
 
+// Anjani code start  final
+
+if(!empty($_SESSION)){
+  if(!isset($_REQUEST['category'])){
+    if(in_array(1,$_SESSION['category_ids'])){
+      $lock_class_name = 'category_paid';
+    }else{
+      $lock_class_name = 'lock';
+    }
+  }
+  elseif(!in_array($_REQUEST['category'],$_SESSION['category_ids'])){
+    $lock_class_name = 'lock';
+  }
+}else{
+  $lock_class_name = 'lock';
+}
+
+// Anjani code end
+
 $favorites = $favorite_or_not = array();
 if (isset($_SESSION['email'])) {
   $header = array('Authorization: Bearer ' . $_SESSION['token'], 'Content-Type: application/x-www-form-urlencoded');
@@ -163,10 +182,17 @@ function sortByKeyList($array, $seq)
             ?>
               <div class="col-xs-6 col-md-3 ">
                 <div class="new">
-                  <a href="inner_frequencies.php?id=<?php echo $v->id;
-                                                    if (!empty($_GET['category'])) echo '&category=' . $_GET['category']; ?>">
 
-                    <img src="<?php echo (!empty($v->audio_folder) ? 'https://www.qicoilapi.ingeniusstudios.com/storage/app/public/uploads/' . $v->audio_folder . '/' . $v->image : 'images/freaquecy.png'); ?>" width="126" height="126"> </a>
+                  <a href="inner_frequencies.php?id=<?php echo $v->id . '&category=' .  $_GET['category']; ?>">
+                   <div class="<?php echo $lock_class_name; ?>">
+                    <span>
+                          <a href="inner_frequencies.php?id=<?php echo $v->id;
+                                                            if (!empty($_GET['category'])) echo '&category=' . $_GET['category']; ?>">
+
+                            <img src="<?php echo (!empty($v->audio_folder) ? 'https://www.qicoilapi.ingeniusstudios.com/storage/app/public/uploads/' . $v->audio_folder . '/' . $v->image : 'images/freaquecy.png'); ?>" width="126" height="126"> </a>
+                     </span>
+                    </div>
+                  </a>
                 
                   <div class="card-body">
                     <h5 class="card-title"><b>
@@ -356,6 +382,122 @@ function sortByKeyList($array, $seq)
       return url;
     }
   </script>
+
+
+  <!-- Anjani Code start -->
+
+  <?php
+
+  if(!empty($_SESSION)){
+    if(!isset($_REQUEST['category'])){
+      if(in_array(1,$_SESSION['category_ids'])){
+        // $lock_class_name = 'category_paid';
+      }else{
+          // $lock_class_name = 'lock';
+  ?>
+     <style type="text/css">
+
+   
+  .lock{
+      position: relative;
+          }
+
+      .lock span:before {
+      position: absolute;
+      height: 175px;
+      width: 175px;
+      top: 0px;
+      left: 0px;
+  }
+
+
+     .lock span:after {
+      content: '\f023 ';
+      font-family: 'FontAwesome';
+      position: absolute;
+      color: #fff;
+      right: 20px;
+      bottom: 0;
+      z-index: 1;
+      font-size: 25px;
+       }
+     </style>
+
+  <?php
+
+     }
+    }
+    elseif(!in_array($_REQUEST['category'],$_SESSION['category_ids'])){
+      $lock_class_name = 'lock';
+  ?>
+     <style type="text/css">
+
+
+  .lock{
+      position: relative;
+          }
+
+      .lock span:before {
+      position: absolute;
+      height: 175px;
+      width: 175px;
+      top: 0px;
+      left: 0px;
+  }
+
+
+     .lock span:after {
+      content: '\f023 ';
+      font-family: 'FontAwesome';
+      position: absolute;
+      color: #fff;
+      right: 20px;
+      bottom: 0;
+      z-index: 1;
+      font-size: 25px;
+       }
+
+     </style>
+
+  <?php
+        }
+  }else{
+    // $lock_class_name = 'lock';
+  ?>
+     <style type="text/css">
+
+   
+  .lock{
+      position: relative;
+          }
+
+      .lock span:before {
+      position: absolute;
+      height: 175px;
+      width: 175px;
+      top: 0px;
+      left: 0px;
+  }
+
+
+     .lock span:after {
+      content: '\f023 ';
+      font-family: 'FontAwesome';
+      position: absolute;
+      color: #fff;
+      right: 20px;
+      bottom: 0;
+      z-index: 1;
+      font-size: 25px;
+       }
+
+     </style>
+  <?php } ?>
+
+
+  <!-- Anjani Code end -->
+
+
 
   <?php
   include('footer.php');
