@@ -207,7 +207,7 @@ foreach ($response->favorite as $v) {
             <div class="play-container">
               <div class="play_box">
                 <div class="white_bg1  <?php echo $lock_class_name; ?>" id="back_bg" onClick="payment_redirect_function()" >
-                  <div class="button_left">
+                  <div class="button_lock">
                     <a href="https://members.qicoil.com/payment.php?type=<?php echo $_GET['category']; ?>"><button type="button" class="stopbtn" id="stopBtn" <?php echo $disabled; ?>><img src=" images/left_btn.png"></button></a> 
                     <a href="https://members.qicoil.com/payment.php?type=<?php echo $_GET['category']; ?>"><button type="button" class="plybtn" onClick="playNote()" id="play" <?php echo $disabled; ?>> <img src="images/middle.png"></button></a>
                     <a href="https://members.qicoil.com/payment.php?type=<?php echo $_GET['category']; ?>"><button type="button" id="pause"><img src="images/mute.png" <?php echo $disabled; ?>></button></a>
