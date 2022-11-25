@@ -28,14 +28,10 @@ $page = basename($_SERVER['REQUEST_URI'], '?' . $_SERVER['QUERY_STRING']);
 <header id="header" class="sticky-top">
     <div class="container-fluid">
         <div class="row">
+   
 
-            <div class="col-3">
-                <div class="logo">
-                    <a href="https://www.qicoil.com/frequencies/"><img src="images/qi-life-io-logo.png";> </a>
-                </div>
-            </div>
-
-            <nav class="navbar navbar-expand-lg navbar-light  col-9 main-menu" id="#topheader">
+            <nav class="navbar navbar-expand-lg navbar-light main-menu" id="#topheader">
+                <a class="navbar-brand" href="https://www.qicoil.com/frequencies/"><img src="images/qi-life-io-logo.png";> </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>

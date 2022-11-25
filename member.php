@@ -140,7 +140,9 @@ $totalmembership=count($members);
                     </tr>
                   </thead>
                   <tbody>
-                    <?php if (!empty($members)) {
+                  <?php if (!empty($members)) {
+                      
+                      $i=0;
                       foreach ($members as $v) {
                         if($v->cancelStatus ==1){
                         // print_r($v);die; ?>
@@ -150,16 +152,19 @@ $totalmembership=count($members);
                           <td scope="row"><?php echo date('Y-m-d', strtotime($v->subscriptionDate)); ?></td>
                           <td scope="row"><?php echo date('Y-m-d', strtotime($v->cancelDate));?></td>
                           
-                        </tr>
-                      <?php }
+                          </tr>
+                      <?php }elseif($totalmembership ==$i){ ?>
+                        <tr>
+                        <td scope="row" colspan="5">You do not have an Cancelled membership.</td>
+                      </tr>
+                        <?php }$i++;
                       }
                     } else { ?>
                       <tr>
-                        <td scope="row" colspan="5">You do not have an active membership.</td>
+                        <td scope="row" colspan="5">You do not have an Cancelled membership.</td>
                       </tr>
                     <?php } ?>
                   </tbody>
-                </table>
                     </div>
                     </div>
                 <div class="col sub-div">

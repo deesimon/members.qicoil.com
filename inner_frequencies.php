@@ -280,24 +280,42 @@ foreach ($response->favorite as $v) {
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-12">
-            <div class="col-md-6 col-sm-6">
-              <div class="col-md-1"><a href="<?php echo (!empty($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'frequencies.php'); ?>"> <img src="images/left.png" class="left_aerrow_bg"> </a> </div>
-              <div class="col-md-12">
-                <div class="col-md-12">
-                  <h1 class="freq-title"><?php echo $title ?></h1>
+
+          <div class="custom-container">
+          <div class="back-arrow-container">
+          <a class="left_aerrow_bg" href="<?php echo (!empty($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'frequencies.php'); ?>"> <img src="images/left.png"> </a>
+          </div>
+          <div class="search-container">
+          <div class="form-group has-search  offset-1" style="width:100%"> <span class="fa fa-search form-control-feedback"></span>
+                  <form method="get" action="rife_frequencies_list.php">
+                    <input type="text" name="keyword" class="form-control col-md-12" placeholder="Search" id="search">
+                  </form>
                 </div>
+          </div>
+          </div>
 
-                <div class="col-md-5">
+          <div class="custom-container mobile-flex-wrap">
+          
+            <div class="frequency-container">
+              
+              <div class="col-md-12 freq-container">
+              
+                <div class="freq-container__image">
                   <img src="<?php echo (!empty($image) ? 'https://www.qicoilapi.ingeniusstudios.com/storage/app/public/uploads/' . $image : 'images/freaquecy.png'); ?>" width="126" height="126" class="sun">
-                  <?php if (isset($_SESSION['email'])) {  ?>
-                    <span data-album="<?php echo $_GET['id']; ?>" data-favorite="<?php echo ($favorite_or_not[$_GET['id']] == 1 ? 1 : 0); ?>" class="favorite <?php echo ($favorite_or_not[$_GET['id']] == 1 ? 'yes' : 'no'); ?>" style=" vertical-align: top; "></span>
-
+                  
+                </div>
+                
+                <div class="freq-container__desc">
+                <div class="freq-container--title"><h1 class="freq-title"><?php echo $title ?></h1>
+                <?php if (isset($_SESSION['email'])) {  ?>
+                    <span data-album="<?php echo $_GET['id']; ?>" data-favorite="<?php echo ($favorite_or_not[$_GET['id']] == 1 ? 1 : 0); ?>" class="inner-player-fave favorite <?php echo ($favorite_or_not[$_GET['id']] == 1 ? 'yes' : 'no'); ?>" style=" vertical-align: top; "></span>
                   <?php } ?>
                 </div>
-                <div class="col-md-7"> <?php  echo nl2br($description)?></div>
+                <?php  echo nl2br($description)?>
+                </div>
 
               </div>
-              <div class="col-md-12 border_bottom"> </div>
+              
             </div>
             <div class="col-md-6 col-xs-12 p-0 stand">
               <div class="col-md-10 col-xs-12 p-0">
@@ -329,7 +347,7 @@ foreach ($response->favorite as $v) {
                     <button type="button" class="repeateoff" id="repeateoff_btn" data-status='' <?php echo $disabled; ?>><img src="images/repeat-off.png"></button> -->
                       <span class="repeate off" id="repeateBtn" data-status=0 <?php echo $disabled; ?>></span>
                       <span data-shuffle="0" class="shuffle_btn off"></span>
-                      <div class="col-md-12 pt-3">
+                      <div class="pt-3">
                         <?php if (empty($_GET['category']) || $_GET['category'] == 1) { ?>
                           <input type="hidden" class="fre_number" value="<?php echo $frequencies[0]; ?>" name="fre" id="fre" readonly />
                           <label class="fre_number_text"><?php echo $frequencies[0]; ?> Hz</label>
@@ -421,9 +439,12 @@ foreach ($response->favorite as $v) {
                       } ?>
                     </ul>
                   </div>
-                </div>
+                
               </div>
             </div>
+            </div>
+              <!-- end container -->
+
           </div>
         </div>
       </div>
@@ -1229,3 +1250,76 @@ include('footer.php');
     </div>
   </div>
 </div>
+
+
+<script>
+$(".favorite").click(function() {
+      var ele = $(this);
+       var albumid = ele.attr('data-album');
+         var favorite = ele.attr('data-favorite');
+         if (favorite == 0) {
+           var is_favorite = 1;
+          ele.removeClass('no');
+          ele.addClass('yes');
+         } else {
+          var is_favorite = 0;
+          ele.removeClass('yes');
+          ele.addClass('no');
+         }
+
+        $.ajax({
+          url: 'post.php',
+         type: 'POST',
+          data: {
+            favorite: 1,
+            albumid: albumid,
+            is_favorite: is_favorite
+           },
+           dataType: 'json',
+          success: function(res) {
+           if (res.success == true) {
+               ele.attr('data-favorite', is_favorite);
+               if (is_favorite == 1) {
+                 // ele.removeClass('no');
+                 // ele.addClass('yes');
+               } else {
+                 // ele.removeClass('yes');
+                 // ele.addClass('no');
+               }
+             }
+           }
+         });
+       });
+       $(".btndrop").click(function() {
+	var Key = 'accordion-filter-category';
+	if ($(this).hasClass('collapsed')) {
+		var Val = 'expand';
+	}else{
+		var Val = 'collapsed';
+	}	
+	setCookie(Key, Val);
+});
+
+var accordionfilter = getCookie("accordion-filter-category");
+console.log(accordionfilter);
+if(accordionfilter == 'collapsed'){
+	$('#demobtn').removeClass('in');
+  $('#demobtn').addClass('collapse');
+}else{
+	$('#demobtn').addClass('in');
+}
+$(".btndrop").addClass(accordionfilter);
+
+function setCookie(Key, Val) {
+	var expires = new Date();
+	expires.setTime(expires.getTime() + (Val * 24 * 60 * 60 * 1000));
+	var daysToExpire = new Date(2147483647 * 1000).toUTCString();
+	document.cookie = Key + '=' + Val + ';expires=' + daysToExpire;
+}
+
+function getCookie(Key) {
+	var keyValue = document.cookie.match('(^|;) ?' + Key + '=([^;]*)(;|$)');
+	return keyValue ? keyValue[2] : null;
+}
+
+</script>
