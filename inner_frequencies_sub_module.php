@@ -186,8 +186,9 @@ foreach ($response->favorite as $v) {
         <div class="frequency-container">
               
               <div class="freq-container">
-                <div class="freq-container__image">
+              <div class="freq-container__image">
                   <img src="<?php echo (!empty($image) ? 'https://www.qicoilapi.ingeniusstudios.com/storage/app/public/uploads/' . $image : 'images/freaquecy.png'); ?>" width="126" height="126" class="sun">
+                  
                 </div>
                 
                 <div class="freq-container__desc">
@@ -203,9 +204,9 @@ foreach ($response->favorite as $v) {
               
             </div>
 
-            <div class="play_box col-md-12">
-                <div class="white_bg1 col-md-10 col-sm-10 offset-1 <?php echo $lock_class_name; ?>" id="back_bg" onClick="payment_redirect_function()" >
-                  <div class="col-md-10 pt-5 button_left mt-3 col-xs-9">
+            <div class="play_box">
+                <div class="white_bg1  <?php echo $lock_class_name; ?>" id="back_bg" onClick="payment_redirect_function()" >
+                  <div class="button_left">
                     <a href="https://members.qicoil.com/payment.php?type=<?php echo $_GET['category']; ?>"><button type="button" class="stopbtn" id="stopBtn" <?php echo $disabled; ?>><img src=" images/left_btn.png"></button></a> 
                     <a href="https://members.qicoil.com/payment.php?type=<?php echo $_GET['category']; ?>"><button type="button" class="plybtn" onClick="playNote()" id="play" <?php echo $disabled; ?>> <img src="images/middle.png"></button></a>
                     <a href="https://members.qicoil.com/payment.php?type=<?php echo $_GET['category']; ?>"><button type="button" id="pause"><img src="images/mute.png" <?php echo $disabled; ?>></button></a>
@@ -213,7 +214,7 @@ foreach ($response->favorite as $v) {
                   <button type="button" class="repeateoff" id="repeateoff_btn" data-status='' <?php echo $disabled; ?>><img src="images/repeat-off.png"></button> -->
                     <a href="https://members.qicoil.com/payment.php?type=<?php echo $_GET['category']; ?>"><span class="repeate off" id="repeateBtn" data-status=0 <?php echo $disabled; ?>></span></a>
                     <a href="https://members.qicoil.com/payment.php?type=<?php echo $_GET['category']; ?>"><span data-shuffle="0" class="shuffle_btn off"></span></a>
-                    <div class="col-md-12 pt-3">
+                    <div class="pt-3">
                       <?php if (empty($_GET['category']) || $_GET['category'] == 1) { ?>
                         <input type="hidden" class="fre_number" value="<?php echo $frequencies[0]; ?>" name="fre" id="fre" readonly />
                         <label class="fre_number_text"><?php echo $frequencies[0]; ?> Hz</label>
@@ -235,27 +236,15 @@ foreach ($response->favorite as $v) {
 
                     </div>
                   </div>
-                  <div class="col-md-2 col-xs-3 pt-5">
-                    <a href="https://members.qicoil.com/payment.php?type=<?php echo $_GET['category']; ?>"><div class="volume">
-                      <div class="vol_up"><img src="images/ic_volume_up_24.png"></div>
-                      <div class="vol_line">
-                        <input type="range" orient="vertical" min="0" max="10" value="5" disabled />
-                      </div>
-                      <div class="vol_stop"><img src="images/ic_volume_mute_.png"></div>
-                    </div></a> 
-                  </div>
-                  <canvas id="canvas" width="400"> </canvas>
+                  
+                    <a href="https://members.qicoil.com/payment.php?type=<?php echo $_GET['category']; ?>"></a> 
+                 
+           
                 </div>
-                <div class=" col-md-10 col-sm-10 offset-1 pp">
+                <div class="pp">
                   <div class='music_list_wrap'>
-
-
-
-                 <a href="https://members.qicoil.com/payment.php?type=<?php echo $_GET['category']; ?>">UNLOCK </a>
-
-
-
-                </div>
+ <a href="https://members.qicoil.com/payment.php?type=<?php echo $_GET['category']; ?>">UNLOCK </a>
+</div>
                 </div>
               </div>
 
