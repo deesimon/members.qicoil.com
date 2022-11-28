@@ -526,6 +526,7 @@ input[type="range"][orient="vertical"] {
   background-color: #fff;
   margin-bottom: 12px;
   z-index: 1;
+  max-width: 100%;
 }
 
 .image_play_waves {
