@@ -1551,7 +1551,7 @@ a.lock:hover{
 .new a,
 .category_paid,
 .lock {
-  max-width: 100%;
+  max-width:175px;
   cursor: pointer;
   width: 100%;
   margin:0 auto;
