@@ -341,7 +341,7 @@ foreach ($response->favorite as $v) {
                       <button type="button" id="pause"><img src="images/mute.png" <?php echo $disabled; ?>></button>
                       <!-- <button type="button" class="repeate" id="repeateBtn" data-status='' <?php echo $disabled; ?>> <img src="images/repeat-on.png"></button>
                     <button type="button" class="repeateoff" id="repeateoff_btn" data-status='' <?php echo $disabled; ?>><img src="images/repeat-off.png"></button> -->
-                      <span class="repeate off" id="repeateBtn" data-status=0 <?php echo $disabled; ?>></span>
+                      <span class="repeate on" id="repeateBtn" data-status=0 <?php echo $disabled; ?>></span>
                       <span data-shuffle="0" class="shuffle_btn off"></span>
                       <div class="pt-3">
                         <?php if (empty($_GET['category']) || $_GET['category'] == 1) { ?>
