@@ -100,7 +100,7 @@ if (!empty($playlist->frequency_id)) {
   <section id="inner_detail">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 playlist-row">
           <div class="col-xs-12 col-md-6 col-sm-6 px-0 pb-4">
             <div class="col-xs-2 col-md-1 px-0"><a href="<?php echo (!empty($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'frequencies.php'); ?>"> <img src="images/left.png" class="left_aerrow_bg"> </a> </div>
             <?php if ($not_found == true) { ?>
