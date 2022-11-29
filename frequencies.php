@@ -18,9 +18,9 @@ if(!empty($_SESSION)){
   }
   elseif(!in_array($_REQUEST['category'],$_SESSION['category_ids'])){
     $lock_class_name = 'lock';
-  echo 123;
+  echo 12399;
   }
- if(in_array($_REQUEST['subcategory'],$_SESSION['album_ids'])){
+ if(in_array($_REQUEST['subcategory'],$_SESSION['subcategory_ids'])){
     $lock_class_name = '';
   echo 12344;
   }
