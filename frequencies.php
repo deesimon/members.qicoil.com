@@ -86,7 +86,7 @@ $frequencies = $response->frequencies;
 //print_r($frequencies);
 // echo '<br><br><b>URL:</b> ' . $url . "\n\n<br/><br><b>POST DATA:</b> " . $post_data . "\n\n<br/><br><b>RES:</b>" . $res['res'];
 // exit;
-foreach ($SUBCATEGORIES as $v) { //print_r($v);
+foreach ($SUBCATEGORIES as $v) { print_r($v);die;
   if ($v->id == $_GET['subcategory']) {
     $subcategory = $v->name;
   }
