@@ -17,10 +17,10 @@ if(!empty($_SESSION)){
     }
   }
   elseif(!in_array($_REQUEST['category'],$_SESSION['category_ids'])){
-    $lock_class_name = 'unlock';
+    $lock_class_name = 'lock';
   }
 }else{
-  $lock_class_name = 'lock';
+  $lock_class_name = 'unlock';
 }
 //print_r($lock_class_name);//die;
 // Anjani code end
