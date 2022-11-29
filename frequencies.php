@@ -86,7 +86,7 @@ $frequencies = $response->frequencies;
 //print_r($frequencies);
 // echo '<br><br><b>URL:</b> ' . $url . "\n\n<br/><br><b>POST DATA:</b> " . $post_data . "\n\n<br/><br><b>RES:</b>" . $res['res'];
 // exit;
-foreach ($SUBCATEGORIES as $v) { print_r($v);die;
+foreach ($SUBCATEGORIES as $v) { //print_r($v);die;
   if ($v->id == $_GET['subcategory']) {
     $subcategory = $v->name;
   }
@@ -177,7 +177,7 @@ function sortByKeyList($array, $seq)
           <div class="row response">
             <?php //print_r($frequencies);
             $i = 0;
-            foreach ($frequencies as $v) { //print_r($v);die;
+            foreach ($frequencies as $v) { print_r($v);die;
               $i++;
             ?>
               <div class="col-xs-6 col-md-3 ">
