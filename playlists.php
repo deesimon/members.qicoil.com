@@ -119,16 +119,16 @@ if (!empty($playlist->frequency_id)) {
             </div>
 
           <div class="col-md-6 col-xs-12 p-0 stand">
-              <div class="play_box col-md-12">
+              <div class="play_box">
                 <div class="white_bg1" id="back_bg">
-                  <div class="col-md-12 pt-5 button_left mt-3">
+                  <div class="b_btn">
                     <button type="button" class="stopbtn" id="stopBtn"><img src=" images/left_btn.png"></button>
                     <button type="button" class="plybtn" onClick="playNote()" id="play"> <img src="images/middle.png"></button>
                     <button type="button" id="pause"><img src="images/mute.png"></button>
 
                     <span class="repeate off" id="repeateBtn" data-status=0></span>
                     <span data-shuffle="0" class="shuffle_btn off"></span>
-                    <div class="col-md-12 pt-3">
+                    <div class="sound-container">
                       <audio id="sound">
                         <source src="<?php echo $first_mp3; ?>" type="audio/mpeg" />
                       </audio>
@@ -141,7 +141,7 @@ if (!empty($playlist->frequency_id)) {
                     </div>
                   </div>
                 </div>
-                <div class=" col-md-12 pp">
+                <div class="pp">
                   <ul class="list_voice">
                     <?php
                     $i = 1;
