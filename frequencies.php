@@ -20,8 +20,13 @@ if(!empty($_SESSION)){
     $lock_class_name = 'lock';
   echo 123;
   }
+ if(in_array($_REQUEST['subcategory'],$_SESSION['album_ids'])){
+    $lock_class_name = '';
+  echo 12344;
+  }
+
 }else{
-  $lock_class_name = 'unlock';
+  $lock_class_name = 'lock';
   echo 456;
 }
 print_r($lock_class_name);//die;
