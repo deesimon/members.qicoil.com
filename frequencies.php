@@ -22,7 +22,7 @@ if(!empty($_SESSION)){
 }else{
   $lock_class_name = 'unlock';
 }
-//print_r($lock_class_name);//die;
+print_r($lock_class_name);//die;
 // Anjani code end
 
 $favorites = $favorite_or_not = array();
