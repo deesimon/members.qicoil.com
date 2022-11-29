@@ -18,18 +18,16 @@ if(!empty($_SESSION)){
   }
   elseif(!in_array($_REQUEST['category'],$_SESSION['category_ids'])){
     $lock_class_name = 'lock';
-  echo 12399;
+
   }
  if(in_array($_REQUEST['subcategory'],$_SESSION['subcategory_ids'])){
     $lock_class_name = '';
-  echo 12344;
   }
 
 }else{
   $lock_class_name = 'lock';
-  echo 456;
 }
-print_r($lock_class_name);//die;
+//print_r($lock_class_name);//die;
 // Anjani code end
 
 $favorites = $favorite_or_not = array();
