@@ -119,10 +119,9 @@ if (!empty($playlist->frequency_id)) {
             </div>
 
           <div class="col-md-6 col-xs-12 p-0 stand">
-            <div class="col-md-10 col-xs-12 p-0">
               <div class="play_box col-md-12">
-                <div class="white_bg1 col-md-10 col-sm-10 offset-1" id="back_bg">
-                  <div class="col-md-10 pt-5 button_left mt-3 col-xs-9">
+                <div class="white_bg1" id="back_bg">
+                  <div class="col-md-12 pt-5 button_left mt-3">
                     <button type="button" class="stopbtn" id="stopBtn"><img src=" images/left_btn.png"></button>
                     <button type="button" class="plybtn" onClick="playNote()" id="play"> <img src="images/middle.png"></button>
                     <button type="button" id="pause"><img src="images/mute.png"></button>
@@ -141,18 +140,8 @@ if (!empty($playlist->frequency_id)) {
                       <p><img class="loading_fre hide" src="images/load.gif" width="120"></p>
                     </div>
                   </div>
-                  <div class="col-md-2 col-xs-3 pt-5">
-                    <div class="volume">
-                      <div class="vol_up"><img src="images/ic_volume_up_24.png"></div>
-                      <div class="vol_line">
-                        <input type="range" orient="vertical" min="0" max="10" value="5" />
-                      </div>
-                      <div class="vol_stop"><img src="images/ic_volume_mute_.png"></div>
-                    </div>
-                  </div>
-                  <canvas id="canvas" width="400"> </canvas>
                 </div>
-                <div class=" col-md-10 col-sm-10 offset-1 pp">
+                <div class=" col-md-12 pp">
                   <ul class="list_voice">
                     <?php
                     $i = 1;
@@ -169,7 +158,6 @@ if (!empty($playlist->frequency_id)) {
                   </ul>
                 </div>
               </div>
-            </div>
           </div>
         </div>
       </div>
