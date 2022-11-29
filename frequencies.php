@@ -9,20 +9,7 @@ include('constants.php');
 // Anjani code start  final
 
 if(!empty($_SESSION)){
-  if(!isset($_REQUEST['category'])){
-    if(in_array(1,$_SESSION['category_ids'])){
-      $lock_class_name = 'category_paid';
-    }else{
-      $lock_class_name = 'lock';
-    }
-  }
-  elseif(!in_array($_REQUEST['category'],$_SESSION['category_ids'])){
-    $lock_class_name = 'lock';
-  }
-}else{
-  $lock_class_name = 'lock';
-}
-print_r($lock_class_name);//die;
+  
 // Anjani code end
 
 $favorites = $favorite_or_not = array();
@@ -69,6 +56,21 @@ if (!empty($_GET['subcategory'])) {
 } else {
   $post_data['limit'] = 9;
 }
+
+if(!isset($_REQUEST['category'])){
+  if(in_array(1,$_SESSION['category_ids'])){
+    $lock_class_name = 'category_paid';
+  }else{
+    $lock_class_name = 'lock';
+  }
+}
+elseif(!in_array($_REQUEST['category'],$_SESSION['category_ids'])){
+  $lock_class_name = 'lock';
+}
+}else{
+$lock_class_name = 'lock';
+}
+print_r($lock_class_name);//die;
 
 if (!empty($_GET['search'])) {
   $post_data['keyword'] = $_GET['search'];
