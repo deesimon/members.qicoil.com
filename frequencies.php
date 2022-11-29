@@ -22,7 +22,7 @@ if(!empty($_SESSION)){
 }else{
   $lock_class_name = 'lock';
 }
-
+print_r($lock_class_name);die;
 // Anjani code end
 
 $favorites = $favorite_or_not = array();
@@ -177,7 +177,7 @@ function sortByKeyList($array, $seq)
           <div class="row response">
             <?php //print_r($frequencies);
             $i = 0;
-            foreach ($frequencies as $v) { print_r($v);die;
+            foreach ($frequencies as $v) { //print_r($v);die;
               $i++;
             ?>
               <div class="col-xs-6 col-md-3 ">
