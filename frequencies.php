@@ -18,9 +18,11 @@ if(!empty($_SESSION)){
   }
   elseif(!in_array($_REQUEST['category'],$_SESSION['category_ids'])){
     $lock_class_name = 'lock';
+  echo 123;
   }
 }else{
   $lock_class_name = 'unlock';
+  echo 456;
 }
 print_r($lock_class_name);//die;
 // Anjani code end
