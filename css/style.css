@@ -439,6 +439,7 @@ input[type="range"][orient="vertical"] {
     text-align: center;
     aspect-ratio: 1;
     font-size: 10px;
+    margin:0 auto;
 }
 
 .check_listing {

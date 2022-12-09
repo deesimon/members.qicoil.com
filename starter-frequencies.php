@@ -109,7 +109,7 @@ function sortByKeyList($array, $seq)
     <div class="row">
       
         <?php include 'sidebar.php'; ?>
-        <div class="col-md-10 serch_box1">
+        <div class="col-sm-12 col-md-10 serch_box1">
           <div class="row">
             <div class="col-md-4">
               <h3 class="main-title">Free Frequencies</h3>
