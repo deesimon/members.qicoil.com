@@ -26,7 +26,6 @@ if ($fetch_flag != -1) {
     $mp3_response = json_decode(($res['res']), true);
     // print_r($mp3_response);
     // die;
-
     foreach ($mp3_response as $v) {
       $frequency_ids[$v['frequency_id']] = $v['frequency_id'];
     }
