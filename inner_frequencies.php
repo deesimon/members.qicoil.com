@@ -7,23 +7,21 @@ include('constants.php');
 //code start for index page and player redirection
 $free_frequencies_ids = [];
 
-if (!isset($_SESSION['email'])){
+if (!isset($_SESSION['email'])) {
   $url = 'https://apiadmin.qienergy.ai/api/free_albums';
   $res = curl_post($url, '', $header);
-  $response = json_decode($res['res'],true);
+  $response = json_decode($res['res'], true);
 
-     foreach($response['free_albums'] as $key){
-         array_push($free_frequencies_ids, $key['id']);
-     }
+  foreach ($response['free_albums'] as $key) {
+    array_push($free_frequencies_ids, $key['id']);
+  }
 
-  if(in_array($_GET['id'],$free_frequencies_ids)) {
+  if (in_array($_GET['id'], $free_frequencies_ids)) {
     header('Location:index.php');
     exit;
-  }
-  elseif(isset($_REQUEST['category'])){
+  } elseif (isset($_REQUEST['category'])) {
     if (empty($_GET['category']) || $_GET['category'] == 1) {
-        $payment_url = RIFE_PAYMENT_URL;
-      
+      $payment_url = RIFE_PAYMENT_URL;
     } else {
       if ($_GET['category'] == 2) {
         $payment_url = QUANTUM_PAYMENT_URL;
@@ -41,7 +39,6 @@ if (!isset($_SESSION['email'])){
     // header('Location:https://www.google.com');
     // exit;
   }
-
 }
 //code end for index page and player redirection
 
@@ -56,7 +53,7 @@ if (!isset($_SESSION['email'])) {
 
 if (!empty($_GET['search'])) {
   $header = array('Content-Type: application/x-www-form-urlencoded');
-  $url=FREQUENCIES_URL;
+  $url = FREQUENCIES_URL;
   $post_data = http_build_query(array('keyword' => $_GET['search'], 'ajax' => $_GET['ajax']));
   $res = curl_post($url . '?' . $post_data, '', $header);
   // $res = json_decode($res['res']);
@@ -65,7 +62,7 @@ if (!empty($_GET['search'])) {
   die;
 }
 
-$url=FREE_ALBUMS_URL;
+$url = FREE_ALBUMS_URL;
 $res = curl_post($url, '', $header);
 $response = json_decode($res['res']);
 foreach ($response->free_albums as $v) {
@@ -120,7 +117,7 @@ if (!isset($_SESSION['email'])) {
 $frequencies = $mp3s = array();
 $header = array('Content-Type: application/x-www-form-urlencoded');
 //if($_GET['type'] == 'rife'){
-$url =FREQUENCIES_URL;
+$url = FREQUENCIES_URL;
 if (!empty($_GET['id'])) {
   $post_data['id'] = $_GET['id'];
 }
@@ -145,20 +142,20 @@ if (!empty($frequenciess)) {
   $frequencies = explode("/", $frequenciess);
   //print_r($frequenciess);die;
 } else {
-  $url=MP3_URL;
-  $post_data = http_build_query(array("frequency_id" => $_GET['id']));
+  $url = MP3_URL;
+  $post_data = http_build_query(array("albumid" => $_GET['id']));
   $res = curl_post($url, $post_data, $header);
   $mp3_response = json_decode(($res['res']), true);
 
   //echo '1';print_r($res);exit;
   $mp3s = $mp3_response;
-  $first_mp3=FIRST_MP3_URL. $audio_folder . '/' . $mp3s[0]['filename'];
+  $first_mp3 = FIRST_MP3_URL . $audio_folder . '/' . $mp3s[0]['filename'];
 }
 // print_r($mp3s);die;
 
 $playlists = array();
 if (isset($_SESSION['id'])) {
-  $url=GETPLAYLIST_URL.'?userid=' . $_SESSION['id'];
+  $url = GETPLAYLIST_URL . '?userid=' . $_SESSION['id'];
   $post_data = '';
   $res = curl_post($url, $post_data, $header);
   // print_r($res);die;
@@ -170,7 +167,7 @@ if (isset($_SESSION['id'])) {
 }
 
 $header = array('Authorization: Bearer ' . $_SESSION['token'], 'Content-Type: application/x-www-form-urlencoded');
-$url=FAVORITE_URL;
+$url = FAVORITE_URL;
 $res = curl_post($url, '', $header);
 // print_r($res['res']);die;
 $response = json_decode($res['res']);
@@ -183,6 +180,7 @@ foreach ($response->favorite as $v) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>Inner Frequencies - Qi Coil WebApp (BETA) </title>
   <?php include 'head.php'; ?>
@@ -238,37 +236,37 @@ foreach ($response->favorite as $v) {
       background-color: #c4c4c4;
     }
 
-        /*css for lock*/
-         .lock2{
-             position: relative;
-         }
-         .lock2:before {
-        content: '';
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        top: 0px;
-        left: 0px;
-        background-color: #100d0d6e;
+    /*css for lock*/
+    .lock2 {
+      position: relative;
     }
 
-         .lock2:after {
-        content: '\f023 ';
-        font-family: 'FontAwesome';
-        position: absolute;
-        color: #fff;
-        left: 50%;
-        top: 50%;
-        font-size: 40px;
-        transform: translate(-50%, -50%);
-         }
+    .lock2:before {
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0px;
+      left: 0px;
+      background-color: #100d0d6e;
+    }
 
-         /* css for lock end */
+    .lock2:after {
+      content: '\f023 ';
+      font-family: 'FontAwesome';
+      position: absolute;
+      color: #fff;
+      left: 50%;
+      top: 50%;
+      font-size: 40px;
+      transform: translate(-50%, -50%);
+    }
 
-
+    /* css for lock end */
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
 </head>
+
 <body>
   <?php include 'header.php'; ?>
   <?php if (isset($_SESSION['verified']) && $_SESSION['verified'] == 0 && !in_array($_GET['id'], $free_albums)) { ?>
@@ -281,161 +279,160 @@ foreach ($response->favorite as $v) {
         <div class="row">
           <div class="col-md-12">
 
-          <div class="custom-container">
-          <div class="back-arrow-container">
-          <a class="left_aerrow_bg" href="<?php echo (!empty($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'frequencies.php'); ?>"> <img src="images/left.png"> </a>
-          </div>
-          <div class="search-container">
-          <div class="form-group has-search  offset-1" style="width:100%"> <span class="fa fa-search form-control-feedback"></span>
+            <div class="custom-container">
+              <div class="back-arrow-container">
+                <a class="left_aerrow_bg" href="<?php echo (!empty($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'frequencies.php'); ?>"> <img src="images/left.png"> </a>
+              </div>
+              <div class="search-container">
+                <div class="form-group has-search  offset-1" style="width:100%"> <span class="fa fa-search form-control-feedback"></span>
                   <form method="get" action="rife_frequencies_list.php">
                     <input type="text" name="keyword" class="form-control col-md-12" placeholder="Search" id="search">
                   </form>
                 </div>
-          </div>
-          </div>
+              </div>
+            </div>
 
-          <div class="custom-container mobile-flex-wrap">
-          
-            <div class="frequency-container">
-              
-              <div class="freq-container">
-              
-                <div class="freq-container__image">
-                  <img src="<?php echo (!empty($image) ? 'https://www.qicoilapi.ingeniusstudios.com/storage/app/public/uploads/' . $image : 'images/freaquecy.png'); ?>" width="126" height="126" class="sun">
-                  
-                </div>
-                
-                <div class="freq-container__desc">
-                <div class="freq-container--title"><h1 class="freq-title"><?php echo $title ?></h1>
-                <?php if (isset($_SESSION['email'])) {  ?>
-                    <span data-album="<?php echo $_GET['id']; ?>" data-favorite="<?php echo ($favorite_or_not[$_GET['id']] == 1 ? 1 : 0); ?>" class="inner-player-fave favorite <?php echo ($favorite_or_not[$_GET['id']] == 1 ? 'yes' : 'no'); ?>" style=" vertical-align: top; "></span>
-                  <?php } ?>
-                </div>
-                <?php  echo nl2br($description)?>
+            <div class="custom-container mobile-flex-wrap">
+
+              <div class="frequency-container">
+
+                <div class="freq-container">
+
+                  <div class="freq-container__image">
+                    <img src="<?php echo (!empty($image) ? 'https://www.qicoilapi.ingeniusstudios.com/storage/app/public/uploads/' . $image : 'images/freaquecy.png'); ?>" width="126" height="126" class="sun">
+
+                  </div>
+
+                  <div class="freq-container__desc">
+                    <div class="freq-container--title">
+                      <h1 class="freq-title"><?php echo $title ?></h1>
+                      <?php if (isset($_SESSION['email'])) {  ?>
+                        <span data-album="<?php echo $_GET['id']; ?>" data-favorite="<?php echo ($favorite_or_not[$_GET['id']] == 1 ? 1 : 0); ?>" class="inner-player-fave favorite <?php echo ($favorite_or_not[$_GET['id']] == 1 ? 'yes' : 'no'); ?>" style=" vertical-align: top; "></span>
+                      <?php } ?>
+                    </div>
+                    <?php echo nl2br($description) ?>
+                  </div>
+
                 </div>
 
               </div>
-              
-            </div>
-            <div class="play-container">
-           
-                
+              <div class="play-container">
+
+
                 <div class="play_box">
 
-                    <?php if(!empty($disabled)){ ?>
+                  <?php if (!empty($disabled)) { ?>
 
-                       <a class="a-lock" href="<?php echo $payment_url; ?>" >
-                     <div class="white_bg1 <?php echo  !empty($disabled)?'lock2':'' ?>" id="back_bg">
+                    <a class="a-lock" href="<?php echo $payment_url; ?>">
+                      <div class="white_bg1 <?php echo  !empty($disabled) ? 'lock2' : '' ?>" id="back_bg">
 
-                   <?php  }
-
-                   else{ ?>
-                     <div class="white_bg1" id="back_bg">
-                  <?php 
-                         }
-                     ?>
-
-                    <div class="b_btn">
-                      <button type="button" class="stopbtn" id="stopBtn" <?php echo $disabled; ?>><img src=" images/left_btn.png"></button>
-                      <button type="button" class="plybtn" onClick="playNote()" id="play" <?php echo $disabled; ?>> <img src="images/middle.png"></button>
-                      <button type="button" id="pause"><img src="images/mute.png" <?php echo $disabled; ?>></button>
-                      <!-- <button type="button" class="repeate" id="repeateBtn" data-status='' <?php echo $disabled; ?>> <img src="images/repeat-on.png"></button>
-                    <button type="button" class="repeateoff" id="repeateoff_btn" data-status='' <?php echo $disabled; ?>><img src="images/repeat-off.png"></button> -->
-                      <span class="repeate on" id="repeateBtn" data-status=0 <?php echo $disabled; ?>></span>
-                      <span data-shuffle="0" class="shuffle_btn off"></span>
-                      <div class="pt-3">
-                        <?php if (empty($_GET['category']) || $_GET['category'] == 1) { ?>
-                          <input type="hidden" class="fre_number" value="<?php echo $frequencies[0]; ?>" name="fre" id="fre" readonly />
-                          <label class="fre_number_text"><?php echo $frequencies[0]; ?> Hz</label>
-                          <div class="progress">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" id="progress_bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
-                          </div>
-                          <span id="duration"></span>
-                        <?php } else { ?>
-                          <audio id="sound">
-                            <source src="<?php echo $first_mp3; ?>" type="audio/mpeg" />
-                          </audio>
-                          <label class="fre_number_text"><?php echo str_replace('.mp3', '', $mp3s[0]['filename']); ?></label>
-                          <div class="progress">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
-                          </div>
-                          <span id="duration"></span>
-                          <p><img class="loading_fre hide" src="images/load.gif" width="120"></p>
-                        <?php } ?>
-
-                      </div>
-                    </div>
-                   
-                  
-
-                         
-                    <?php
-                           if(!empty($disabled)){
-                     ?>
-                     
-                         </div>
-                         </a>        
-
-                    <?php 
-                          } else{
-                     ?>      
-                           </div>
-                       
-                     <?php    } 
-
-                     ?>    
-
-
-                  <div class="pp">
-                    <div class='music_list_wrap'>                    
-                    <ul class="list_voice">
-                      <?php
-                      $i = 1;
-                      if (empty($_GET['category']) || $_GET['category'] == '1') {
-                        foreach ($frequencies as $v) {
-
-                          // echo  $v->likes;
-                      ?>
-                          <li class="hz" data-random="<?php echo $i; ?>">
-
-                            <?php if (!empty($disabled)) { ?>
-                              <a href="<?php echo $payment_url; ?>" <?php echo ($i == 1 ? 'style=" color: #409f83; "' : ''); ?>>
-                                <h3><?php echo $v . ' Hz' ?></h3>
-                              </a>
-                            <?php } else { ?>
-                              <h3 <?php echo ($i == 1 ? 'class="intro"' : ''); ?> data-fre="<?php echo $v; ?>"><?php echo $v . ' Hz' ?>
-                                <!-- <span class="context-menu pull-right" data-container-id="context-menu-items" data-row-id="<?php echo $v['id']; ?>"></span> -->
-                              </h3>
-                            <?php } ?>
-                          </li>
-                        <?php $i++;
-                        }
-                      } else {
-                        foreach ($mp3s as $v) {
-                          if (!empty($disabled)) {
-                            $href = $payment_url;
-                          } else {
-                            $href = "https://www.qicoilapi.ingeniusstudios.com/storage/app/public/uploads/" . $audio_folder . "/" . $v['filename'];
-                            // $href = 'https://members.qicoil.com/'.$v['filename'];
-                          }
+                      <?php  } else { ?>
+                        <div class="white_bg1" id="back_bg">
+                        <?php
+                      }
                         ?>
-                          <li class="hz" data-random="<?php echo $i; ?>"> <a <?php echo ($i == 1 ? 'class="intro"' : ''); ?> href="<?php echo $href; ?>"> <?php echo str_replace('.mp3', '', $v['filename']); ?> </a>
-                            <span class="context-menu pull-right" data-container-id="context-menu-items" data-row-id="<?php echo $v['id']; ?>"></span>
-                          </li>
+
+                        <div class="b_btn">
+                          <button type="button" class="stopbtn" id="stopBtn" <?php echo $disabled; ?>><img src=" images/left_btn.png"></button>
+                          <button type="button" class="plybtn" onClick="playNote()" id="play" <?php echo $disabled; ?>> <img src="images/middle.png"></button>
+                          <button type="button" id="pause"><img src="images/mute.png" <?php echo $disabled; ?>></button>
+                          <!-- <button type="button" class="repeate" id="repeateBtn" data-status='' <?php echo $disabled; ?>> <img src="images/repeat-on.png"></button>
+                    <button type="button" class="repeateoff" id="repeateoff_btn" data-status='' <?php echo $disabled; ?>><img src="images/repeat-off.png"></button> -->
+                          <span class="repeate on" id="repeateBtn" data-status=0 <?php echo $disabled; ?>></span>
+                          <span data-shuffle="0" class="shuffle_btn off"></span>
+                          <div class="pt-3">
+                            <?php if (empty($_GET['category']) || $_GET['category'] == 1) { ?>
+                              <input type="hidden" class="fre_number" value="<?php echo $frequencies[0]; ?>" name="fre" id="fre" readonly />
+                              <label class="fre_number_text"><?php echo $frequencies[0]; ?> Hz</label>
+                              <div class="progress">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" id="progress_bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+                              </div>
+                              <span id="duration"></span>
+                            <?php } else { ?>
+                              <audio id="sound">
+                                <source src="<?php echo $first_mp3; ?>" type="audio/mpeg" />
+                              </audio>
+                              <label class="fre_number_text"><?php echo str_replace('.mp3', '', $mp3s[0]['filename']); ?></label>
+                              <div class="progress">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+                              </div>
+                              <span id="duration"></span>
+                              <p><img class="loading_fre hide" src="images/load.gif" width="120"></p>
+                            <?php } ?>
+
+                          </div>
+                        </div>
+
+
+
+
+                        <?php
+                        if (!empty($disabled)) {
+                        ?>
+
+                        </div>
+                    </a>
+
+                  <?php
+                        } else {
+                  ?>
+                </div>
+
+              <?php    }
+
+              ?>
+
+
+              <div class="pp">
+                <div class='music_list_wrap'>
+                  <ul class="list_voice">
+                    <?php
+                    $i = 1;
+                    if (empty($_GET['category']) || $_GET['category'] == '1') {
+                      foreach ($frequencies as $v) {
+
+                        // echo  $v->likes;
+                    ?>
+                        <li class="hz" data-random="<?php echo $i; ?>">
+
+                          <?php if (!empty($disabled)) { ?>
+                            <a href="<?php echo $payment_url; ?>" <?php echo ($i == 1 ? 'style=" color: #409f83; "' : ''); ?>>
+                              <h3><?php echo $v . ' Hz' ?></h3>
+                            </a>
+                          <?php } else { ?>
+                            <h3 <?php echo ($i == 1 ? 'class="intro"' : ''); ?> data-fre="<?php echo $v; ?>"><?php echo $v . ' Hz' ?>
+                              <!-- <span class="context-menu pull-right" data-container-id="context-menu-items" data-row-id="<?php echo $v['id']; ?>"></span> -->
+                            </h3>
+                          <?php } ?>
+                        </li>
                       <?php $i++;
+                      }
+                    } else {
+                      foreach ($mp3s as $v) {
+                        if (!empty($disabled)) {
+                          $href = $payment_url;
+                        } else {
+                          $href = "https://www.qicoilapi.ingeniusstudios.com/storage/app/public/uploads/" . $audio_folder . "/" . $v['filename'];
+                          // $href = 'https://members.qicoil.com/'.$v['filename'];
                         }
-                      } ?>
-                    </ul>
-                  </div>
-                
-             
-            </div>
-            </div>
+                      ?>
+                        <li class="hz" data-random="<?php echo $i; ?>"> <a <?php echo ($i == 1 ? 'class="intro"' : ''); ?> href="<?php echo $href; ?>"> <?php echo str_replace('.mp3', '', $v['filename']); ?> </a>
+                          <span class="context-menu pull-right" data-container-id="context-menu-items" data-row-id="<?php echo $v['id']; ?>"></span>
+                        </li>
+                    <?php $i++;
+                      }
+                    } ?>
+                  </ul>
+                </div>
+
+
+              </div>
+              </div>
               <!-- end container -->
 
+            </div>
           </div>
         </div>
-      </div>
     </section>
   <?php } ?>
   <?php if (!empty($disabled)) { ?>
@@ -496,12 +493,14 @@ foreach ($response->favorite as $v) {
         $('#duration').show();
         $('.progress-bar').addClass('progress-bar-animated');
       }
+
       function pauseAudio(sound) {
         $("#play").show();
         $("#pause").hide();
         $('.progress-bar').removeClass('progress-bar-animated');
         sound.pause();
       }
+
       function stopAudio(sound) {
         $("#play").show();
         $("#pause").hide();
@@ -605,148 +604,145 @@ foreach ($response->favorite as $v) {
 
 
     <script>
+      var seconds = 1;
+      var countdownTimer;
+      var width_per = 0;
+      const TotalDuration_val = '03:00';
+      var three_min_seconds = '';
+      var frequency;
+      var audioCtx = new(window.AudioContext || window.webkitAudioContext)();
+      const gainNode = audioCtx.createGain();
+      var progress_bar = document.getElementById("progress_bar");
+      var timeDisplay = document.getElementById("duration");
+      // var susres = document.getElementById("pause");
 
 
-            var seconds = 1;
-            var countdownTimer;
-            var width_per = 0; 
-            const TotalDuration_val = '03:00';
-            var three_min_seconds = '';
-            var frequency;
-            var audioCtx = new(window.AudioContext || window.webkitAudioContext)();  
-            const gainNode = audioCtx.createGain();
-            var progress_bar = document.getElementById("progress_bar");      
-            var timeDisplay = document.getElementById("duration");
-            // var susres = document.getElementById("pause");
 
 
-            
+      //DisplayTimer();
+      function secondPassed() {
+        var minutes = Math.round((seconds - 30) / 60),
+          remainingSeconds = seconds % 60;
+        if (remainingSeconds < 10) {
+          remainingSeconds = "0" + remainingSeconds;
+        }
+        $('#duration').html('0' + minutes + ":" + remainingSeconds + ' / ' + TotalDuration_val);
 
-            //DisplayTimer();
-            function secondPassed(){  
-                var minutes = Math.round((seconds - 30)/60),
-                remainingSeconds = seconds % 60;
-                if (remainingSeconds < 10) {
-                    remainingSeconds = "0" + remainingSeconds;
-                }
-                $('#duration').html('0'+minutes + ":" + remainingSeconds +' / '+ TotalDuration_val);  
+        seconds++;
+        width_per = seconds / 1.8026;
+        progress_bar.style = 'width: ' + width_per + '%';
+        three_min_seconds = seconds;
+        // console.log('Three minutes',three_min_seconds);
+        // console.log('Total seconds',seconds);
 
-                seconds++;
-                width_per = seconds/1.8026 ; 
-                progress_bar.style = 'width: '+width_per+'%';                                     
-                three_min_seconds = seconds;
-                // console.log('Three minutes',three_min_seconds);
-                // console.log('Total seconds',seconds);
+        if (three_min_seconds > 180) {
+          clearInterval(countdownTimer);
+          stopNote();
+          ChangeLI();
+          seconds = 1;
+        }
+      }
 
-                if(three_min_seconds > 180){
-                    clearInterval(countdownTimer);
-                    stopNote();
-                    ChangeLI();    
-                    seconds = 1;
-                }
+
+
+      function playNote(seconds = 1) {
+        var oscillator = os = audioCtx.createOscillator();
+        frequency = document.getElementById('fre').value;
+        oscillator.type = 'sine';
+        oscillator.frequency.value = frequency; // value in hertz
+        // oscillator.connect(audioCtx.destination);
+        oscillator.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        oscillator.start();
+        countdownTimer = setInterval('secondPassed(seconds)', 1000);
+      }
+
+      function stopNote() {
+        os.stop();
+      }
+
+      function ChangeLI() {
+        var fre = '';
+        var shuffle = $('.shuffle_btn').attr('data-shuffle');
+        var repeate = $('.repeate').attr('data-status');
+        if (repeate == 2) {
+          $('.list_voice li').each(function() {
+            if ($(this).find('h3').hasClass("intro")) {
+              fre = $(this).find('h3').attr('data-fre');
             }
-
-        
-
-            function playNote(seconds=1){     
-              var oscillator = os = audioCtx.createOscillator();
-              frequency = document.getElementById('fre').value;
-              oscillator.type = 'sine';
-              oscillator.frequency.value = frequency; // value in hertz
-              // oscillator.connect(audioCtx.destination);
-              oscillator.connect(gainNode);
-              gainNode.connect(audioCtx.destination);
-              oscillator.start();
-              countdownTimer = setInterval('secondPassed(seconds)', 1000);
-            }
-
-            function stopNote() {
-              os.stop();
-            }
-
-            function ChangeLI() {        
-                var fre = '';
-                var shuffle = $('.shuffle_btn').attr('data-shuffle');
-                var repeate = $('.repeate').attr('data-status');
-                if (repeate == 2) {
-                  $('.list_voice li').each(function() {
-                    if ($(this).find('h3').hasClass("intro")) {
-                      fre = $(this).find('h3').attr('data-fre');
-                    }
-                  });
-                } else if (shuffle == 1) {
-                  var ran = random_mp3('rife');
-                  fre = $('.list_voice li[data-random="' + ran + '"]').find('h3').attr('data-fre');
-                  // console.log(ran+'---'+fre);
-                  $('.list_voice li').find('h3').removeClass("intro");
-                  $('.list_voice li[data-random="' + ran + '"]').find('h3').addClass("intro");
-                } else {
-                  $('.list_voice li').each(function() {
-                    if ($(this).find('h3').hasClass("intro")) {
-                      fre = $(this).next('li').find('h3').attr('data-fre');
-                      $(this).find('h3').removeClass("intro");
-                      $(this).next('li').find('h3').addClass("intro");
-                      // timeDisplay.textContent = '';
-                      // displayTime();
-                      if (typeof fre === "undefined") {
-                        if (repeate == 1) {
-                          fre = '<?php echo $frequencies[0]; ?>';
-                          $(this).parents('ul').find('li:first').find('h3').addClass("intro");
-                        }
-                      }
-                      return false;
-                    }
-                  });
+          });
+        } else if (shuffle == 1) {
+          var ran = random_mp3('rife');
+          fre = $('.list_voice li[data-random="' + ran + '"]').find('h3').attr('data-fre');
+          // console.log(ran+'---'+fre);
+          $('.list_voice li').find('h3').removeClass("intro");
+          $('.list_voice li[data-random="' + ran + '"]').find('h3').addClass("intro");
+        } else {
+          $('.list_voice li').each(function() {
+            if ($(this).find('h3').hasClass("intro")) {
+              fre = $(this).next('li').find('h3').attr('data-fre');
+              $(this).find('h3').removeClass("intro");
+              $(this).next('li').find('h3').addClass("intro");
+              // timeDisplay.textContent = '';
+              // displayTime();
+              if (typeof fre === "undefined") {
+                if (repeate == 1) {
+                  fre = '<?php echo $frequencies[0]; ?>';
+                  $(this).parents('ul').find('li:first').find('h3').addClass("intro");
                 }
-                // console.log(fre);
-                if (typeof fre === "undefined") {
-                  $("#fre").val('<?php echo $frequencies[0]; ?>');
-                  $(".fre_number_text").text('<?php echo $frequencies[0]; ?> Hz');
-                  $('.list_voice').find('li:first').find('h3').addClass("intro");
-                  $("#pause").trigger("click");
-                } else {
-                  $("#fre").val(fre);
-                  $(".fre_number_text").text(fre + ' Hz');
-                  $(".plybtn").trigger("click");
-                  //clearTimeout(timeout);
-                }
-
-            }
-
-
-            function resume() {
-              //susres.onclick = function () {
-
-                console.log('Current audioCtxstate is : ',audioCtx.state);
-
-              if (audioCtx.state === "running") {
-                audioCtx.resume().then(function() {
-                  //susres.textContent = "Suspend Audio";
-                });
-              } else if (audioCtx.state === "suspended") {
-                audioCtx.suspend().then(function() {
-                  // susres.textContent = "Resume Audio";
-                });
               }
-              //};
+              return false;
             }
+          });
+        }
+        // console.log(fre);
+        if (typeof fre === "undefined") {
+          $("#fre").val('<?php echo $frequencies[0]; ?>');
+          $(".fre_number_text").text('<?php echo $frequencies[0]; ?> Hz');
+          $('.list_voice').find('li:first').find('h3').addClass("intro");
+          $("#pause").trigger("click");
+        } else {
+          $("#fre").val(fre);
+          $(".fre_number_text").text(fre + ' Hz');
+          $(".plybtn").trigger("click");
+          //clearTimeout(timeout);
+        }
+
+      }
+
+
+      function resume() {
+        //susres.onclick = function () {
+
+        console.log('Current audioCtxstate is : ', audioCtx.state);
+
+        if (audioCtx.state === "running") {
+          audioCtx.resume().then(function() {
+            //susres.textContent = "Suspend Audio";
+          });
+        } else if (audioCtx.state === "suspended") {
+          audioCtx.suspend().then(function() {
+            // susres.textContent = "Resume Audio";
+          });
+        }
+        //};
+      }
 
       function handleVolumeChange(volume) {
         gainNode.gain.setValueAtTime(volume, audioCtx.currentTime);
       }
-
-
     </script>
     <script>
       $(document).ready(function() {
         $(".list_voice li h3").click(function() {
-          if(audioCtx.state === "running"){
-            if(countdownTimer){stopNote()
+          if (audioCtx.state === "running") {
+            if (countdownTimer) {
+              stopNote()
               clearTimeout(playNote);
               clearTimeout(countdownTimer);
-              seconds =1;
+              seconds = 1;
             };
-            
+
           }
 
           // $("#pause").trigger("click");
@@ -775,7 +771,7 @@ foreach ($response->favorite as $v) {
           // clearTimeout(timeout);
           clearTimeout(countdownTimer)
           stopNote();
-          resume();          
+          resume();
           $(this).hide();
           $("#play").show();
           $('#canvas').hide();
@@ -785,7 +781,7 @@ foreach ($response->favorite as $v) {
         // alert
         $("#stopBtn").click(function() {
           // clearTimeout(timeout);
-          seconds =1;
+          seconds = 1;
           clearTimeout(countdownTimer)
           $("#fre").val('<?php echo $frequencies[0]; ?>');
           $(".fre_number_text").text('<?php echo $frequencies[0]; ?>Hz');
@@ -825,6 +821,7 @@ foreach ($response->favorite as $v) {
         ctx.lineTo(0, height);
         ctx.stroke();
       }
+
       function drawPoint(ctx, y) {
         var radius = 0;
         ctx.beginPath();
@@ -835,6 +832,7 @@ foreach ($response->favorite as $v) {
         ctx.lineWidth = 3;
         ctx.stroke();
       }
+
       function plotSine(ctx, xOffset, yOffset) {
         var width = ctx.canvas.width;
         var height = ctx.canvas.height;
@@ -875,6 +873,7 @@ foreach ($response->favorite as $v) {
         step += 4;
         window.requestAnimationFrame(draw);
       }
+
       function spirograph() {
         var canvas2 = document.getElementById("canvas2");
         var context = canvas2.getContext("2d");
@@ -887,6 +886,7 @@ foreach ($response->favorite as $v) {
           plotSine(context, i, 54 + i);
         }
       }
+
       function init() {
         window.requestAnimationFrame(draw);
         spirograph();
@@ -965,6 +965,7 @@ foreach ($response->favorite as $v) {
       var customRenderMenu = function(ul, items) {
         var self = this;
         var categoryArr = [];
+
         function contain(item, array) {
           var contains = false;
           $.each(array, function(index, value) {
@@ -1065,6 +1066,7 @@ foreach ($response->favorite as $v) {
         ele.attr('data-shuffle', is_shuffle);
       });
     });
+
     function random_mp3(type = null) {
       var random_value = [];
       $('.list_voice li').each(function() {
@@ -1111,6 +1113,7 @@ foreach ($response->favorite as $v) {
         return false;
       }
     });
+
     function play() {
       audio.src = $(this).next('li').find('a').attr('href');
       audio.play();
@@ -1120,30 +1123,28 @@ foreach ($response->favorite as $v) {
   <?php
   if (!empty($disabled)) {
   ?>
-  <script type="text/javascript">
-    let data = document.querySelector(".music_list_wrap");
-    let child = document.querySelector(".music_list_wrap ul");
-    let newelement = '<a href="<?php echo $payment_url; ?>">UNLOCK </a>';
-    data.removeChild(child);
-    data.insertAdjacentHTML('afterbegin', newelement);
-  </script>
+    <script type="text/javascript">
+      let data = document.querySelector(".music_list_wrap");
+      let child = document.querySelector(".music_list_wrap ul");
+      let newelement = '<a href="<?php echo $payment_url; ?>">UNLOCK </a>';
+      data.removeChild(child);
+      data.insertAdjacentHTML('afterbegin', newelement);
+    </script>
 
-  <style type="text/css">
-      .music_list_wrap{
+    <style type="text/css">
+      .music_list_wrap {
         background-color: #059f83;
         color: #fff;
         padding: 15px;
         font-weight: bold;
       }
 
-      .music_list_wrap a{
+      .music_list_wrap a {
         text-decoration: none;
         color: #e5e5e5;
         display: block;
       }
-
-
-  </style>
+    </style>
 
 
   <?php
@@ -1156,6 +1157,7 @@ foreach ($response->favorite as $v) {
 
 
 </body>
+
 </html>
 <!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> -->
 <script src="js/context-menu.js"></script>
@@ -1228,7 +1230,6 @@ foreach ($response->favorite as $v) {
       $('.add_to_playlist').attr('data-frequency-id', frequency_id);
     }
   });
-
 </script>
 
 <div class="context-menu-container" id="context-menu-items">
@@ -1258,7 +1259,7 @@ foreach ($response->favorite as $v) {
             <input type="text" name="playlist_name" class="form-control" id="playlist_name">
             <span class="error hide">Please enter playlist name</span>
           </div>
-    </div>
+        </div>
         <p style="color:#059f83">*You will have to again add frequency after creating playlist.</p>
       </div>
       <div class="modal-footer">
@@ -1286,73 +1287,72 @@ foreach ($response->favorite as $v) {
 
 
 <script>
-$(".favorite").click(function() {
-      var ele = $(this);
-       var albumid = ele.attr('data-album');
-         var favorite = ele.attr('data-favorite');
-         if (favorite == 0) {
-           var is_favorite = 1;
-          ele.removeClass('no');
-          ele.addClass('yes');
-         } else {
-          var is_favorite = 0;
-          ele.removeClass('yes');
-          ele.addClass('no');
-         }
+  $(".favorite").click(function() {
+    var ele = $(this);
+    var albumid = ele.attr('data-album');
+    var favorite = ele.attr('data-favorite');
+    if (favorite == 0) {
+      var is_favorite = 1;
+      ele.removeClass('no');
+      ele.addClass('yes');
+    } else {
+      var is_favorite = 0;
+      ele.removeClass('yes');
+      ele.addClass('no');
+    }
 
-        $.ajax({
-          url: 'post.php',
-         type: 'POST',
-          data: {
-            favorite: 1,
-            albumid: albumid,
-            is_favorite: is_favorite
-           },
-           dataType: 'json',
-          success: function(res) {
-           if (res.success == true) {
-               ele.attr('data-favorite', is_favorite);
-               if (is_favorite == 1) {
-                 // ele.removeClass('no');
-                 // ele.addClass('yes');
-               } else {
-                 // ele.removeClass('yes');
-                 // ele.addClass('no');
-               }
-             }
-           }
-         });
-       });
-       $(".btndrop").click(function() {
-	var Key = 'accordion-filter-category';
-	if ($(this).hasClass('collapsed')) {
-		var Val = 'expand';
-	}else{
-		var Val = 'collapsed';
-	}	
-	setCookie(Key, Val);
-});
+    $.ajax({
+      url: 'post.php',
+      type: 'POST',
+      data: {
+        favorite: 1,
+        albumid: albumid,
+        is_favorite: is_favorite
+      },
+      dataType: 'json',
+      success: function(res) {
+        if (res.success == true) {
+          ele.attr('data-favorite', is_favorite);
+          if (is_favorite == 1) {
+            // ele.removeClass('no');
+            // ele.addClass('yes');
+          } else {
+            // ele.removeClass('yes');
+            // ele.addClass('no');
+          }
+        }
+      }
+    });
+  });
+  $(".btndrop").click(function() {
+    var Key = 'accordion-filter-category';
+    if ($(this).hasClass('collapsed')) {
+      var Val = 'expand';
+    } else {
+      var Val = 'collapsed';
+    }
+    setCookie(Key, Val);
+  });
 
-var accordionfilter = getCookie("accordion-filter-category");
-console.log(accordionfilter);
-if(accordionfilter == 'collapsed'){
-	$('#demobtn').removeClass('in');
-  $('#demobtn').addClass('collapse');
-}else{
-	$('#demobtn').addClass('in');
-}
-$(".btndrop").addClass(accordionfilter);
+  var accordionfilter = getCookie("accordion-filter-category");
+  console.log(accordionfilter);
+  if (accordionfilter == 'collapsed') {
+    $('#demobtn').removeClass('in');
+    $('#demobtn').addClass('collapse');
+  } else {
+    $('#demobtn').addClass('in');
+  }
+  $(".btndrop").addClass(accordionfilter);
 
-function setCookie(Key, Val) {
-	var expires = new Date();
-	expires.setTime(expires.getTime() + (Val * 24 * 60 * 60 * 1000));
-	var daysToExpire = new Date(2147483647 * 1000).toUTCString();
-	document.cookie = Key + '=' + Val + ';expires=' + daysToExpire;
-}
+  function setCookie(Key, Val) {
+    var expires = new Date();
+    expires.setTime(expires.getTime() + (Val * 24 * 60 * 60 * 1000));
+    var daysToExpire = new Date(2147483647 * 1000).toUTCString();
+    document.cookie = Key + '=' + Val + ';expires=' + daysToExpire;
+  }
 
-function getCookie(Key) {
-	var keyValue = document.cookie.match('(^|;) ?' + Key + '=([^;]*)(;|$)');
-	return keyValue ? keyValue[2] : null;
-}
-
+  function getCookie(Key) {
+    var keyValue = document.cookie.match('(^|;) ?' + Key + '=([^;]*)(;|$)');
+    return keyValue ? keyValue[2] : null;
+  }
 </script>

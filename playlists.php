@@ -9,50 +9,50 @@ $userid = $_SESSION['id'];
 // print_r($userid);die;
 
 $frequency_ids = $header = array();
-$url =GETPLAYLIST_URL.'?userid=' . $userid . '&playlist_id=' . $id;
+$url = GETPLAYLIST_URL . '?userid=' . $userid . '&playlist_id=' . $id;
 $res = curl_post($url, '', $header);
-  // print_r($res);die;
+// print_r($res);die;
 $response = json_decode($res['res']);
 $playlist = $response->playlist;
 $fetch_flag = $playlist->fetch_flag;
 if ($fetch_flag != -1) {
-$playlist_name = $playlist->name;
-if (!empty($playlist->frequency_id)) {
-  $mp3s_ids = explode(',', $playlist->frequency_id);
+  $playlist_name = $playlist->name;
+  if (!empty($playlist->frequency_id)) {
+    $mp3s_ids = explode(',', $playlist->frequency_id);
 
-  $url=MP3_URL;
-  $post_data = http_build_query(array("ids" => $mp3s_ids));
-  $res = curl_post($url, $post_data, $header);
-  $mp3_response = json_decode(($res['res']), true);
-  // print_r($mp3_response);
-  // die;
+    $url = MP3_URL;
+    $post_data = http_build_query(array("trackids" => $mp3s_ids));
+    $res = curl_post($url, $post_data, $header);
+    $mp3_response = json_decode(($res['res']), true);
+    // print_r($mp3_response);
+    // die;
 
-  foreach ($mp3_response as $v) {
-    $frequency_ids[$v['frequency_id']] = $v['frequency_id'];
-  }
-  // print_r($frequency_ids);
-  // die;
+    foreach ($mp3_response as $v) {
+      $frequency_ids[$v['frequency_id']] = $v['frequency_id'];
+    }
+    // print_r($frequency_ids);
+    // die;
 
-  $url=FREQUENCIES_URL;
-  $post_data = http_build_query(array("ids" => $frequency_ids));
-  $res = curl_post($url, $post_data, $header);
-  $freq_response = json_decode($res['res']);
-  $frequencies = $freq_response->frequencies;
-  // print_r($frequencies);
-  // die;
-  foreach ($frequencies as $v) {
-    $audio_folders[$v->id] = $v->audio_folder;
+    $url = FREQUENCIES_URL;
+    $post_data = http_build_query(array("ids" => $frequency_ids));
+    $res = curl_post($url, $post_data, $header);
+    $freq_response = json_decode($res['res']);
+    $frequencies = $freq_response->frequencies;
+    // print_r($frequencies);
+    // die;
+    foreach ($frequencies as $v) {
+      $audio_folders[$v->id] = $v->audio_folder;
+    }
+    // print_r($audio_folders);
+    // die;
+    foreach ($mp3_response as $k => $v) {
+      $mp3s[$k] = $v;
+      $mp3s[$k]['audio_folder'] = $audio_folders[$v['frequency_id']];
+    }
+    // print_r($mp3s);
+    // die;
+    $first_mp3 = FIRST_MP3_URL . $mp3s[0]['audio_folder'] . '/' . $mp3s[0]['filename'];
   }
-  // print_r($audio_folders);
-  // die;
-  foreach ($mp3_response as $k => $v) {
-    $mp3s[$k] = $v;
-    $mp3s[$k]['audio_folder'] = $audio_folders[$v['frequency_id']];
-  }
-  // print_r($mp3s);
-  // die;
-  $first_mp3=FIRST_MP3_URL. $mp3s[0]['audio_folder'] . '/' . $mp3s[0]['filename'];
-}
 } else {
   $not_found = true;
 }
@@ -116,48 +116,48 @@ if (!empty($playlist->frequency_id)) {
                 </a>
               </div>
             <?php } ?>
-            </div>
+          </div>
 
           <div class="col-md-6 col-xs-12 p-0 stand">
-              <div class="play_box">
-                <div class="white_bg1" id="back_bg">
-                  <div class="b_btn">
-                    <button type="button" class="stopbtn" id="stopBtn"><img src=" images/left_btn.png"></button>
-                    <button type="button" class="plybtn" onClick="playNote()" id="play"> <img src="images/middle.png"></button>
-                    <button type="button" id="pause"><img src="images/mute.png"></button>
+            <div class="play_box">
+              <div class="white_bg1" id="back_bg">
+                <div class="b_btn">
+                  <button type="button" class="stopbtn" id="stopBtn"><img src=" images/left_btn.png"></button>
+                  <button type="button" class="plybtn" onClick="playNote()" id="play"> <img src="images/middle.png"></button>
+                  <button type="button" id="pause"><img src="images/mute.png"></button>
 
-                    <span class="repeate off" id="repeateBtn" data-status=0></span>
-                    <span data-shuffle="0" class="shuffle_btn off"></span>
-                    <div class="sound-container">
-                      <audio id="sound">
-                        <source src="<?php echo $first_mp3; ?>" type="audio/mpeg" />
-                      </audio>
-                      <label class="fre_number_text"><?php echo str_replace('.mp3', '', $mp3s[0]['filename']); ?></label>
-                      <div class="progress">
-                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
-                      </div>
-                      <span id="duration"></span>
-                      <p><img class="loading_fre hide" src="images/load.gif" width="120"></p>
+                  <span class="repeate off" id="repeateBtn" data-status=0></span>
+                  <span data-shuffle="0" class="shuffle_btn off"></span>
+                  <div class="sound-container">
+                    <audio id="sound">
+                      <source src="<?php echo $first_mp3; ?>" type="audio/mpeg" />
+                    </audio>
+                    <label class="fre_number_text"><?php echo str_replace('.mp3', '', $mp3s[0]['filename']); ?></label>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
                     </div>
+                    <span id="duration"></span>
+                    <p><img class="loading_fre hide" src="images/load.gif" width="120"></p>
                   </div>
                 </div>
-                <div class="pp">
-                  <ul class="list_voice">
-                    <?php
-                    $i = 1;
-                    foreach ($mp3s as $v) {
-                      //  print_r($v);die;
-                      $href = "https://www.qicoilapi.ingeniusstudios.com/storage/app/public/uploads/" . $v['audio_folder'] . "/" . $v['filename'];
-                    ?>
-                      <li class="hz" data-random="<?php echo $i; ?>"> <a <?php echo ($i == 1 ? 'class="intro"' : ''); ?> href="<?php echo $href; ?>"> <?php echo str_replace('.mp3', '', $v['filename']); ?> </a>
-                        <span class="pull-right" data-row-id="<?php echo $v['id'] ?>"><i class="fa fa-close rm_frequency"></i></span>
-                      </li>
-                    <?php $i++;
-                    }
-                    ?>
-                  </ul>
-                </div>
               </div>
+              <div class="pp">
+                <ul class="list_voice">
+                  <?php
+                  $i = 1;
+                  foreach ($mp3s as $v) {
+                    //  print_r($v);die;
+                    $href = "https://www.qicoilapi.ingeniusstudios.com/storage/app/public/uploads/" . $v['audio_folder'] . "/" . $v['filename'];
+                  ?>
+                    <li class="hz" data-random="<?php echo $i; ?>"> <a <?php echo ($i == 1 ? 'class="intro"' : ''); ?> href="<?php echo $href; ?>"> <?php echo str_replace('.mp3', '', $v['filename']); ?> </a>
+                      <span class="pull-right" data-row-id="<?php echo $v['id'] ?>"><i class="fa fa-close rm_frequency"></i></span>
+                    </li>
+                  <?php $i++;
+                  }
+                  ?>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
