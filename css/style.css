@@ -1662,7 +1662,7 @@ footer p{
 
 }
 
-@media screen and (max-width: 625px){
+@media screen and (max-width: 600px){
   .freq-container{
     flex-wrap: wrap;
   }
