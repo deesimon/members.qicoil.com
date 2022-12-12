@@ -146,6 +146,7 @@ if (!empty($frequenciess)) {
   $post_data = http_build_query(array("albumid" => $_GET['id']));
   $res = curl_post($url, $post_data, $header);
   $mp3_response = json_decode(($res['res']), true);
+  $mp3_response = $mp3_response['tracks'];
 
   //echo '1';print_r($res);exit;
   $mp3s = $mp3_response;

@@ -24,6 +24,7 @@ if ($fetch_flag != -1) {
     $post_data = http_build_query(array("trackids" => $mp3s_ids));
     $res = curl_post($url, $post_data, $header);
     $mp3_response = json_decode(($res['res']), true);
+    $mp3_response = $mp3_response['tracks'];
     // print_r($mp3_response);
     // die;
     foreach ($mp3_response as $v) {
