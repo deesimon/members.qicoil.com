@@ -84,7 +84,7 @@ $post_data = http_build_query($post_data);
 // print_r($post_data);
 // die;
 $url = FREQUENCIES_URL;
-$res = curl_post($url . '?' . $post_data, '', $header);
+$res = curl_post($url, $post_data, $header);
 $response = json_decode($res['res']);
 $frequencies = $response->frequencies;
 //print_r($frequencies);
