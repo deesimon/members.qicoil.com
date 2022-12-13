@@ -8,23 +8,20 @@ include('constants.php');
 
 // Anjani code start  final
 
-if(!empty($_SESSION)){
-  if(!isset($_REQUEST['category'])){
-    if(in_array(1,$_SESSION['category_ids'])){
+if (!empty($_SESSION)) {
+  if (!isset($_REQUEST['category'])) {
+    if (in_array(1, $_SESSION['category_ids'])) {
       $lock_class_name = 'category_paid';
-    }else{
+    } else {
       $lock_class_name = 'lock';
     }
-  }
-  elseif(!in_array($_REQUEST['category'],$_SESSION['category_ids'])){
+  } elseif (!in_array($_REQUEST['category'], $_SESSION['category_ids'])) {
     $lock_class_name = 'lock';
-
   }
- if(in_array($_REQUEST['subcategory'],$_SESSION['subcategory_ids'])){
+  if (in_array($_REQUEST['subcategory'], $_SESSION['subcategory_ids'])) {
     $lock_class_name = '';
   }
-
-}else{
+} else {
   $lock_class_name = 'lock';
 }
 //print_r($lock_class_name);//die;
@@ -87,7 +84,7 @@ $post_data = http_build_query($post_data);
 // print_r($post_data);
 // die;
 $url = FREQUENCIES_URL;
-$res = 'curl_post'($url . '?' . $post_data, '', $header);
+$res = curl_post($url . '?' . $post_data, '', $header);
 $response = json_decode($res['res']);
 $frequencies = $response->frequencies;
 //print_r($frequencies);
@@ -157,74 +154,74 @@ function sortByKeyList($array, $seq)
 <body id="con_listing">
   <div class="container-fluid">
     <div class="row">
-      
-        <?php include 'sidebar.php'; ?>
-        <div class="col-md-10 serch_box1">
-          <div class="row">
-            <div class="col-md-4">
-              <h3 class="main-title"><?php echo ((!empty($_GET['subcategory']) ? ucfirst($subcategory) : ucfirst($CATEGORIES[$_GET['category']]))); ?> Frequencies</h3>
-            </div>
-            <div class="col-md-4 form-group has-search"> <span class="fa fa-search form-control-feedback"> </span>
-              <form method="get" action="rife_frequencies_list.php">
-                <input type="text" class="form-control" name="keyword" id="search" placeholder="Search">
-              </form>
-            </div>
 
-            <div class="col-md-4 form-group drop">
-              <label for="sort">Sort by:</label>
-              <select name="sort" id="sort" class="form-control">
-                <option value="recent" <?php echo ($_GET['sort'] == 'recent' ? 'selected' : ''); ?>>Recent</option>
-                <option value="favourite" <?php echo ($_GET['sort'] == 'favourite' ? 'selected' : ''); ?>>Favourite</option>
-                <option value="recommended" <?php echo ($_GET['sort'] == 'recommended' ? 'selected' : ''); ?>>Recommended</option>
-              </select>
-            </div>
-
+      <?php include 'sidebar.php'; ?>
+      <div class="col-md-10 serch_box1">
+        <div class="row">
+          <div class="col-md-4">
+            <h3 class="main-title"><?php echo ((!empty($_GET['subcategory']) ? ucfirst($subcategory) : ucfirst($CATEGORIES[$_GET['category']]))); ?> Frequencies</h3>
+          </div>
+          <div class="col-md-4 form-group has-search"> <span class="fa fa-search form-control-feedback"> </span>
+            <form method="get" action="rife_frequencies_list.php">
+              <input type="text" class="form-control" name="keyword" id="search" placeholder="Search">
+            </form>
           </div>
 
-          <div class="row response">
-            <?php //print_r($frequencies);
-            $i = 0;
-            foreach ($frequencies as $v) { //print_r($v);die;
-              $i++;
-            ?>
-              <div class="col-xs-6 col-md-3 ">
-                <div class="new">
+          <div class="col-md-4 form-group drop">
+            <label for="sort">Sort by:</label>
+            <select name="sort" id="sort" class="form-control">
+              <option value="recent" <?php echo ($_GET['sort'] == 'recent' ? 'selected' : ''); ?>>Recent</option>
+              <option value="favourite" <?php echo ($_GET['sort'] == 'favourite' ? 'selected' : ''); ?>>Favourite</option>
+              <option value="recommended" <?php echo ($_GET['sort'] == 'recommended' ? 'selected' : ''); ?>>Recommended</option>
+            </select>
+          </div>
 
-                  <a href="inner_frequencies.php?id=<?php echo $v->id . '&category=' .  $_GET['category']; ?>">
-                   <div class="<?php echo $lock_class_name; ?>">
+        </div>
+
+        <div class="row response">
+          <?php //print_r($frequencies);
+          $i = 0;
+          foreach ($frequencies as $v) { //print_r($v);die;
+            $i++;
+          ?>
+            <div class="col-xs-6 col-md-3 ">
+              <div class="new">
+
+                <a href="inner_frequencies.php?id=<?php echo $v->id . '&category=' .  $_GET['category']; ?>">
+                  <div class="<?php echo $lock_class_name; ?>">
                     <span>
-                          <a href="inner_frequencies.php?id=<?php echo $v->id;
-                                                            if (!empty($_GET['category'])) echo '&category=' . $_GET['category']; ?>">
+                      <a href="inner_frequencies.php?id=<?php echo $v->id;
+                                                        if (!empty($_GET['category'])) echo '&category=' . $_GET['category']; ?>">
 
-                            <img src="<?php echo (!empty($v->audio_folder) ? 'https://www.qicoilapi.ingeniusstudios.com/storage/app/public/uploads/' . $v->audio_folder . '/' . $v->image : 'images/freaquecy.png'); ?>" width="126" height="126"> </a>
-                     </span>
-                    </div>
-                  </a>
-                
-                  <div class="card-body">
-                    <h5 class="card-title"><b>
-                        <?php
-                        echo $v->title;
-                        ?>
-                      </b> </h5>
-                    <!-- <p class="card-text"><?php echo $GLOBALS['CATEGORIES'][$_GET['category']]; ?> Frequencies for <?php echo $v->title; ?></p> -->
+                        <img src="<?php echo (!empty($v->audio_folder) ? 'https://www.qicoilapi.ingeniusstudios.com/storage/app/public/uploads/' . $v->audio_folder . '/' . $v->image : 'images/freaquecy.png'); ?>" width="126" height="126"> </a>
+                    </span>
                   </div>
+                </a>
+
+                <div class="card-body">
+                  <h5 class="card-title"><b>
+                      <?php
+                      echo $v->title;
+                      ?>
+                    </b> </h5>
+                  <!-- <p class="card-text"><?php echo $GLOBALS['CATEGORIES'][$_GET['category']]; ?> Frequencies for <?php echo $v->title; ?></p> -->
                 </div>
               </div>
-            <?php
-            }
-            ?>
-          </div>
+            </div>
+          <?php
+          }
+          ?>
+        </div>
 
-          <?php if (empty($response)) { ?>
-            <div class="row">
+        <?php if (empty($response)) { ?>
+          <div class="row">
             <div class="col-md-12">
               <h5>No Record Found</h5>
-              </div>
-              </div>
-          <?php } ?>
-          <?php if (($_GET['category'] == '1' || empty($_GET['category'])) && empty($_GET['id'])) { ?>
-            <div class="row">
+            </div>
+          </div>
+        <?php } ?>
+        <?php if (($_GET['category'] == '1' || empty($_GET['category'])) && empty($_GET['id'])) { ?>
+          <div class="row">
             <div class="col-md-12">
               <nav aria-label="Page navigation example">
                 <ul class="pagination">
@@ -246,20 +243,20 @@ function sortByKeyList($array, $seq)
                   <?php } ?>
                 </ul>
               </nav>
-                    </div>
             </div>
-          <?php } ?>
-
-          <div class="row">
-          <div class="col-md-12 bottom-banner">
-          <a href="https://qilifestore.com/collections/qi-coils/products/qi-coil-max-transformation-system" target="_blank" class="ad-mob-image-horizontal">
-            <img src="https://members.qicoil.com/images/qc-max-admob-horizontal.jpg" alt="qi-coil-max-transformation-system"/>
-          </a>
           </div>
-      </div>
+        <?php } ?>
+
+        <div class="row">
+          <div class="col-md-12 bottom-banner">
+            <a href="https://qilifestore.com/collections/qi-coils/products/qi-coil-max-transformation-system" target="_blank" class="ad-mob-image-horizontal">
+              <img src="https://members.qicoil.com/images/qc-max-admob-horizontal.jpg" alt="qi-coil-max-transformation-system" />
+            </a>
+          </div>
         </div>
       </div>
- 
+    </div>
+
   </div>
   </div>
   </div>
@@ -395,110 +392,101 @@ function sortByKeyList($array, $seq)
 
   <?php
 
-  if(!empty($_SESSION)){
-    if(!isset($_REQUEST['category'])){
-      if(in_array(1,$_SESSION['category_ids'])){
+  if (!empty($_SESSION)) {
+    if (!isset($_REQUEST['category'])) {
+      if (in_array(1, $_SESSION['category_ids'])) {
         // $lock_class_name = 'category_paid';
-      }else{
-          // $lock_class_name = 'lock';
+      } else {
+        // $lock_class_name = 'lock';
   ?>
-     <style type="text/css">
-
-   
-  .lock{
-      position: relative;
+        <style type="text/css">
+          .lock {
+            position: relative;
           }
 
-      .lock span:before {
-      position: absolute;
-      height: 175px;
-      width: 175px;
-      top: 0px;
-      left: 0px;
-  }
+          .lock span:before {
+            position: absolute;
+            height: 175px;
+            width: 175px;
+            top: 0px;
+            left: 0px;
+          }
 
 
-     .lock span:after {
-      content: '\f023 ';
-      font-family: 'FontAwesome';
-      position: absolute;
-      color: #fff;
-      right: 20px;
-      bottom: 0;
-      z-index: 1;
-      font-size: 25px;
-       }
-     </style>
+          .lock span:after {
+            content: '\f023 ';
+            font-family: 'FontAwesome';
+            position: absolute;
+            color: #fff;
+            right: 20px;
+            bottom: 0;
+            z-index: 1;
+            font-size: 25px;
+          }
+        </style>
 
-  <?php
+      <?php
 
-     }
-    }
-    elseif(!in_array($_REQUEST['category'],$_SESSION['category_ids'])){
+      }
+    } elseif (!in_array($_REQUEST['category'], $_SESSION['category_ids'])) {
       $lock_class_name = 'lock';
-  ?>
-     <style type="text/css">
-
-
-  .lock{
-      position: relative;
-          }
-
-      .lock span:before {
-      position: absolute;
-      height: 175px;
-      width: 175px;
-      top: 0px;
-      left: 0px;
-  }
-
-
-     .lock span:after {
-      content: '\f023 ';
-      font-family: 'FontAwesome';
-      position: absolute;
-      color: #fff;
-      right: 20px;
-      bottom: 0;
-      z-index: 1;
-      font-size: 25px;
-       }
-
-     </style>
-
-  <?php
+      ?>
+      <style type="text/css">
+        .lock {
+          position: relative;
         }
-  }else{
-    // $lock_class_name = 'lock';
-  ?>
-     <style type="text/css">
 
-   
-  .lock{
-      position: relative;
-          }
+        .lock span:before {
+          position: absolute;
+          height: 175px;
+          width: 175px;
+          top: 0px;
+          left: 0px;
+        }
+
+
+        .lock span:after {
+          content: '\f023 ';
+          font-family: 'FontAwesome';
+          position: absolute;
+          color: #fff;
+          right: 20px;
+          bottom: 0;
+          z-index: 1;
+          font-size: 25px;
+        }
+      </style>
+
+    <?php
+    }
+  } else {
+    // $lock_class_name = 'lock';
+    ?>
+    <style type="text/css">
+      .lock {
+        position: relative;
+      }
 
       .lock span:before {
-      position: absolute;
-      height: 175px;
-      width: 175px;
-      top: 0px;
-      left: 0px;
-  }
+        position: absolute;
+        height: 175px;
+        width: 175px;
+        top: 0px;
+        left: 0px;
+      }
 
 
-     .lock span:after {
-      content: '\f023 ';
-      font-family: 'FontAwesome';
-      position: absolute;
-      color: #fff;
-      right: 20px;
-      bottom: 0;
-      z-index: 1;
-      font-size: 25px;
-       }
-
-     </style>
+      .lock span:after {
+        content: '\f023 ';
+        font-family: 'FontAwesome';
+        position: absolute;
+        color: #fff;
+        right: 20px;
+        bottom: 0;
+        z-index: 1;
+        font-size: 25px;
+      }
+    </style>
   <?php } ?>
 
 
