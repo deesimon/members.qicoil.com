@@ -152,7 +152,7 @@ if (!empty($frequenciess)) {
 
   //echo '1';print_r($res);exit;
   $mp3s = $mp3_response;
-  $first_mp3 = FIRST_MP3_URL . $id . '/' . $mp3s[0]['filename'];
+  $first_mp3 = FIRST_MP3_URL . $id .  '/' . $mp3s[0]['filename'];
 }
 // print_r($mp3s);die;
 
@@ -415,7 +415,7 @@ foreach ($response->favorite as $v) {
                         if (!empty($disabled)) {
                           $href = $payment_url;
                         } else {
-                          $href = "https://apiadmin.qienergy.ai/assets/uploads/mp3/" . $id . "/" . $v['filename'];
+                          $href = "https://apiadmin.qienergy.ai/assets/uploads/mp3/" . $id .  "/" . $v['filename'];
                           // $href = 'https://members.qicoil.com/'.$v['filename'];
                         }
                       ?>
