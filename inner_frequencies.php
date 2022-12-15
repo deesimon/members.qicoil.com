@@ -415,7 +415,7 @@ foreach ($response->favorite as $v) {
                         if (!empty($disabled)) {
                           $href = $payment_url;
                         } else {
-                          $href = "https://apiadmin.qienergy.ai/assets/uploads/mp3/" . $id .  "/" . $v['filename'];
+                          $href = 'https://apiadmin.qienergy.ai/assets/uploads/mp3/' . $id .  "/" . $v['filename'];
                           // $href = 'https://members.qicoil.com/'.$v['filename'];
                         }
                       ?>
