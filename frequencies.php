@@ -193,7 +193,7 @@ function sortByKeyList($array, $seq)
                       <a href="inner_frequencies.php?id=<?php echo $v->id;
                                                         if (!empty($_GET['category'])) echo '&category=' . $_GET['category']; ?>">
 
-                        <img src="<?php echo (!empty($v->audio_folder) ? 'https://www.qicoilapi.ingeniusstudios.com/storage/app/public/uploads/' . $v->audio_folder . '/' . $v->image : 'images/freaquecy.png'); ?>" width="126" height="126"> </a>
+                        <img src="<?php echo (!empty($v->audio_folder) ? 'https://apiadmin.qienergy.ai/assets/uploads/mp3/' . $v->id . '/' . $v->image : 'images/freaquecy.png'); ?>" width="126" height="126"> </a>
                     </span>
                   </div>
                 </a>
