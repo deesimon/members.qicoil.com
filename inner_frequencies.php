@@ -300,7 +300,7 @@ foreach ($response->favorite as $v) {
                 <div class="freq-container">
 
                   <div class="freq-container__image">
-                    <img src="<?php echo (!empty($image) ? 'https://www.qicoilapi.ingeniusstudios.com/storage/app/public/uploads/' . $image : 'images/freaquecy.png'); ?>" width="126" height="126" class="sun">
+                    <img src="<?php echo (!empty($image) ? 'https://apiadmin.qienergy.ai/assets/uploads/mp3/' . $id . $image : 'images/freaquecy.png'); ?>" width="126" height="126" class="sun">
 
                   </div>
 
