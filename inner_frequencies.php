@@ -133,7 +133,7 @@ $response = json_decode(($res['res']));
 $id = $response->frequencies[0]->id;
 $audio_folder = $response->frequencies[0]->audio_folder;
 if (!empty($response->frequencies[0]->image)) {
-  $image = $id . '/' . $response->frequencies[0]->image;
+  $image = $response->frequencies[0]->image;
 }
 
 $description = $response->frequencies[0]->description;
@@ -302,7 +302,7 @@ foreach ($response->favorite as $v) {
                 <div class="freq-container">
 
                   <div class="freq-container__image">
-                    <img src="<?php echo (!empty($image) ? 'https://apiadmin.qienergy.ai/assets/uploads/mp3/' . $id . $image : 'images/freaquecy.png'); ?>" width="126" height="126" class="sun">
+                    <img src="<?php echo (!empty($image) ? 'https://apiadmin.qienergy.ai/assets/uploads/mp3/' . $id . '/' . $image : 'images/freaquecy.png'); ?>" width="126" height="126" class="sun">
 
                   </div>
 
