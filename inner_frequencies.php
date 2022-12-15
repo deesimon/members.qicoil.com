@@ -302,7 +302,7 @@ foreach ($response->favorite as $v) {
                 <div class="freq-container">
 
                   <div class="freq-container__image">
-                    <img src="<?php echo (!empty($image) ? 'https://apiadmin.qienergy.ai/assets/uploads/mp3/'  . $image : 'images/freaquecy.png'); ?>" width="126" height="126" class="sun">
+                    <img src="<?php echo (!empty($image) ? 'https://apiadmin.qienergy.ai/assets/uploads/mp3/' . $image : 'images/freaquecy.png'); ?>" width="126" height="126" class="sun">
 
                   </div>
 
@@ -415,7 +415,7 @@ foreach ($response->favorite as $v) {
                         if (!empty($disabled)) {
                           $href = $payment_url;
                         } else {
-                          $href = "https://www.qicoilapi.ingeniusstudios.com/storage/app/public/uploads/" . $audio_folder . "/" . $v['filename'];
+                          $href = "https://apiadmin.qienergy.ai/assets/uploads/mp3/" . $id . "/" . $v['filename'];
                           // $href = 'https://members.qicoil.com/'.$v['filename'];
                         }
                       ?>
