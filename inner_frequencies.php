@@ -152,7 +152,7 @@ if (!empty($frequenciess)) {
 
   //echo '1';print_r($res);exit;
   $mp3s = $mp3_response;
-  $first_mp3 = FIRST_MP3_URL . $audio_folder . '/' . $mp3s[0]['filename'];
+  $first_mp3 = FIRST_MP3_URL . $id . '/' . $mp3s[0]['filename'];
 }
 // print_r($mp3s);die;
 
@@ -302,7 +302,7 @@ foreach ($response->favorite as $v) {
                 <div class="freq-container">
 
                   <div class="freq-container__image">
-                    <img src="<?php echo (!empty($image) ? 'https://apiadmin.qienergy.ai/assets/uploads/mp3/' . $id . $image : 'images/freaquecy.png'); ?>" width="126" height="126" class="sun">
+                    <img src="<?php echo (!empty($image) ? 'https://apiadmin.qienergy.ai/assets/uploads/mp3/'  . $image : 'images/freaquecy.png'); ?>" width="126" height="126" class="sun">
 
                   </div>
 
