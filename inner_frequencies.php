@@ -17,6 +17,7 @@ if (!isset($_SESSION['email'])) {
   }
 
 
+
   if (in_array($_GET['id'], $free_frequencies_ids)) {
     header('Location:index.php');
     exit;
