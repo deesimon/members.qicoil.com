@@ -297,6 +297,7 @@ foreach ($response->favorite as $v) {
 
               <div class="frequency-container">
 
+
                 <div class="freq-container">
 
                   <div class="freq-container__image">
