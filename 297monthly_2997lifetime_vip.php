@@ -8,13 +8,13 @@ include('constants.php');
 include('functions.php');
 
 
-  $page_type = 4;
-  $p_type = 'Unlock 57 + Inner Circle';
-  $imge_value = "aura-black.jpg";
-  $save_value = '49.89';
-  $pricepay = '297';
-  $lifetime_value = '2997';
-  $amount_value = '16';
+$page_type = 4;
+$p_type = 'Unlock 57 + Inner Circle';
+$imge_value = "aura-black.jpg";
+$save_value = '49.89';
+$pricepay = '297';
+$lifetime_value = '2997';
+$amount_value = '16';
 
 
 
@@ -83,7 +83,7 @@ if (!empty($_POST)) {
       $planType = 'lifetime';
     }
     $productType = 'vip';
-  } 
+  }
 
 
 
@@ -281,7 +281,7 @@ if (!empty($_POST)) {
             </div>
 
             <div>
-            <?php include 'Subscriptions-payment.php'; ?>
+              <?php include 'Subscriptions-payment.php'; ?>
             </div>
           </div>
           <div class="col-md-3">
@@ -295,9 +295,9 @@ if (!empty($_POST)) {
 
 
 
-<div>
-<?php include 'add_text.php'; ?>
-</div>
+  <div>
+    <?php include 'add_text.php'; ?>
+  </div>
 
 
 
@@ -434,7 +434,7 @@ if (!empty($_POST)) {
           ele.find('.spinner-border').css('display', 'inline-block');
 
           $.ajax({
-            url: "297monthly_2997lifetimevip.php",
+            url: "297monthly_2997lifetime_vip.php",
             type: "POST",
             data: data,
             dataType: 'json',
